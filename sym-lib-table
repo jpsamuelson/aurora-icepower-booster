@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "aurora-dsp-icepower-booster")(type "KiCad")(uri "/Users/roroor/Documents/Workspace/CAD/Electric/aurora-dsp-icepower-booster/aurora-dsp-icepower-booster.kicad_sym")(options "")(descr ""))
+)
