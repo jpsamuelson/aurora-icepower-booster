@@ -1,0 +1,13 @@
+{
+  "servers": {
+    "kicad": {
+      "command": "node",
+      "args": ["/Users/roroor/MCP/KiCAD-MCP-Server/dist/index.js"],
+      "env": {
+        "PYTHONPATH": "/Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/Current/lib/python3.9/site-packages",
+        "LOG_LEVEL": "info",
+        "KICAD_AUTO_LAUNCH": "false"
+      }
+    }
+  }
+}
