@@ -387,11 +387,11 @@
         "pattern": "CH*_COLD_RAW"
       },
       {
-        "netclass": "Speaker",
+        "netclass": "Audio_Input",
         "pattern": "CH*_EMI_HOT"
       },
       {
-        "netclass": "Speaker",
+        "netclass": "Audio_Input",
         "pattern": "CH*_EMI_COLD"
       },
       {
