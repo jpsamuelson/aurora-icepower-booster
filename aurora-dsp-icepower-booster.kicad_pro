@@ -273,24 +273,6 @@
       },
       {
         "bus_width": 12,
-        "clearance": 0.2,
-        "diff_pair_gap": 0.25,
-        "diff_pair_via_gap": 0.25,
-        "diff_pair_width": 0.5,
-        "line_style": 0,
-        "microvia_diameter": 0.3,
-        "microvia_drill": 0.1,
-        "name": "Power",
-        "pcb_color": "rgba(255, 0, 0, 0.500)",
-        "priority": 100,
-        "schematic_color": "rgba(255, 0, 0, 0.500)",
-        "track_width": 0.5,
-        "via_diameter": 0.8,
-        "via_drill": 0.4,
-        "wire_width": 6
-      },
-      {
-        "bus_width": 12,
         "clearance": 0.25,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
@@ -299,9 +281,9 @@
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
         "name": "Audio_Input",
-        "pcb_color": "rgba(0, 128, 0, 0.500)",
+        "pcb_color": "rgba(0, 128, 0, 0.502)",
         "priority": 200,
-        "schematic_color": "rgba(0, 128, 0, 0.500)",
+        "schematic_color": "rgba(0, 128, 0, 0.502)",
         "track_width": 0.3,
         "via_diameter": 0.6,
         "via_drill": 0.3,
@@ -317,9 +299,9 @@
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
         "name": "Audio_Output",
-        "pcb_color": "rgba(0, 0, 255, 0.500)",
+        "pcb_color": "rgba(0, 0, 255, 0.502)",
         "priority": 300,
-        "schematic_color": "rgba(0, 0, 255, 0.500)",
+        "schematic_color": "rgba(0, 0, 255, 0.502)",
         "track_width": 0.5,
         "via_diameter": 0.6,
         "via_drill": 0.3,
@@ -335,10 +317,28 @@
         "microvia_diameter": 0.3,
         "microvia_drill": 0.1,
         "name": "Audio_Power",
-        "pcb_color": "rgba(255, 128, 0, 0.500)",
+        "pcb_color": "rgba(255, 128, 0, 0.502)",
         "priority": 400,
-        "schematic_color": "rgba(255, 128, 0, 0.500)",
+        "schematic_color": "rgba(255, 128, 0, 0.502)",
         "track_width": 0.8,
+        "via_diameter": 0.8,
+        "via_drill": 0.4,
+        "wire_width": 6
+      },
+      {
+        "bus_width": 12,
+        "clearance": 0.2,
+        "diff_pair_gap": 0.25,
+        "diff_pair_via_gap": 0.25,
+        "diff_pair_width": 0.5,
+        "line_style": 0,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "name": "Power",
+        "pcb_color": "rgba(255, 0, 0, 0.502)",
+        "priority": 100,
+        "schematic_color": "rgba(255, 0, 0, 0.502)",
+        "track_width": 0.5,
         "via_diameter": 0.8,
         "via_drill": 0.4,
         "wire_width": 6
@@ -359,6 +359,10 @@
         "pattern": "-12V"
       },
       {
+        "netclass": "Power",
+        "pattern": "+24V_IN"
+      },
+      {
         "netclass": "Audio_Power",
         "pattern": "V+"
       },
@@ -367,7 +371,7 @@
         "pattern": "V-"
       },
       {
-        "netclass": "Audio_Power",
+        "netclass": "Power",
         "pattern": "GND"
       },
       {
@@ -380,15 +384,27 @@
       },
       {
         "netclass": "Audio_Input",
-        "pattern": "CH*_HOT_RAW"
-      },
-      {
-        "netclass": "Audio_Input",
         "pattern": "CH*_COLD_RAW"
       },
       {
-        "netclass": "Audio_Output",
-        "pattern": "CH*_OUT_HOT"
+        "netclass": "Audio_Input",
+        "pattern": "CH*_EMI_HOT"
+      },
+      {
+        "netclass": "Audio_Input",
+        "pattern": "CH*_EMI_COLD"
+      },
+      {
+        "netclass": "Audio_Input",
+        "pattern": "CH*_RX_OUT"
+      },
+      {
+        "netclass": "Audio_Input",
+        "pattern": "CH*_INV_IN"
+      },
+      {
+        "netclass": "Audio_Input",
+        "pattern": "CH*_SUMNODE"
       },
       {
         "netclass": "Audio_Output",
@@ -396,7 +412,35 @@
       },
       {
         "netclass": "Audio_Output",
-        "pattern": "CH*_RX_OUT"
+        "pattern": "CH*_OUT_HOT"
+      },
+      {
+        "netclass": "Audio_Output",
+        "pattern": "CH*_OUT_COLD"
+      },
+      {
+        "netclass": "Audio_Output",
+        "pattern": "CH*_OUT_DRIVE"
+      },
+      {
+        "netclass": "Audio_Output",
+        "pattern": "CH*_BUF_DRIVE"
+      },
+      {
+        "netclass": "Audio_Output",
+        "pattern": "CH*_OUT_PROT_HOT"
+      },
+      {
+        "netclass": "Audio_Output",
+        "pattern": "CH*_OUT_PROT_COLD"
+      },
+      {
+        "netclass": "Audio_Output",
+        "pattern": "CH*_GAIN_FB"
+      },
+      {
+        "netclass": "Audio_Output",
+        "pattern": "CH*_SW_OUT_*"
       }
     ]
   },
@@ -415,6 +459,15 @@
     "page_layout_descr_file": ""
   },
   "schematic": {
+    "erc": {
+      "erc_exclusions": [],
+      "meta": {
+        "version": 0
+      },
+      "rule_severities": {
+        "endpoint_off_grid": "ignore"
+      }
+    },
     "legacy_lib_dir": "",
     "legacy_lib_list": []
   },

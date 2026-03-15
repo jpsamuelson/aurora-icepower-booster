@@ -1,0 +1,23 @@
+# KiCad generated files
+*.kicad_prl
+fp-info-cache
+*.bak
+*.bak_*
+*-erc.json
+*-drc.json
+
+# KiCad backups
+*-backups/
+.bak_*/
+
+# Build artifacts / exports
+reports/
+logs/
+exports/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Snapshots
+snapshots/
