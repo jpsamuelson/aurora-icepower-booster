@@ -9978,16 +9978,6 @@
 		)
 		(uuid "0aecba89-adb5-4c0c-b790-2e8c64ae9671")
 	)
-	(label "V+"
-		(at 187.46 12.38 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "0aff31bc-8390-4ded-a52e-b345f74af265")
-	)
 	(label "V-"
 		(at 175 488.65 0)
 		(effects
@@ -10127,16 +10117,6 @@
 			(justify left bottom)
 		)
 		(uuid "12561c0f-6759-422a-bf32-3a643bf01ee6")
-	)
-	(label "V+"
-		(at 187.46 42.38 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "12903d7f-d10c-4d54-8c88-f3f67b1b0a15")
 	)
 	(label "CH6_SW_OUT_2"
 		(at 102.62 550 0)
@@ -10408,16 +10388,6 @@
 		)
 		(uuid "1f4f5ec8-c7c0-4684-8c28-9e4c1df3142a")
 	)
-	(label "V+"
-		(at 217.46 12.38 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "203bc462-1c23-47b3-baa0-ae5902a9ee8c")
-	)
 	(label "CH3_SW_OUT_2"
 		(at 102.62 310 0)
 		(effects
@@ -10487,16 +10457,6 @@
 			(justify left bottom)
 		)
 		(uuid "24ddad0e-34dd-4618-822c-5cd592686d36")
-	)
-	(label "V+"
-		(at 247.46 12.38 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "25639025-b0c3-4c4a-baf0-8b850b591c79")
 	)
 	(label "CH3_HOT_IN"
 		(at 52 270.81 0)
@@ -10637,16 +10597,6 @@
 			(justify left bottom)
 		)
 		(uuid "2bde8314-f3c2-4a8b-8e09-7c5671c99d8a")
-	)
-	(label "V+"
-		(at 277.46 42.38 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "2c029804-bedb-44ed-97fa-898beabcabbe")
 	)
 	(label "CH4_HOT_IN"
 		(at 52 350.81 0)
@@ -10978,16 +10928,6 @@
 		)
 		(uuid "38d2c8f3-fe9f-4723-af7e-a8e663465943")
 	)
-	(label "V-"
-		(at 277.46 27.62 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "3993b339-c9a5-478f-b70e-2284b1975ab6")
-	)
 	(label "GND"
 		(at 128.81 37 0)
 		(effects
@@ -11287,16 +11227,6 @@
 			(justify left bottom)
 		)
 		(uuid "47eec6e8-365e-49b0-b6c9-f5b6ca5e08e7")
-	)
-	(label "V+"
-		(at 217.46 42.38 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "48c20be9-d21e-4c26-a36f-56f2d672aeec")
 	)
 	(label "GND"
 		(at 175 181.35 0)
@@ -11608,16 +11538,6 @@
 		)
 		(uuid "5fdeab1f-90ea-410f-ba3d-3a3a5ece56b9")
 	)
-	(label "V-"
-		(at 307.46 57.62 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "611c8f63-3f50-4ae4-89a5-1b9347020748")
-	)
 	(label "CH6_COLD_IN"
 		(at 52 516.81 0)
 		(effects
@@ -11637,16 +11557,6 @@
 			(justify left bottom)
 		)
 		(uuid "622b8e3c-a799-4d1d-ad66-c5c89b4c6191")
-	)
-	(label "V+"
-		(at 247.46 42.38 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "63938996-fb59-43cc-8d06-a4986044c135")
 	)
 	(label "CH2_COLD_IN"
 		(at 315 200 0)
@@ -11978,16 +11888,6 @@
 		)
 		(uuid "72889bef-68ec-4a3a-a4bf-ab1a7ac471f3")
 	)
-	(label "V-"
-		(at 277.46 57.62 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "7424da11-d78a-4fc9-8906-5b84db0e892e")
-	)
 	(label "CH5_OUT_COLD"
 		(at 190 416.35 0)
 		(effects
@@ -12028,16 +11928,6 @@
 		)
 		(uuid "77c9b3de-1150-444c-9d15-425f6110617e")
 	)
-	(label "V+"
-		(at 157.46 12.38 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "78030a66-b0cd-4b61-b052-541c49167544")
-	)
 	(label "GND"
 		(at 244.92 350 0)
 		(effects
@@ -12047,16 +11937,6 @@
 			(justify left bottom)
 		)
 		(uuid "78569000-9f0f-4d49-b447-c77ef89dcd50")
-	)
-	(label "V-"
-		(at 157.46 57.62 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "7862891f-7b57-4750-a36b-624cb0432efc")
 	)
 	(label "GND"
 		(at 160 18.65 0)
@@ -12127,16 +12007,6 @@
 			(justify left bottom)
 		)
 		(uuid "79eb17ad-c948-4119-9638-537e687dfdf7")
-	)
-	(label "V+"
-		(at 307.46 12.38 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "7a00848e-e519-4230-97d7-3c4a667dceb3")
 	)
 	(label "CH5_OUT_COLD"
 		(at 285 424 0)
@@ -12488,16 +12358,6 @@
 		)
 		(uuid "8e13fb14-f819-428e-8d3d-3f53d071f9aa")
 	)
-	(label "V+"
-		(at 277.46 12.38 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "90c2c9fe-5463-45ff-8284-40f477107bbe")
-	)
 	(label "+12V"
 		(at 98 31.35 0)
 		(effects
@@ -12769,16 +12629,6 @@
 		(uuid "9ce11c51-af18-4ea2-8e8c-8caf326667a4")
 	)
 	(label "V+"
-		(at 307.46 42.38 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "9d8f505c-1b85-4350-8919-02cfc4e34b66")
-	)
-	(label "V+"
 		(at 165 261.35 0)
 		(effects
 			(font
@@ -12968,16 +12818,6 @@
 		)
 		(uuid "aaf86db9-d530-4c16-861a-187fb7cd55a4")
 	)
-	(label "V+"
-		(at 157.46 42.38 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "ab29f7f3-f6e6-4373-a73a-b257aab41c07")
-	)
 	(label "CH2_EMI_HOT"
 		(at 302 185 0)
 		(effects
@@ -13038,16 +12878,6 @@
 		)
 		(uuid "aea4642c-531c-4116-bfc9-e90a470ffb68")
 	)
-	(label "V-"
-		(at 157.46 27.62 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "aeb384fc-2b3f-4099-aef2-646f132dcafd")
-	)
 	(label "CH2_SUMNODE"
 		(at 114.92 207.46 0)
 		(effects
@@ -13057,16 +12887,6 @@
 			(justify left bottom)
 		)
 		(uuid "af17af41-cb5d-4f49-b11f-d2a9682217d4")
-	)
-	(label "V-"
-		(at 217.46 57.62 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "af4a86b3-68af-4fc1-b567-75bd34c4e591")
 	)
 	(label "GND"
 		(at 165 488.65 0)
@@ -13137,16 +12957,6 @@
 			(justify left bottom)
 		)
 		(uuid "b344e394-95a6-4a25-9ead-216d61ef2a31")
-	)
-	(label "V-"
-		(at 217.46 27.62 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "b3631ab1-4d4e-46af-9a24-ec5006cd4cc5")
 	)
 	(label "GND"
 		(at 302 437 0)
@@ -13288,16 +13098,6 @@
 		)
 		(uuid "bab3083c-76c8-4b11-b629-40fa108ddcbf")
 	)
-	(label "V-"
-		(at 187.46 27.62 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "bac94288-6790-4387-a562-b26539ec7720")
-	)
 	(label "GND"
 		(at 24.92 190 0)
 		(effects
@@ -13387,16 +13187,6 @@
 			(justify left bottom)
 		)
 		(uuid "bfca4a13-af26-47f0-a365-0a5401485bca")
-	)
-	(label "V-"
-		(at 247.46 57.62 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "bfe21193-fa90-48e0-8fba-859604124821")
 	)
 	(label "V-"
 		(at 175 408.65 0)
@@ -13728,16 +13518,6 @@
 		)
 		(uuid "d16901cb-64cc-40cb-9833-03d15684a184")
 	)
-	(label "V-"
-		(at 187.46 57.62 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "d2e20510-7397-4bf4-b0cb-a140785c357f")
-	)
 	(label "CH3_OUT_COLD"
 		(at 42 270 0)
 		(effects
@@ -13827,16 +13607,6 @@
 			(justify left bottom)
 		)
 		(uuid "da773cc2-6517-47a1-9ad9-560f407f5a84")
-	)
-	(label "V-"
-		(at 247.46 27.62 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "da81ebe9-7f60-4c9b-947b-663d48720b89")
 	)
 	(label "GND"
 		(at 85 250.65 0)
@@ -14527,16 +14297,6 @@
 			(justify left bottom)
 		)
 		(uuid "fc8e25f7-df6a-4ace-83f3-698a52bbb621")
-	)
-	(label "V-"
-		(at 307.46 27.62 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "fc9c12b6-3101-4ba6-8fb5-588d8fa3222f")
 	)
 	(label "GND"
 		(at 114.92 452.54 0)
@@ -15696,13 +15456,13 @@
 	(symbol
 		(lib_id "Amplifier_Operational:LM4562")
 		(at 120 530 0)
-		(unit 1)
+		(unit 2)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "0d0a745f-bcfe-4209-b067-9e0de4ff5771")
-		(property "Reference" "U13"
+		(property "Reference" "U7"
 			(at 120 527.46 0)
 			(effects
 				(font
@@ -15771,8 +15531,8 @@
 		(instances
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U13")
-					(unit 1)
+					(reference "U7")
+					(unit 2)
 				)
 			)
 		)
@@ -15930,7 +15690,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0f10d96e-b55d-4c25-a188-2fa76eaf5c96")
-		(property "Reference" "U23"
+		(property "Reference" "U13"
 			(at 170 507.46 0)
 			(effects
 				(font
@@ -15999,7 +15759,7 @@
 		(instances
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U23")
+					(reference "U13")
 					(unit 1)
 				)
 			)
@@ -16132,90 +15892,6 @@
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
 					(reference "D20")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Amplifier_Operational:LM4562")
-		(at 280 50 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "141c71d3-61dc-4a8b-9073-6bc8e711d985")
-		(property "Reference" "U37"
-			(at 280 47.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LM4562"
-			(at 280 52.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 280 50 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 280 50 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 280 50 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "dc2f8aaf-ca55-447a-ab51-4739f60272f8")
-		)
-		(pin "2"
-			(uuid "192ecbb5-087b-4ad9-82e5-2c4fb387d428")
-		)
-		(pin "1"
-			(uuid "b272241c-9f2c-49df-b033-3c5b91633016")
-		)
-		(pin "5"
-			(uuid "9b286f16-dd1c-4f49-a8b5-418d7837c1e2")
-		)
-		(pin "6"
-			(uuid "455dd2e1-507e-42d0-a8e7-c8e89a11742d")
-		)
-		(pin "7"
-			(uuid "c5aec84f-ae0c-4911-ac99-3d1a9d1e508f")
-		)
-		(pin "8"
-			(uuid "072792f3-1cba-4d79-b4b9-cb88503bd46c")
-		)
-		(pin "4"
-			(uuid "df5f4a3c-14fe-4aac-97b3-27b1c61573dc")
-		)
-		(instances
-			(project "aurora-dsp-icepower-booster"
-				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U37")
 					(unit 1)
 				)
 			)
@@ -16842,7 +16518,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1b3129c7-c60a-4d18-a8df-00878416d973")
-		(property "Reference" "U18"
+		(property "Reference" "U8"
 			(at 170 107.46 0)
 			(effects
 				(font
@@ -16911,7 +16587,7 @@
 		(instances
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U18")
+					(reference "U8")
 					(unit 1)
 				)
 			)
@@ -16920,13 +16596,13 @@
 	(symbol
 		(lib_id "Amplifier_Operational:LM4562")
 		(at 120 290 0)
-		(unit 1)
+		(unit 2)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "1d033d26-7c39-43db-b185-0fce99ef1ef5")
-		(property "Reference" "U10"
+		(property "Reference" "U4"
 			(at 120 287.46 0)
 			(effects
 				(font
@@ -16995,8 +16671,8 @@
 		(instances
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U10")
-					(unit 1)
+					(reference "U4")
+					(unit 2)
 				)
 			)
 		)
@@ -17274,7 +16950,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "20cf3e99-631b-41b4-9342-86cc57b36dfd")
-		(property "Reference" "U21"
+		(property "Reference" "U11"
 			(at 170 347.46 0)
 			(effects
 				(font
@@ -17343,7 +17019,7 @@
 		(instances
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U21")
+					(reference "U11")
 					(unit 1)
 				)
 			)
@@ -18096,13 +17772,13 @@
 	(symbol
 		(lib_id "Amplifier_Operational:LM4562")
 		(at 210 270 0)
-		(unit 1)
+		(unit 2)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "2cb79168-2b68-410f-8b8a-36d2e1df8d5f")
-		(property "Reference" "U28"
+		(property "Reference" "U10"
 			(at 210 267.46 0)
 			(effects
 				(font
@@ -18171,8 +17847,8 @@
 		(instances
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U28")
-					(unit 1)
+					(reference "U10")
+					(unit 2)
 				)
 			)
 		)
@@ -18304,90 +17980,6 @@
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
 					(reference "R18")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Amplifier_Operational:LM4562")
-		(at 310 20 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "313b71b3-15bd-4735-9874-5b7cbba9ad53")
-		(property "Reference" "U38"
-			(at 310 17.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LM4562"
-			(at 310 22.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 310 20 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 310 20 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 310 20 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "583b192a-6b0f-466c-a337-3e95af5f5146")
-		)
-		(pin "2"
-			(uuid "44b02ca6-7365-4ce0-b440-21613df3f587")
-		)
-		(pin "1"
-			(uuid "526f7f45-4e29-4123-b1ae-379259c4c073")
-		)
-		(pin "5"
-			(uuid "44774be8-cc2f-4959-8f2a-8d16ccbd0f3d")
-		)
-		(pin "6"
-			(uuid "a9896e53-071c-4135-b259-1d00641641de")
-		)
-		(pin "7"
-			(uuid "05c8f043-446e-45f5-8fc7-d55b37f55539")
-		)
-		(pin "8"
-			(uuid "e88cd18b-7e51-4311-8289-8d5dc489d2a8")
-		)
-		(pin "4"
-			(uuid "6ccd2c5e-8d64-4054-ab7f-60c5712fcf49")
-		)
-		(instances
-			(project "aurora-dsp-icepower-booster"
-				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U38")
 					(unit 1)
 				)
 			)
@@ -18592,90 +18184,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Amplifier_Operational:LM4562")
-		(at 310 50 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "3588294d-a57f-418e-b24f-7d25d0092f7f")
-		(property "Reference" "U39"
-			(at 310 47.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LM4562"
-			(at 310 52.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 310 50 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 310 50 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 310 50 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "e79b2240-37dc-45f8-acc9-e82815393c8d")
-		)
-		(pin "2"
-			(uuid "68086808-79f2-4359-affd-6a957f814397")
-		)
-		(pin "1"
-			(uuid "dc31cbd4-e698-42a6-a694-7f93c5189cb6")
-		)
-		(pin "5"
-			(uuid "10df624e-0c51-4ee1-850d-4772eb4ac673")
-		)
-		(pin "6"
-			(uuid "5e077ef6-9a6e-43c6-b67c-0729b1bec91e")
-		)
-		(pin "7"
-			(uuid "6ed6747c-dc1e-4122-91fb-c9227c87aa30")
-		)
-		(pin "8"
-			(uuid "59d182e3-ab1c-4fa3-8d06-0cb789e65ce9")
-		)
-		(pin "4"
-			(uuid "d5e4bb50-c5c4-4669-929c-99c3ad289740")
-		)
-		(instances
-			(project "aurora-dsp-icepower-booster"
-				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U39")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 195 365 0)
 		(unit 1)
@@ -18744,13 +18252,13 @@
 	(symbol
 		(lib_id "Amplifier_Operational:LM4562")
 		(at 210 430 0)
-		(unit 1)
+		(unit 2)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "35aa6d76-877b-47ac-9ffd-5d54afbe0217")
-		(property "Reference" "U30"
+		(property "Reference" "U12"
 			(at 210 427.46 0)
 			(effects
 				(font
@@ -18819,92 +18327,8 @@
 		(instances
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U30")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Amplifier_Operational:LM4562")
-		(at 160 20 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "39f2898b-cd19-49f9-abbd-32bbd4ce4455")
-		(property "Reference" "U16"
-			(at 160 17.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LM4562"
-			(at 160 22.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 160 20 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 160 20 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 160 20 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "a8fa0115-17e9-4e00-8158-0ecbb394868a")
-		)
-		(pin "2"
-			(uuid "8d6b0eeb-5a10-4b35-84b1-a26141e023eb")
-		)
-		(pin "1"
-			(uuid "0a075315-d352-434e-b184-3873f5edc216")
-		)
-		(pin "5"
-			(uuid "eb738227-8087-45e9-891f-542bd0efc881")
-		)
-		(pin "6"
-			(uuid "b16183c8-5522-475d-890c-31f8ecced9fd")
-		)
-		(pin "7"
-			(uuid "913b2733-0a88-4aaa-856e-4d09cf143f1e")
-		)
-		(pin "8"
-			(uuid "9e2e0497-c34a-4bac-b16c-4cb277d87497")
-		)
-		(pin "4"
-			(uuid "30580c21-7be4-42eb-916d-66bbc4b21329")
-		)
-		(instances
-			(project "aurora-dsp-icepower-booster"
-				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U16")
-					(unit 1)
+					(reference "U12")
+					(unit 2)
 				)
 			)
 		)
@@ -19452,7 +18876,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3f90b626-d426-4716-94cb-ebf90acd4838")
-		(property "Reference" "U20"
+		(property "Reference" "U10"
 			(at 170 267.46 0)
 			(effects
 				(font
@@ -19521,7 +18945,7 @@
 		(instances
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U20")
+					(reference "U10")
 					(unit 1)
 				)
 			)
@@ -20254,90 +19678,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Amplifier_Operational:LM4562")
-		(at 190 50 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "4717ba31-bea1-4505-a15f-fde72253bdb0")
-		(property "Reference" "U25"
-			(at 190 47.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LM4562"
-			(at 190 52.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 190 50 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 190 50 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 190 50 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "078b159b-fb3e-4b4c-9b27-974d704b63f4")
-		)
-		(pin "2"
-			(uuid "ecff5335-4b5e-402e-8b40-0693d75a75bd")
-		)
-		(pin "1"
-			(uuid "52741ea4-b7f3-477f-9338-02fdcc35cb98")
-		)
-		(pin "5"
-			(uuid "34ab6d2d-0461-40f4-be17-2efa6a1794c5")
-		)
-		(pin "6"
-			(uuid "cb76aae1-5f7c-455e-b432-8b1345e7fb6f")
-		)
-		(pin "7"
-			(uuid "154c4be5-6c9d-4207-ac65-0082a2cc4d9b")
-		)
-		(pin "8"
-			(uuid "44a6fce8-f277-423e-9a8f-89f09f146c5c")
-		)
-		(pin "4"
-			(uuid "4a888080-681d-4197-8772-e0b556814b05")
-		)
-		(instances
-			(project "aurora-dsp-icepower-booster"
-				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U25")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 105 300 0)
 		(unit 1)
@@ -20538,13 +19878,13 @@
 	(symbol
 		(lib_id "Amplifier_Operational:LM4562")
 		(at 120 450 0)
-		(unit 1)
+		(unit 2)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "4adacb47-2be5-46b0-afc2-4a005c18241c")
-		(property "Reference" "U12"
+		(property "Reference" "U6"
 			(at 120 447.46 0)
 			(effects
 				(font
@@ -20613,8 +19953,8 @@
 		(instances
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U12")
-					(unit 1)
+					(reference "U6")
+					(unit 2)
 				)
 			)
 		)
@@ -20628,7 +19968,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4aecef32-4334-4272-994b-aea001aedb66")
-		(property "Reference" "U22"
+		(property "Reference" "U12"
 			(at 170 427.46 0)
 			(effects
 				(font
@@ -20697,7 +20037,7 @@
 		(instances
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U22")
+					(reference "U12")
 					(unit 1)
 				)
 			)
@@ -22317,13 +21657,13 @@
 	(symbol
 		(lib_id "Amplifier_Operational:LM4562")
 		(at 120 210 0)
-		(unit 1)
+		(unit 2)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "5a1ba5c6-3a40-4460-9c1e-1fbe4475088e")
-		(property "Reference" "U9"
+		(property "Reference" "U3"
 			(at 120 207.46 0)
 			(effects
 				(font
@@ -22392,92 +21732,8 @@
 		(instances
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Amplifier_Operational:LM4562")
-		(at 160 50 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "5e0db23d-a874-44f2-b5c3-614365fac34b")
-		(property "Reference" "U17"
-			(at 160 47.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LM4562"
-			(at 160 52.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 160 50 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 160 50 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 160 50 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "3da4b3eb-e000-4a38-8079-c1ce1ce176dd")
-		)
-		(pin "2"
-			(uuid "824e556b-0898-4cd5-87c4-7d7fceafb645")
-		)
-		(pin "1"
-			(uuid "fc6cb47a-edd3-4409-a8f1-59a1fc0f15fb")
-		)
-		(pin "5"
-			(uuid "2e553926-99fb-4a48-819f-2ebe38895c2f")
-		)
-		(pin "6"
-			(uuid "929089ea-c447-4bc7-a71c-bfec31b6773a")
-		)
-		(pin "7"
-			(uuid "f1fc7020-8abd-47ff-b381-e41ddd8de9f1")
-		)
-		(pin "8"
-			(uuid "58185d03-86b1-4f02-8b48-8242c8f81717")
-		)
-		(pin "4"
-			(uuid "85aa26a1-de95-40db-8ab0-e94b8cecc02e")
-		)
-		(instances
-			(project "aurora-dsp-icepower-booster"
-				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U17")
-					(unit 1)
+					(reference "U3")
+					(unit 2)
 				)
 			)
 		)
@@ -22678,90 +21934,6 @@
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
 					(reference "J9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Amplifier_Operational:LM4562")
-		(at 190 20 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "63934ad3-9eaf-4fa0-9811-4f79172cc9fc")
-		(property "Reference" "U24"
-			(at 190 17.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LM4562"
-			(at 190 22.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 190 20 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 190 20 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 190 20 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "6a37e8b3-6b3a-4adf-93d3-3e6474989c3a")
-		)
-		(pin "2"
-			(uuid "b6456741-c75c-4b09-bfd7-250445f735bc")
-		)
-		(pin "1"
-			(uuid "4661122f-d012-4149-ba84-e69666fbd652")
-		)
-		(pin "5"
-			(uuid "a722abf8-45c4-4e81-82d3-373bb885b3cf")
-		)
-		(pin "6"
-			(uuid "d393178d-5652-4634-a3c7-147e5432a3f6")
-		)
-		(pin "7"
-			(uuid "8f56812b-b22e-41f5-a93a-7e2271d15af5")
-		)
-		(pin "8"
-			(uuid "b720601f-570a-4461-9c91-3dcf4c4acccc")
-		)
-		(pin "4"
-			(uuid "16abe1d8-85b2-4332-a16d-083dbe2a7764")
-		)
-		(instances
-			(project "aurora-dsp-icepower-booster"
-				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U24")
 					(unit 1)
 				)
 			)
@@ -25065,13 +24237,13 @@
 	(symbol
 		(lib_id "Amplifier_Operational:LM4562")
 		(at 120 130 0)
-		(unit 1)
+		(unit 2)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "84fcad90-897d-4587-b7cb-32416c5596f7")
-		(property "Reference" "U8"
+		(property "Reference" "U2"
 			(at 120 127.46 0)
 			(effects
 				(font
@@ -25140,8 +24312,8 @@
 		(instances
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U8")
-					(unit 1)
+					(reference "U2")
+					(unit 2)
 				)
 			)
 		)
@@ -26269,90 +25441,6 @@
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
 					(reference "C73")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Amplifier_Operational:LM4562")
-		(at 250 50 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "967a0432-eaff-48fb-a106-3ff2961fcc9f")
-		(property "Reference" "U35"
-			(at 250 47.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LM4562"
-			(at 250 52.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 250 50 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 250 50 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 250 50 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "8f7517cf-2020-4c5d-910f-cfbf75a5cb8c")
-		)
-		(pin "2"
-			(uuid "b3ec018a-44a3-4d82-99d8-a4766a40896f")
-		)
-		(pin "1"
-			(uuid "9734a3d9-b8ca-4067-94fa-1b7f6d42214c")
-		)
-		(pin "5"
-			(uuid "d9097d8f-5353-4891-b60f-90da61237863")
-		)
-		(pin "6"
-			(uuid "592e5d4f-c7d7-4271-815d-26a5bed3113d")
-		)
-		(pin "7"
-			(uuid "9103dada-d826-42eb-b892-840f61368ef5")
-		)
-		(pin "8"
-			(uuid "e0110985-52c6-4901-a280-1f9f4d7ec818")
-		)
-		(pin "4"
-			(uuid "86b3a0be-07e9-46c5-9447-278e07283179")
-		)
-		(instances
-			(project "aurora-dsp-icepower-booster"
-				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U35")
 					(unit 1)
 				)
 			)
@@ -27618,13 +26706,13 @@
 	(symbol
 		(lib_id "Amplifier_Operational:LM4562")
 		(at 120 370 0)
-		(unit 1)
+		(unit 2)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "a73cdb99-0443-464b-8985-390af13d3acd")
-		(property "Reference" "U11"
+		(property "Reference" "U5"
 			(at 120 367.46 0)
 			(effects
 				(font
@@ -27693,8 +26781,8 @@
 		(instances
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U11")
-					(unit 1)
+					(reference "U5")
+					(unit 2)
 				)
 			)
 		)
@@ -27702,13 +26790,13 @@
 	(symbol
 		(lib_id "Amplifier_Operational:LM4562")
 		(at 210 190 0)
-		(unit 1)
+		(unit 2)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "a7c679d0-9d91-492a-8380-e544810de6e1")
-		(property "Reference" "U27"
+		(property "Reference" "U9"
 			(at 210 187.46 0)
 			(effects
 				(font
@@ -27777,8 +26865,8 @@
 		(instances
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U27")
-					(unit 1)
+					(reference "U9")
+					(unit 2)
 				)
 			)
 		)
@@ -28116,13 +27204,13 @@
 	(symbol
 		(lib_id "Amplifier_Operational:LM4562")
 		(at 210 350 0)
-		(unit 1)
+		(unit 2)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "adb944b9-14a4-4e7b-a863-4742b147c5df")
-		(property "Reference" "U29"
+		(property "Reference" "U11"
 			(at 210 347.46 0)
 			(effects
 				(font
@@ -28191,8 +27279,8 @@
 		(instances
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U29")
-					(unit 1)
+					(reference "U11")
+					(unit 2)
 				)
 			)
 		)
@@ -28398,13 +27486,13 @@
 	(symbol
 		(lib_id "Amplifier_Operational:LM4562")
 		(at 210 110 0)
-		(unit 1)
+		(unit 2)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "b11175c1-dae7-4a8a-85c1-e4a56ce75174")
-		(property "Reference" "U26"
+		(property "Reference" "U8"
 			(at 210 107.46 0)
 			(effects
 				(font
@@ -28473,8 +27561,8 @@
 		(instances
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U26")
-					(unit 1)
+					(reference "U8")
+					(unit 2)
 				)
 			)
 		)
@@ -28947,13 +28035,13 @@
 	(symbol
 		(lib_id "Amplifier_Operational:LM4562")
 		(at 210 510 0)
-		(unit 1)
+		(unit 2)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "b9e742d7-6e12-4c66-b081-8adbe20c73f4")
-		(property "Reference" "U31"
+		(property "Reference" "U13"
 			(at 210 507.46 0)
 			(effects
 				(font
@@ -29022,8 +28110,8 @@
 		(instances
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U31")
-					(unit 1)
+					(reference "U13")
+					(unit 2)
 				)
 			)
 		)
@@ -29803,90 +28891,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Amplifier_Operational:LM4562")
-		(at 250 20 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "cdb3f0fb-57ac-419b-a1b0-df03bf0bb8f2")
-		(property "Reference" "U34"
-			(at 250 17.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LM4562"
-			(at 250 22.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 250 20 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 250 20 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 250 20 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "2339de23-fc81-434e-b40d-993e7078c11e")
-		)
-		(pin "2"
-			(uuid "b1fcb841-94e5-4fae-96e8-d7dc143305e4")
-		)
-		(pin "1"
-			(uuid "8422f45d-a75a-404c-bd94-369e39f35c41")
-		)
-		(pin "5"
-			(uuid "49bbd481-9fc5-4286-8a94-22a29a3bc882")
-		)
-		(pin "6"
-			(uuid "f9a424f9-71e8-4277-899a-6ee443bf9495")
-		)
-		(pin "7"
-			(uuid "51ab6300-3525-481d-859b-e494d0af05ea")
-		)
-		(pin "8"
-			(uuid "915289df-88ca-41f5-9b7f-dfe0bc6db9f2")
-		)
-		(pin "4"
-			(uuid "e7172317-f488-4108-9561-302381e8e969")
-		)
-		(instances
-			(project "aurora-dsp-icepower-booster"
-				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U34")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Device:R")
 		(at 105 367 0)
 		(unit 1)
@@ -29947,90 +28951,6 @@
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
 					(reference "R38")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Amplifier_Operational:LM4562")
-		(at 220 20 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d028fece-f8db-4d79-a864-558f46f59f12")
-		(property "Reference" "U32"
-			(at 220 17.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LM4562"
-			(at 220 22.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 220 20 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 220 20 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 220 20 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "7b38914a-4bc8-4ac7-bcab-5042457dea6c")
-		)
-		(pin "2"
-			(uuid "0f460de5-eb60-4519-abfe-ee2b123fbdc7")
-		)
-		(pin "1"
-			(uuid "5a9deef5-eb36-4e78-8ee4-67b9a9a38deb")
-		)
-		(pin "5"
-			(uuid "6a7d71f8-a475-435e-83a7-795a5c7ee3d2")
-		)
-		(pin "6"
-			(uuid "d6362680-9820-48e9-9a41-7f283e8185fb")
-		)
-		(pin "7"
-			(uuid "ef3c5fdd-0b6a-406b-b2f0-3cc59b9ea9ba")
-		)
-		(pin "8"
-			(uuid "41f30c34-fb1b-48e4-a857-74275e9b7e46")
-		)
-		(pin "4"
-			(uuid "88c1c7d0-6f50-400a-8677-71ace1a5fc65")
-		)
-		(instances
-			(project "aurora-dsp-icepower-booster"
-				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U32")
 					(unit 1)
 				)
 			)
@@ -30229,90 +29149,6 @@
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
 					(reference "R37")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Amplifier_Operational:LM4562")
-		(at 220 50 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d66a34f1-0d9d-4bc6-8e1e-e423b7c3e044")
-		(property "Reference" "U33"
-			(at 220 47.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LM4562"
-			(at 220 52.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 220 50 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 220 50 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 220 50 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "490d070c-5c64-4312-a1a0-64859483d3b6")
-		)
-		(pin "2"
-			(uuid "4919477e-16e7-4753-8c66-b36ae3d8bf6b")
-		)
-		(pin "1"
-			(uuid "9d01395b-5419-4470-8fb1-9933491e3c9a")
-		)
-		(pin "5"
-			(uuid "7c33a1ed-cc25-40e1-9a29-e8e3b1b653cf")
-		)
-		(pin "6"
-			(uuid "1b21800a-a30f-47ce-9067-552f1a83d8ce")
-		)
-		(pin "7"
-			(uuid "61b3c1dc-f77b-4b92-a80c-b460702fbfae")
-		)
-		(pin "8"
-			(uuid "4e052851-2f67-4842-9fbc-912e25418275")
-		)
-		(pin "4"
-			(uuid "b27094bc-6c37-4dc5-b2fa-5b9dc7af1534")
-		)
-		(instances
-			(project "aurora-dsp-icepower-booster"
-				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U33")
 					(unit 1)
 				)
 			)
@@ -31755,7 +30591,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f1fd249b-f64e-4bda-9854-adbe4cd606b1")
-		(property "Reference" "U19"
+		(property "Reference" "U9"
 			(at 170 187.46 0)
 			(effects
 				(font
@@ -31824,7 +30660,7 @@
 		(instances
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U19")
+					(reference "U9")
 					(unit 1)
 				)
 			)
@@ -32023,90 +30859,6 @@
 			(project "aurora-dsp-icepower-booster"
 				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
 					(reference "C52")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Amplifier_Operational:LM4562")
-		(at 280 20 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "f492a479-498d-45c3-ac4e-97645b9de8b2")
-		(property "Reference" "U36"
-			(at 280 17.46 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "LM4562"
-			(at 280 22.54 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
-			(at 280 20 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 280 20 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 280 20 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "3"
-			(uuid "f5f0f9ba-7b5b-42b3-b5b4-d485b03c4a8d")
-		)
-		(pin "2"
-			(uuid "a99458b0-7ad3-41c4-a734-58683a681d15")
-		)
-		(pin "1"
-			(uuid "1f24ccf2-173b-4be9-b6f9-af087e4d5a38")
-		)
-		(pin "5"
-			(uuid "4727597f-e69c-4550-9e5b-0fb24d616088")
-		)
-		(pin "6"
-			(uuid "0eff9be8-0e8a-4de3-b0e4-dd1e7d6cc527")
-		)
-		(pin "7"
-			(uuid "df94c330-ff8e-457e-88b0-56992f91759a")
-		)
-		(pin "8"
-			(uuid "b7200ffa-3bce-42b3-87a1-76eee11ecd04")
-		)
-		(pin "4"
-			(uuid "57ed6bb7-9c71-431b-90da-9f6c34bd8fe2")
-		)
-		(instances
-			(project "aurora-dsp-icepower-booster"
-				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
-					(reference "U36")
 					(unit 1)
 				)
 			)
@@ -32847,4 +31599,1301 @@
 		)
 	)
 	(embedded_fonts no)
+
+	(symbol
+		(lib_id "Amplifier_Operational:LM4562")
+		(at 254.0 110.0 0)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a46590e9-9f6a-4dbf-9e30-87e6bafb9528")
+		(property "Reference" "U2"
+			(at 254.0 107.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LM4562"
+			(at 254.0 112.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 254.0 110.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 254.0 110.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 254.0 110.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "8"
+			(uuid "a57d2303-a9f5-4a34-9afa-d427b2174135")
+		)
+		(pin "4"
+			(uuid "0940240e-1a72-4fc6-a5cc-4bbc90f6aed1")
+		)
+		(instances
+			(project "aurora-dsp-icepower-booster"
+				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
+					(reference "U2")
+					(unit 3)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 251.46 102.38) (xy 246.38 102.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b236c748-f984-4041-b903-126e80db6345")
+	)
+	(wire
+		(pts
+			(xy 251.46 117.62) (xy 246.38 117.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f4d7efd9-b79a-4920-9f29-52ce248b6d4b")
+	)
+	(label "V+"
+		(at 246.38 102.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "115a609b-7f0c-4946-a539-868e55de90c6")
+	)
+	(label "V-"
+		(at 246.38 117.62 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4b79ebee-edf1-4d9c-8ab3-7ccd57e49d00")
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:LM4562")
+		(at 254.0 190.0 0)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1904f2fc-f843-4d04-9e7c-1b052c36149a")
+		(property "Reference" "U3"
+			(at 254.0 187.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LM4562"
+			(at 254.0 192.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 254.0 190.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 254.0 190.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 254.0 190.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "8"
+			(uuid "b9c8d3df-c014-4dd3-8044-3378e1bb8797")
+		)
+		(pin "4"
+			(uuid "86aff891-840e-4131-ad57-f0e5bfc70f64")
+		)
+		(instances
+			(project "aurora-dsp-icepower-booster"
+				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
+					(reference "U3")
+					(unit 3)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 251.46 182.38) (xy 246.38 182.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "07b7cc57-3e97-4179-b43f-c77315b1145e")
+	)
+	(wire
+		(pts
+			(xy 251.46 197.62) (xy 246.38 197.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7611c887-7a29-4b4d-8c5d-fc4457e14a4e")
+	)
+	(label "V+"
+		(at 246.38 182.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "48be83ce-69e1-400d-b42f-8be549ad1c7d")
+	)
+	(label "V-"
+		(at 246.38 197.62 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d425e778-38df-4449-b81c-94e00d711b48")
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:LM4562")
+		(at 254.0 270.0 0)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "223b252d-3867-4a3d-b918-f91dacef9744")
+		(property "Reference" "U4"
+			(at 254.0 267.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LM4562"
+			(at 254.0 272.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 254.0 270.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 254.0 270.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 254.0 270.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "8"
+			(uuid "b8cefee5-3610-4c9b-884d-27259a8f64fe")
+		)
+		(pin "4"
+			(uuid "f8dbfb4c-2ad5-4cab-82ad-3f022181365d")
+		)
+		(instances
+			(project "aurora-dsp-icepower-booster"
+				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
+					(reference "U4")
+					(unit 3)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 251.46 262.38) (xy 246.38 262.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bd1750b8-81cc-48a9-980f-0c72c4c47897")
+	)
+	(wire
+		(pts
+			(xy 251.46 277.62) (xy 246.38 277.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "59ddb78f-395a-46f9-9caa-b05df50d202d")
+	)
+	(label "V+"
+		(at 246.38 262.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b73efadd-e7e6-48cd-832f-9a90310b1dd7")
+	)
+	(label "V-"
+		(at 246.38 277.62 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8ffad92f-1c6c-4b87-91cd-92b1e4abd58d")
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:LM4562")
+		(at 254.0 350.0 0)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2f189259-b2d8-4655-8c27-a71b19a46d42")
+		(property "Reference" "U5"
+			(at 254.0 347.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LM4562"
+			(at 254.0 352.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 254.0 350.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 254.0 350.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 254.0 350.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "8"
+			(uuid "11dfd229-aae3-4296-ba80-6521bf61f759")
+		)
+		(pin "4"
+			(uuid "a3c2b58d-e459-487c-92ee-6ad0dd730b8c")
+		)
+		(instances
+			(project "aurora-dsp-icepower-booster"
+				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
+					(reference "U5")
+					(unit 3)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 251.46 342.38) (xy 246.38 342.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "85d7c399-3078-46f9-a574-e6c6b4fba6fd")
+	)
+	(wire
+		(pts
+			(xy 251.46 357.62) (xy 246.38 357.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6c544b70-4133-42ad-9811-e26f8929c668")
+	)
+	(label "V+"
+		(at 246.38 342.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d6a95e28-864a-4b81-a614-18b604c76574")
+	)
+	(label "V-"
+		(at 246.38 357.62 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "baa362a4-2aca-4a67-b15b-ed65960a0d9f")
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:LM4562")
+		(at 254.0 430.0 0)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "5c185d2b-09c3-4f31-8238-4f3af0161212")
+		(property "Reference" "U6"
+			(at 254.0 427.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LM4562"
+			(at 254.0 432.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 254.0 430.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 254.0 430.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 254.0 430.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "8"
+			(uuid "d49cafb6-53aa-401d-88ea-35a1487f594f")
+		)
+		(pin "4"
+			(uuid "84b75eba-f2ed-43c5-95df-3954da25ad70")
+		)
+		(instances
+			(project "aurora-dsp-icepower-booster"
+				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
+					(reference "U6")
+					(unit 3)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 251.46 422.38) (xy 246.38 422.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6cd979b5-1b5a-44e7-8bfe-37c36ba0eb12")
+	)
+	(wire
+		(pts
+			(xy 251.46 437.62) (xy 246.38 437.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a82e1a45-19b5-4192-886a-3fec0f32efa5")
+	)
+	(label "V+"
+		(at 246.38 422.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "437cd30c-e6f2-40ec-93d0-656edc576e39")
+	)
+	(label "V-"
+		(at 246.38 437.62 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b0e28d8e-3af1-4b50-93af-e39a012f5cc5")
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:LM4562")
+		(at 254.0 510.0 0)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "c8c55d91-b182-41d8-91d2-f5947fba4e16")
+		(property "Reference" "U7"
+			(at 254.0 507.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LM4562"
+			(at 254.0 512.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 254.0 510.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 254.0 510.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 254.0 510.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "8"
+			(uuid "7d0ce1b8-fcdb-405e-992e-cd8bfd5a2dcf")
+		)
+		(pin "4"
+			(uuid "f6868c43-9ec6-4f8d-a45b-9e72aad5d11c")
+		)
+		(instances
+			(project "aurora-dsp-icepower-booster"
+				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
+					(reference "U7")
+					(unit 3)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 251.46 502.38) (xy 246.38 502.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fee698f8-2ed5-4feb-8c08-9464a8b164ef")
+	)
+	(wire
+		(pts
+			(xy 251.46 517.62) (xy 246.38 517.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a983a1e7-6df9-4f93-9ef5-9f47f70b57e8")
+	)
+	(label "V+"
+		(at 246.38 502.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "111cf390-c045-4a96-856a-50e98db210bb")
+	)
+	(label "V-"
+		(at 246.38 517.62 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "02271932-13f9-4044-a7ab-b73a15a0af26")
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:LM4562")
+		(at 279.4 110.0 0)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "f63e4d1f-79e4-4653-bbd9-977f175c468e")
+		(property "Reference" "U8"
+			(at 279.4 107.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LM4562"
+			(at 279.4 112.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 279.4 110.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 279.4 110.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 279.4 110.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "8"
+			(uuid "9d93cf2b-b154-4880-a81c-b5805de14af8")
+		)
+		(pin "4"
+			(uuid "e910319d-4ee1-4b77-bd9b-804c05f0cddc")
+		)
+		(instances
+			(project "aurora-dsp-icepower-booster"
+				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
+					(reference "U8")
+					(unit 3)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 276.86 102.38) (xy 271.78 102.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a8f96df0-0350-4374-b1b7-01bcf8c62ed5")
+	)
+	(wire
+		(pts
+			(xy 276.86 117.62) (xy 271.78 117.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c817e0e0-a4e0-4d04-8311-aff0255ca689")
+	)
+	(label "V+"
+		(at 271.78 102.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5944e457-c9a3-40db-a20f-68c8feb82b65")
+	)
+	(label "V-"
+		(at 271.78 117.62 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "16369e78-2723-4358-a22d-d20f9939c1bd")
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:LM4562")
+		(at 279.4 190.0 0)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "427bbcd4-541b-4df9-bd69-42f2124b38bb")
+		(property "Reference" "U9"
+			(at 279.4 187.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LM4562"
+			(at 279.4 192.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 279.4 190.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 279.4 190.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 279.4 190.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "8"
+			(uuid "e639474a-0777-404d-9276-7f6cce869629")
+		)
+		(pin "4"
+			(uuid "b6ff848d-cbb4-405d-a11c-1383b2657057")
+		)
+		(instances
+			(project "aurora-dsp-icepower-booster"
+				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
+					(reference "U9")
+					(unit 3)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 276.86 182.38) (xy 271.78 182.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1a051d9b-fbe6-448f-828b-0a7d47fe841c")
+	)
+	(wire
+		(pts
+			(xy 276.86 197.62) (xy 271.78 197.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4d80306a-fbf0-4b6b-aa3a-b3629883d3ee")
+	)
+	(label "V+"
+		(at 271.78 182.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "dc20a42c-d7ae-4b58-885e-d51e0f410dac")
+	)
+	(label "V-"
+		(at 271.78 197.62 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6a373706-d8cd-4958-acbe-dc1a0a160b47")
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:LM4562")
+		(at 279.4 270.0 0)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "e45230fc-f37a-44f3-a3a2-7c46b306b4bf")
+		(property "Reference" "U10"
+			(at 279.4 267.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LM4562"
+			(at 279.4 272.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 279.4 270.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 279.4 270.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 279.4 270.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "8"
+			(uuid "caababd0-0218-4bf2-bb2b-8e38a041c0b6")
+		)
+		(pin "4"
+			(uuid "668ffc30-5cdb-4783-b78a-b62fff25bad8")
+		)
+		(instances
+			(project "aurora-dsp-icepower-booster"
+				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
+					(reference "U10")
+					(unit 3)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 276.86 262.38) (xy 271.78 262.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0e48b95f-bbd5-402f-bcc2-1f08e751a4d2")
+	)
+	(wire
+		(pts
+			(xy 276.86 277.62) (xy 271.78 277.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ab99aa4a-47d5-4c08-be11-582e471d5525")
+	)
+	(label "V+"
+		(at 271.78 262.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0f91635c-864e-4cd0-b36a-5afa8d4ad558")
+	)
+	(label "V-"
+		(at 271.78 277.62 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4bf60908-105d-4b9d-8ee9-5396c3d2112e")
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:LM4562")
+		(at 279.4 350.0 0)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "a371fe29-55ec-4eae-81b3-51b6281d157a")
+		(property "Reference" "U11"
+			(at 279.4 347.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LM4562"
+			(at 279.4 352.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 279.4 350.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 279.4 350.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 279.4 350.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "8"
+			(uuid "14f9aeb5-edef-4d5a-8d76-3fc3c14be275")
+		)
+		(pin "4"
+			(uuid "6b4ccbe2-91d9-4bbe-893c-66c480485c0d")
+		)
+		(instances
+			(project "aurora-dsp-icepower-booster"
+				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
+					(reference "U11")
+					(unit 3)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 276.86 342.38) (xy 271.78 342.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2ab6ee59-5083-4681-a984-3913b520ddff")
+	)
+	(wire
+		(pts
+			(xy 276.86 357.62) (xy 271.78 357.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ea380930-b5a3-4003-823e-1d040b4955e8")
+	)
+	(label "V+"
+		(at 271.78 342.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "11d90f6c-1d1e-4f1c-b18b-2a214f643156")
+	)
+	(label "V-"
+		(at 271.78 357.62 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a2333ad5-2242-4d4b-98d7-d27341462cb8")
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:LM4562")
+		(at 279.4 430.0 0)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "413c3d96-9413-46e1-8295-d947de0930ba")
+		(property "Reference" "U12"
+			(at 279.4 427.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LM4562"
+			(at 279.4 432.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 279.4 430.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 279.4 430.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 279.4 430.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "8"
+			(uuid "0913bffb-9593-4588-8124-74456e22ee49")
+		)
+		(pin "4"
+			(uuid "5e346f20-0bde-4d9b-aca3-fc134885ae96")
+		)
+		(instances
+			(project "aurora-dsp-icepower-booster"
+				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
+					(reference "U12")
+					(unit 3)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 276.86 422.38) (xy 271.78 422.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9bda346a-cd6c-41eb-aa96-e41c9acdd5da")
+	)
+	(wire
+		(pts
+			(xy 276.86 437.62) (xy 271.78 437.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "da8e6a89-0c67-4b32-b180-8249fbb1b90a")
+	)
+	(label "V+"
+		(at 271.78 422.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b3071281-66d8-4ca2-97fa-2b75b2ea562d")
+	)
+	(label "V-"
+		(at 271.78 437.62 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "38c12183-d208-4a48-9ee8-3eb4a1c805b8")
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:LM4562")
+		(at 279.4 510.0 0)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "16a6fcb3-8bd7-4dfa-9a40-0d1df217d952")
+		(property "Reference" "U13"
+			(at 279.4 507.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LM4562"
+			(at 279.4 512.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm"
+			(at 279.4 510.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 279.4 510.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 279.4 510.0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "8"
+			(uuid "ab58cb92-0a2c-4bd5-88b3-0fe6e0deb403")
+		)
+		(pin "4"
+			(uuid "24871c62-ee73-4c00-b80c-f9e04efd4ac0")
+		)
+		(instances
+			(project "aurora-dsp-icepower-booster"
+				(path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6"
+					(reference "U13")
+					(unit 3)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 276.86 502.38) (xy 271.78 502.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aaa088f7-fb4f-4daa-9fbf-0a4e5d59452f")
+	)
+	(wire
+		(pts
+			(xy 276.86 517.62) (xy 271.78 517.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af07df79-9b7e-4616-ae2e-45d1fa6d7743")
+	)
+	(label "V+"
+		(at 271.78 502.38 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "869e6b82-df34-4ea6-930a-89e042ea7ff1")
+	)
+	(label "V-"
+		(at 271.78 517.62 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "76528e39-09a4-40b8-a36d-2b6a6ba8a449")
+	)
 )
