@@ -662,6 +662,18 @@
       {
         "netclass": "Audio_Output",
         "pattern": "CH*_SW_OUT_*"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "+12V_RAW"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "-12V_RAW"
+      },
+      {
+        "netclass": "Power",
+        "pattern": "+24V*"
       }
     ]
   },
