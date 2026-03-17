@@ -235,21 +235,155 @@
         (pin passive line (at -3.81 0 0) (length 2.54) (name "A1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
       (pin passive line (at 3.81 0 180) (length 2.54) (name "A2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27))))))
     (embedded_fonts no))
-      (symbol "Device:L" (pin_numbers (hide yes)) (pin_names (offset 1.016) (hide yes)) (exclude_from_sim no) (in_bom yes) (on_board yes)
-      (property "Reference" "L" (at -1.27 0 90) (effects (font (size 1.27 1.27))))
-      (property "Value" "L" (at 1.905 0 90) (effects (font (size 1.27 1.27))))
-      (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
-      (property "Datasheet" "~" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
-      (property "Description" "" (at 0 0 0) (effects (font (size 1.27 1.27)) (hide yes)))
-        (symbol "L_0_1"
-        (arc (start 0 2.54) (mid 0.635 1.905) (end 0 1.27) (stroke (width 0) (type default)) (fill (type none)))
-        (arc (start 0 1.27) (mid 0.635 0.635) (end 0 0) (stroke (width 0) (type default)) (fill (type none)))
-        (arc (start 0 0) (mid 0.635 -0.635) (end 0 -1.27) (stroke (width 0) (type default)) (fill (type none)))
-      (arc (start 0 -1.27) (mid 0.635 -1.905) (end 0 -2.54) (stroke (width 0) (type default)) (fill (type none))))
-        (symbol "L_1_1"
-        (pin passive line (at 0 3.81 270) (length 1.27) (name "1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
-      (pin passive line (at 0 -3.81 90) (length 1.27) (name "2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27))))))
-    (embedded_fonts no))
+      (symbol "Device:FerriteBead"
+		(pin_numbers
+			(hide yes)
+		)
+		(pin_names
+			(offset 0)
+		)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(property "Reference" "FB"
+			(at -3.81 0.635 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "FerriteBead"
+			(at 3.81 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at -1.778 0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Ferrite bead"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "L ferrite bead inductor filter"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Inductor_* L_* *Ferrite*"
+			(at 0 0 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(symbol "FerriteBead_0_1"
+			(polyline
+				(pts
+					(xy -2.7686 0.4064) (xy -1.7018 2.2606) (xy 2.7686 -0.3048) (xy 1.6764 -2.159) (xy -2.7686 0.4064)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 1.27) (xy 0 1.2954)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 -1.27) (xy 0 -1.2192)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "FerriteBead_1_1"
+			(pin passive line
+				(at 0 3.81 270)
+				(length 2.54)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin passive line
+				(at 0 -3.81 90)
+				(length 2.54)
+				(name "~"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
       (symbol "Device:LED" (pin_numbers (hide yes)) (pin_names (offset 1.016) (hide yes)) (exclude_from_sim no) (in_bom yes) (on_board yes)
       (property "Reference" "D" (at 0 2.54 0) (effects (font (size 1.27 1.27))))
       (property "Value" "LED" (at 0 -2.54 0) (effects (font (size 1.27 1.27))))
@@ -5067,7 +5201,7 @@
   (wire (pts (xy 272 305.81) (xy 272 308.35)) (stroke (width 0) (type default)) (uuid "31c19807-7f2d-4f87-aa6c-9aa1c9546ee9"))
   (label "V-" (at 272 295.65 0) (effects (font (size 1.27 1.27))) (uuid "f5e42333-cb8c-431b-8e32-94f268c59d6d"))
   (label "GND" (at 272 308.35 0) (effects (font (size 1.27 1.27))) (uuid "9a633433-814b-454c-a6de-cba01f3fbd4f"))
-    (symbol (lib_id "Device:L") (at 112 31.35 90) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "0ccfafbe-4e70-4486-bbce-9cab56655bd0")
+    (symbol (lib_id "Device:FerriteBead") (at 112 31.35 90) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "0ccfafbe-4e70-4486-bbce-9cab56655bd0")
     (property "Reference" "FB1" (at 112 28.81 90) (effects (font (size 1.27 1.27))))
     (property "Value" "BLM18PG221" (at 112 33.89 90) (effects (font (size 1.27 1.27))))
     (property "Footprint" "Inductor_SMD:L_0805_2012Metric" (at 112 31.35 0) (effects (font (size 1.27 1.27)) (hide yes)))
@@ -5082,7 +5216,7 @@
   (wire (pts (xy 115.81 31.35) (xy 118.35 31.35)) (stroke (width 0) (type default)) (uuid "cbfa1068-3760-4383-9a55-189ee3d5012b"))
   (label "+12V_RAW" (at 105.65 31.35 0) (effects (font (size 1.27 1.27))) (uuid "edb4eda6-d2f2-45cb-9231-280c7d338a93"))
   (label "+12V" (at 118.35 31.35 0) (effects (font (size 1.27 1.27))) (uuid "727b2d29-3bf5-4b99-b239-4743e28be24c"))
-    (symbol (lib_id "Device:L") (at 112 48.65 90) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "2b655a13-1bd1-4460-b7bd-a2407dff5ce9")
+    (symbol (lib_id "Device:FerriteBead") (at 112 48.65 90) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (uuid "2b655a13-1bd1-4460-b7bd-a2407dff5ce9")
     (property "Reference" "FB2" (at 112 46.11 90) (effects (font (size 1.27 1.27))))
     (property "Value" "BLM18PG221" (at 112 51.19 90) (effects (font (size 1.27 1.27))))
     (property "Footprint" "Inductor_SMD:L_0805_2012Metric" (at 112 48.65 0) (effects (font (size 1.27 1.27)) (hide yes)))
