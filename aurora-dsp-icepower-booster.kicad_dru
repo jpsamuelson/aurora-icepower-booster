@@ -1,6 +1,8 @@
 (version 1)
 
-# Power
+# ============================================================
+# Power net class
+# ============================================================
 (rule power_clearance
     (condition "A.hasNetclass('Power')")
     (constraint clearance (min 0.25mm)))
@@ -8,25 +10,28 @@
     (condition "A.hasNetclass('Power')")
     (constraint track_width (min 0.5mm)))
 
-# HV (ICEpower)
-(rule hv_clearance
-    (condition "A.hasNetclass('HV')")
-    (constraint clearance (min 0.5mm)))
-
-# Audio
+# ============================================================
+# Audio Input (empfindlichste Signale — Guard-Traces noetig)
+# ============================================================
 (rule audio_input_clearance
     (condition "A.hasNetclass('Audio_Input')")
     (constraint clearance (min 0.25mm)))
-(rule audio_digital_separation
+(rule audio_input_digital_separation
     (condition "A.hasNetclass('Audio_Input') && B.hasNetclass('Default')")
     (constraint clearance (min 0.5mm)))
-(rule audio_power_width
-    (condition "A.hasNetclass('Audio_Power')")
-    (constraint track_width (min 0.5mm)))
-(rule speaker_width
-    (condition "A.hasNetclass('Speaker')")
-    (constraint track_width (min 1.0mm)))
+(rule audio_input_power_separation
+    (condition "A.hasNetclass('Audio_Input') && B.hasNetclass('Power')")
+    (constraint clearance (min 0.5mm)))
 
+# ============================================================
+# Audio Output (hoehere Stroeme, 0.5mm min)
+# ============================================================
+(rule audio_output_width
+    (condition "A.hasNetclass('Audio_Output')")
+    (constraint track_width (min 0.3mm)))
+
+# ============================================================
 # Board-Edge
+# ============================================================
 (rule board_edge
     (constraint edge_clearance (min 0.3mm)))
