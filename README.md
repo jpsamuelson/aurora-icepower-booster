@@ -180,23 +180,23 @@ Die zweite Op-Amp-Einheit (Unit B desselben LM4562) verstärkt das Signal invert
 ```mermaid
 flowchart LR
     RX["CH1_RX_OUT\n(von Diff-Receiver)"]
-    SUMNODE["SUMNODE\n(IN+ Pin 5 U2B)"]
+    SUMNODE["SUMNODE\n(IN− Pin 6 U2B)"]
     OUT["CH1_GAIN_OUT\n(OUT_B Pin 7)"]
 
-    RX -->|"R5 (10 kΩ 0,1%)"| SUMNODE
-    OUT -->|"R6 (10 kΩ 0,1%) Feedback"| SUMNODE
+    RX -->|"R26 (10 kΩ 0,1%)"| SUMNODE
+    OUT -->|"R50 (10 kΩ 0,1%) Feedback"| SUMNODE
 
-    SW1_1["SW1.1 → R7 (30 kΩ)"] -->|"wenn geschlossen"| SUMNODE
-    SW1_2["SW1.2 → R8 (15 kΩ)"] -->|"wenn geschlossen"| SUMNODE
-    SW1_3["SW1.3 → R9 (7,5 kΩ)"] -->|"wenn geschlossen"| SUMNODE
+    SW2_1["SW2.1 → R29 (7,5 kΩ)"] -->|"wenn geschlossen"| SUMNODE
+    SW2_2["SW2.2 → R28 (15 kΩ)"] -->|"wenn geschlossen"| SUMNODE
+    SW2_3["SW2.3 → R27 (30 kΩ)"] -->|"wenn geschlossen"| SUMNODE
 
-    GND["GND"] --> SW1_1
-    GND --> SW1_2
-    GND --> SW1_3
+    GND["GND"] --> SW2_1
+    GND --> SW2_2
+    GND --> SW2_3
 
-    SUMNODE -->|"IN+ (Pin 5)"| U2B["U2 Unit B\nLM4562\nINV Gain-Stufe"]
+    SUMNODE -->|"IN− (Pin 6)"| U2B["U2 Unit B\nLM4562\nINV Gain-Stufe"]
     U2B -->|"OUT_B (Pin 7)"| OUT
-    OUT -->|"R10 (10 kΩ) Feedback"| INV["IN− (Pin 6) U2B"]
+    OUT -->|"R50 (10 kΩ) Feedback"| INV["IN− (Pin 6) U2B"]
 ```
 
 **Bauteile CH1 — Gain-Stufe:**
@@ -206,10 +206,10 @@ flowchart LR
 | U2 (Unit B) | LM4562 | Gain-Verstärker (inv.) | Pin6=IN-_B=/CH1_SUMNODE, Pin5=IN+_B=GND, Pin7=OUT_B |
 | R26 | 10 kΩ 0,1% | Rin (Eingang) | /CH1_RX_OUT → /CH1_SUMNODE |
 | R50 | 10 kΩ 0,1% | Rf (Feedback) | /CH1_GAIN_OUT → /CH1_SUMNODE |
-| R27 | 30 kΩ | DIP SW1 Pos3 | /CH1_SW_OUT_1 → /CH1_SUMNODE (parallel zu Rin wenn SW geschl.) |
-| R28 | 15 kΩ | DIP SW1 Pos2 | /CH1_SW_OUT_2 → /CH1_SUMNODE |
-| R29 | 7,5 kΩ | DIP SW1 Pos1 | /CH1_SW_OUT_3 → /CH1_SUMNODE |
-| SW1 | SW_DIP_x03 | Gain-Wahl CH1 | Pos1→/CH1_SW_OUT_3, Pos2→/CH1_SW_OUT_2, Pos3→/CH1_SW_OUT_1 (andere Seite je = /CH1_RX_OUT) |
+| R27 | 30 kΩ | DIP SW2 Pos3 | /CH1_SW_OUT_1 → /CH1_SUMNODE (parallel zu Rin wenn SW geschl.) |
+| R28 | 15 kΩ | DIP SW2 Pos2 | /CH1_SW_OUT_2 → /CH1_SUMNODE |
+| R29 | 7,5 kΩ | DIP SW2 Pos1 | /CH1_SW_OUT_3 → /CH1_SUMNODE |
+| SW2 | SW_DIP_x03 | Gain-Wahl CH1 | Pos1→/CH1_SW_OUT_3, Pos2→/CH1_SW_OUT_2, Pos3→/CH1_SW_OUT_1 (andere Seite je = /CH1_RX_OUT) |
 
 ---
 
@@ -343,7 +343,7 @@ flowchart TD
     DC_H --> UA["U2A: Diff-Receiver\nIN+_A=HOT_IN, IN-_A=INV_IN\nR2/R3/R14/R20 je 10kΩ 0.1%"]
     DC_C --> UA
 
-    UA -->|/CH1_RX_OUT| GAIN_IN["SW1 + R26/R27/R28/R29\n→ /CH1_SUMNODE"]
+    UA -->|/CH1_RX_OUT| GAIN_IN["SW2 + R26/R27/R28/R29\n→ /CH1_SUMNODE"]
 
     GAIN_IN -->|/CH1_SUMNODE| UB["U2B: Gain-Stufe\nInv. Amp, IN-_B=SUMNODE\nR26 Rin, R50 Rf"]
 
@@ -433,7 +433,7 @@ flowchart TD
     D1["D1: SMBJ15CA\nBidirektionale TVS 15V\nESD-Schutz Remote"]
     R1["R1: 10 kΩ\nVorwiderstand"]
     C1["C1: 100 nF\nRC-Tiefpass\nEntstörung Remote-Signal"]
-    SW7["SW7: SPDT\nALWAYS ─── REMOTE\n(Jumper)"]
+    SW1["SW1: SPDT\nALWAYS ─── REMOTE\n(Jumper)"]
     R56["R56: 100 kΩ\nPullup /V+ → EN_CTRL"]
     R57["R57: 100 kΩ\nPulldown EN_CTRL → GND"]
     EN["EN_CTRL\n→ U14.EN + U15.EN"]
@@ -441,9 +441,9 @@ flowchart TD
     J2 -->|/REMOTE_IN| D1
     D1 -->|/REMOTE_IN| R1
     R1 -->|/REMOTE_FILT| C1
-    R1 -->|Mittelpin| SW7
-    SW7 -->|"ALWAYS: direkt pullup"| EN
-    SW7 -->|"REMOTE: gefiltertes Signal"| EN
+    R1 -->|Mittelpin| SW1
+    SW1 -->|"ALWAYS: direkt pullup"| EN
+    SW1 -->|"REMOTE: gefiltertes Signal"| EN
     R56 --> EN
     R57 --> EN
     EN -->|LDO Enable-Pin| U14["U14 ADP7118"]
@@ -455,8 +455,8 @@ flowchart TD
 
 **Funktionsweise:**
 
-- **SW7 = ALWAYS:** EN_CTRL liegt auf HIGH (Pullup R56/Pulldown R57) → LDOs immer aktiv → Board immer betriebsbereit
-- **SW7 = REMOTE:** EN_CTRL folgt dem FreeDSP Remote-Signal (J2) über R-C-Filter → Board schaltet sich mit dem DSP ein/aus
+- **SW1 = ALWAYS:** EN_CTRL liegt auf HIGH (Pullup R56/Pulldown R57) → LDOs immer aktiv → Board immer betriebsbereit
+- **SW1 = REMOTE:** EN_CTRL folgt dem FreeDSP Remote-Signal (J2) über R-C-Filter → Board schaltet sich mit dem DSP ein/aus
 - **D1 (SMBJ15CA):** Schützt den Remote-Eingang vor Überspannungen bis ±15V (bidirektional)
 
 **Bauteile Remote & Muting:**
@@ -467,7 +467,7 @@ flowchart TD
 | D1 | SMBJ15CA | ESD Remote 15V bidi | Pin1=/REMOTE_IN, Pin2=GND |
 | R1 | 10 kΩ | RC-Vorwiderstand | /REMOTE_IN → /REMOTE_FILT |
 | C1 | 100 nF C0G | RC-Tiefpass | /REMOTE_FILT → GND |
-| SW7 | SW_SPDT | ALWAYS/REMOTE Wahl | COM=/EN_CTRL, A=/REMOTE_FILT |
+| SW1 | SW_SPDT | ALWAYS/REMOTE Wahl | COM=/EN_CTRL, A=/REMOTE_FILT, Pin1=/+12V (ALWAYS) |
 | R56 | 100 kΩ | Pullup EN_CTRL | /V+ → /EN_CTRL |
 | R57 | 100 kΩ | Pulldown EN_CTRL | /EN_CTRL → GND |
 
@@ -475,9 +475,9 @@ flowchart TD
 
 ## Gain-Einstellung
 
-### DIP-Switch Tabelle (SW1–SW6, identisch pro Kanal)
+### DIP-Switch Tabelle (SW2–SW7, identisch pro Kanal)
 
-Jeder Kanal hat einen **3-poligen DIP-Switch** (SW1 = CH1, SW2 = CH2, …, SW6 = CH6).
+Jeder Kanal hat einen **3-poligen DIP-Switch** (SW2 = CH1, SW3 = CH2, …, SW7 = CH6).
 Die drei Positionen schalten Widerstände **parallel** zum Eingangs-Widerstand der Gain-Stufe. Mehr aktive Schalter = niedrigerer Rin_eff = höhere Verstärkung.
 
 | SW Pos 3 (30kΩ) | SW Pos 2 (15kΩ) | SW Pos 1 (7,5kΩ) | Rin_eff | Gain (×) | Gain (dB) |
@@ -492,29 +492,29 @@ Die drei Positionen schalten Widerstände **parallel** zum Eingangs-Widerstand d
 | ON | ON | ON | 2,73 kΩ | 3,66 | **+11,3 dB** |
 
 **Formel:**
-$$G = 1 + \frac{R_f}{R_{in,eff}} \quad\text{mit}\quad R_{in,eff} = R_{base} \parallel R_{SW1} \parallel R_{SW2} \parallel R_{SW3}$$
+$$G = 1 + \frac{R_f}{R_{in,eff}} \quad\text{mit}\quad R_{in,eff} = R_{base} \parallel R_{pos3} \parallel R_{pos2} \parallel R_{pos1}$$
 
-$$R_{in,base} = 10\,k\Omega,\quad R_f = R_{10} = 10\,k\Omega$$
+$$R_{in,base} = R26 = 10\,k\Omega,\quad R_f = R50 = 10\,k\Omega$$
 
 ```mermaid
 graph LR
     SIG["CH1_RX_OUT\nSignal"]
-    R5["R5: 10kΩ\nEingang"]
-    R7["R7: 30kΩ\n(Position 1)"]
-    R8["R8: 15kΩ\n(Position 2)"]
-    R9["R9: 7,5kΩ\n(Position 3)"]
+    R26["R26: 10kΩ\nEingang"]
+    R27["R27: 30kΩ\n(SW2 Pos3)"]
+    R28["R28: 15kΩ\n(SW2 Pos2)"]
+    R29["R29: 7,5kΩ\n(SW2 Pos1)"]
     GND["GND"]
-    OP["U2B IN+\n(SUMNODE)"]
-    RF["R6/R10: 10kΩ\nFeedback"]
+    OP["U2B IN−\n(SUMNODE=Pin6)"]
+    RF["R50: 10kΩ\nFeedback"]
     OUT["CH1_GAIN_OUT"]
 
-    SIG --> R5 --> OP
-    R7 -->|"SW1.1"| OP
-    R8 -->|"SW1.2"| OP
-    R9 -->|"SW1.3"| OP
-    GND --> R7
-    GND --> R8
-    GND --> R9
+    SIG --> R26 --> OP
+    R27 -->|"SW2.3"| OP
+    R28 -->|"SW2.2"| OP
+    R29 -->|"SW2.1"| OP
+    GND --> R27
+    GND --> R28
+    GND --> R29
     OUT --> RF --> OP
     OP --> OUT
 ```
@@ -744,13 +744,13 @@ Zuordnung pro Kanal:
 
 | Ref | Wert | Typ | Funktion |
 |-----|------|-----|----------|
-| SW1 | Gain CH1 | SW_DIP_x03 | Gain-Wahl CH1 (3 Bit) |
-| SW2 | Gain CH2 | SW_DIP_x03 | Gain-Wahl CH2 |
-| SW3 | Gain CH3 | SW_DIP_x03 | Gain-Wahl CH3 |
-| SW4 | Gain CH4 | SW_DIP_x03 | Gain-Wahl CH4 |
-| SW5 | Gain CH5 | SW_DIP_x03 | Gain-Wahl CH5 |
-| SW6 | Gain CH6 | SW_DIP_x03 | Gain-Wahl CH6 |
-| SW7 | ALWAYS/REMOTE | SW_SPDT | Betriebsmodus EN_CTRL |
+| SW1 | ALWAYS/REMOTE | SW_SPDT | Betriebsmodus EN_CTRL: Pin1=/+12V, Pin2=/EN_CTRL, Pin3=/REMOTE_FILT |
+| SW2 | Gain CH1 | SW_DIP_x03 | Gain-Wahl CH1 (3 Bit) |
+| SW3 | Gain CH2 | SW_DIP_x03 | Gain-Wahl CH2 |
+| SW4 | Gain CH3 | SW_DIP_x03 | Gain-Wahl CH3 |
+| SW5 | Gain CH4 | SW_DIP_x03 | Gain-Wahl CH4 |
+| SW6 | Gain CH5 | SW_DIP_x03 | Gain-Wahl CH5 |
+| SW7 | Gain CH6 | SW_DIP_x03 | Gain-Wahl CH6 |
 
 ---
 
@@ -817,10 +817,11 @@ Diese Anleitung beschreibt die minimalen Verbindungen, um den Schaltplan von Gru
 7.  R56 (100kΩ): /V+ → /EN_CTRL  (Pullup)
     R57 (100kΩ): /EN_CTRL → GND  (Pulldown)
 
-8.  SW7 (SPDT):
-    - Kontakt A → /REMOTE_FILT (Remote-Modus)
-    - Mittelkontakt (COM) → /EN_CTRL
-    - (ALWAYS-Modus: COM direkt über R56 auf HIGH)
+8.  SW1 (SPDT):
+    - Pin1 → /+12V (ALWAYS-Anschluss)
+    - Pin2 (COM) → /EN_CTRL
+    - Pin3 → /REMOTE_FILT (Remote-Modus)
+    - (ALWAYS: SW1 verbindet /+12V mit /EN_CTRL → LDOs immer aktiv)
 
 9.  J2 (3,5mm Audiobuchse): PinT=/REMOTE_IN, PinS=GND
     D1 (SMBJ15CA): A=/REMOTE_IN, K=GND (ESD bidirektional)
@@ -886,10 +887,10 @@ Diese Anleitung beschreibt die minimalen Verbindungen, um den Schaltplan von Gru
     /CH1_SUMNODE = IN−_B (Pin 6 U2) = invertierender Eingang
     IN+_B (Pin 5 U2) → GND
 
-    SW1 (DIP 3pol) — Gain-Widerstände (verbinden SW-Ausgang mit SUMNODE):
-      SW1-Pos3 (30kΩ):  R27 → /CH1_SUMNODE  → Gain ×3 (+9,5dB)
-      SW1-Pos2 (15kΩ):  R28 → /CH1_SUMNODE  → Gain ×1,5 (+3,5dB)
-      SW1-Pos1 (7,5kΩ): R29 → /CH1_SUMNODE  → Gain ×0,75 (−2,5dB)
+    SW2 (DIP 3pol, CH1) — Gain-Widerstände (verbinden SW-Ausgang mit SUMNODE):
+      SW2-Pos3 (30kΩ):  R27 → /CH1_SUMNODE  → Gain ×3 (+9,5dB)
+      SW2-Pos2 (15kΩ):  R28 → /CH1_SUMNODE  → Gain ×1,5 (+3,5dB)
+      SW2-Pos1 (7,5kΩ): R29 → /CH1_SUMNODE  → Gain ×0,75 (−2,5dB)
     (Mehrere Positionen kombinierbar für feinere Abstufung)
 
     OUT_B (Pin 7 U2) = /CH1_GAIN_OUT
@@ -964,7 +965,7 @@ Diese Anleitung beschreibt die minimalen Verbindungen, um den Schaltplan von Gru
 | **Driver IC** | U8 | U9 | U10 | U11 | U12 | U13 |
 | **Muting MOSFET** | Q2 | Q3 | Q4 | Q5 | Q6 | Q7 |
 | **Muting Gate-R** | R108 | R109 | R110 | R111 | R112 | R113 |
-| **DIP-Switch** | SW1 | SW2 | SW3 | SW4 | SW5 | SW6 |
+| **DIP-Switch** | SW2 | SW3 | SW4 | SW5 | SW6 | SW7 |
 | **Rin+ (GND→IN+_A)** | R2 | R4 | R6 | R8 | R10 | R12 |
 | **Rg- (COLD→IN-_A)** | R3 | R5 | R7 | R9 | R11 | R13 |
 | **Rref- (GND→IN-_A)** | R14 | R15 | R16 | R17 | R18 | R19 |
