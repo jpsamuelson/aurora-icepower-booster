@@ -418,6 +418,7 @@ flowchart TD
 ```
 
 **Funktionsweise:**
+
 - **SW7 = ALWAYS:** EN_CTRL liegt auf HIGH (Pullup R79/R80) → LDOs immer aktiv → Board immer betriebsbereit
 - **SW7 = REMOTE:** EN_CTRL folgt dem FreeDSP Remote-Signal (J14) über R-C-Filter → Board schaltet sich mit dem DSP ein/aus
 - **D25 (SMBJ15CA):** Schützt den Remote-Eingang vor Überspannungen bis ±15V (bidirektional)
@@ -659,6 +660,7 @@ Je **4 Dioden pro Kanal** (HOT_RAW, COLD_RAW, OUT_HOT, OUT_COLD):
 > *Genaue Zuordnung aus Schaltplan entnehmen — Kathode zeigt auf Signalnetz, Anode auf GND.
 
 **PESD5V0S1BL Pinout (SOD-323):**
+
 ```
   GND ─── A │SOD-323│ K ─── Signalnetz
 ```
