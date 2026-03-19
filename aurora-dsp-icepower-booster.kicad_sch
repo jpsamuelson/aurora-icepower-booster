@@ -6480,17 +6480,47 @@
     (label "CH6_INV_IN" (at 79 496.19 180) (effects (font (size 1.27 1.27))) (uuid "07a90b8a-ce67-4fa6-9bee-a01535340821"))
   
     (wire (pts (xy 55.0 103.19) (xy 55.0 105.73)) (stroke (width 0) (type default)) (uuid "dd26aa60-1665-4048-862f-960f0b8dd29f"))
-    (symbol (lib_id "power:GND") (at 55.0 105.73 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced yes) (uuid "d629d1e6-568d-4780-a2e9-aa98ef236583") (property "Reference" "#PWR144" (at 55.0 107.0 0) (effects (font (size 1.27 1.27)) hide)) (property "Value" "GND" (at 55.0 109.54 0) (effects (font (size 1.27 1.27)) hide)) (property "Footprint" "" (at 55.0 105.73 0) (effects (font (size 1.27 1.27)) hide)) (property "Datasheet" "" (at 55.0 105.73 0) (effects (font (size 1.27 1.27)) hide)) (pin "1" (uuid "69274210-cf58-499e-ab76-c83807f5d408")))
+    (symbol (lib_id "power:GND") (at 55.0 105.73 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced yes) (uuid "d629d1e6-568d-4780-a2e9-aa98ef236583") (property "Reference" "#PWR144" (at 55.0 107.0 0) (effects (font (size 1.27 1.27)) hide)) (property "Value" "GND" (at 55.0 109.54 0) (effects (font (size 1.27 1.27)) hide)) (property "Footprint" "" (at 55.0 105.73 0) (effects (font (size 1.27 1.27)) hide)) (property "Datasheet" "" (at 55.0 105.73 0) (effects (font (size 1.27 1.27)) hide)) (pin "1" (uuid "69274210-cf58-499e-ab76-c83807f5d408"))
+    (instances
+      (project "aurora-dsp-icepower-booster"
+  (path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6" (reference "#PWR144") (unit 1))
+))
+)
     (wire (pts (xy 55.0 183.19) (xy 55.0 185.73)) (stroke (width 0) (type default)) (uuid "3677ae74-f464-4053-99c8-5f082e2b83ba"))
-    (symbol (lib_id "power:GND") (at 55.0 185.73 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced yes) (uuid "d0ca2445-f9fd-4f1b-8720-017082bb2e3c") (property "Reference" "#PWR145" (at 55.0 187.0 0) (effects (font (size 1.27 1.27)) hide)) (property "Value" "GND" (at 55.0 189.54 0) (effects (font (size 1.27 1.27)) hide)) (property "Footprint" "" (at 55.0 185.73 0) (effects (font (size 1.27 1.27)) hide)) (property "Datasheet" "" (at 55.0 185.73 0) (effects (font (size 1.27 1.27)) hide)) (pin "1" (uuid "4bb68e88-4252-41e4-9f6f-cd2782772693")))
+    (symbol (lib_id "power:GND") (at 55.0 185.73 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced yes) (uuid "d0ca2445-f9fd-4f1b-8720-017082bb2e3c") (property "Reference" "#PWR145" (at 55.0 187.0 0) (effects (font (size 1.27 1.27)) hide)) (property "Value" "GND" (at 55.0 189.54 0) (effects (font (size 1.27 1.27)) hide)) (property "Footprint" "" (at 55.0 185.73 0) (effects (font (size 1.27 1.27)) hide)) (property "Datasheet" "" (at 55.0 185.73 0) (effects (font (size 1.27 1.27)) hide)) (pin "1" (uuid "4bb68e88-4252-41e4-9f6f-cd2782772693"))
+    (instances
+      (project "aurora-dsp-icepower-booster"
+  (path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6" (reference "#PWR145") (unit 1))
+))
+)
     (wire (pts (xy 55.0 263.19) (xy 55.0 265.73)) (stroke (width 0) (type default)) (uuid "8ee65756-5447-412c-b4cf-fda1bfa0bdee"))
-    (symbol (lib_id "power:GND") (at 55.0 265.73 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced yes) (uuid "53f0c462-d20e-4705-84ba-19d055518a97") (property "Reference" "#PWR146" (at 55.0 267.0 0) (effects (font (size 1.27 1.27)) hide)) (property "Value" "GND" (at 55.0 269.54 0) (effects (font (size 1.27 1.27)) hide)) (property "Footprint" "" (at 55.0 265.73 0) (effects (font (size 1.27 1.27)) hide)) (property "Datasheet" "" (at 55.0 265.73 0) (effects (font (size 1.27 1.27)) hide)) (pin "1" (uuid "4b7e9030-f86b-4525-837d-dae7648d5064")))
+    (symbol (lib_id "power:GND") (at 55.0 265.73 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced yes) (uuid "53f0c462-d20e-4705-84ba-19d055518a97") (property "Reference" "#PWR146" (at 55.0 267.0 0) (effects (font (size 1.27 1.27)) hide)) (property "Value" "GND" (at 55.0 269.54 0) (effects (font (size 1.27 1.27)) hide)) (property "Footprint" "" (at 55.0 265.73 0) (effects (font (size 1.27 1.27)) hide)) (property "Datasheet" "" (at 55.0 265.73 0) (effects (font (size 1.27 1.27)) hide)) (pin "1" (uuid "4b7e9030-f86b-4525-837d-dae7648d5064"))
+    (instances
+      (project "aurora-dsp-icepower-booster"
+  (path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6" (reference "#PWR146") (unit 1))
+))
+)
     (wire (pts (xy 55.0 343.19) (xy 55.0 345.73)) (stroke (width 0) (type default)) (uuid "be54e0c8-5b75-4d07-824c-a49714bdd139"))
-    (symbol (lib_id "power:GND") (at 55.0 345.73 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced yes) (uuid "b735fa7b-bb8a-42ab-9305-de6880cdbaef") (property "Reference" "#PWR147" (at 55.0 347.0 0) (effects (font (size 1.27 1.27)) hide)) (property "Value" "GND" (at 55.0 349.54 0) (effects (font (size 1.27 1.27)) hide)) (property "Footprint" "" (at 55.0 345.73 0) (effects (font (size 1.27 1.27)) hide)) (property "Datasheet" "" (at 55.0 345.73 0) (effects (font (size 1.27 1.27)) hide)) (pin "1" (uuid "31ac57df-f242-4b3d-83c4-37672fb29168")))
+    (symbol (lib_id "power:GND") (at 55.0 345.73 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced yes) (uuid "b735fa7b-bb8a-42ab-9305-de6880cdbaef") (property "Reference" "#PWR147" (at 55.0 347.0 0) (effects (font (size 1.27 1.27)) hide)) (property "Value" "GND" (at 55.0 349.54 0) (effects (font (size 1.27 1.27)) hide)) (property "Footprint" "" (at 55.0 345.73 0) (effects (font (size 1.27 1.27)) hide)) (property "Datasheet" "" (at 55.0 345.73 0) (effects (font (size 1.27 1.27)) hide)) (pin "1" (uuid "31ac57df-f242-4b3d-83c4-37672fb29168"))
+    (instances
+      (project "aurora-dsp-icepower-booster"
+  (path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6" (reference "#PWR147") (unit 1))
+))
+)
     (wire (pts (xy 55.0 423.19) (xy 55.0 425.73)) (stroke (width 0) (type default)) (uuid "b571d49b-15b1-47f5-b244-3151b04b7419"))
-    (symbol (lib_id "power:GND") (at 55.0 425.73 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced yes) (uuid "a0e546ab-0959-40f7-8fc5-24cf361c7048") (property "Reference" "#PWR148" (at 55.0 427.0 0) (effects (font (size 1.27 1.27)) hide)) (property "Value" "GND" (at 55.0 429.54 0) (effects (font (size 1.27 1.27)) hide)) (property "Footprint" "" (at 55.0 425.73 0) (effects (font (size 1.27 1.27)) hide)) (property "Datasheet" "" (at 55.0 425.73 0) (effects (font (size 1.27 1.27)) hide)) (pin "1" (uuid "1791fe90-721d-4c8f-b0df-4ae6eeb229b2")))
+    (symbol (lib_id "power:GND") (at 55.0 425.73 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced yes) (uuid "a0e546ab-0959-40f7-8fc5-24cf361c7048") (property "Reference" "#PWR148" (at 55.0 427.0 0) (effects (font (size 1.27 1.27)) hide)) (property "Value" "GND" (at 55.0 429.54 0) (effects (font (size 1.27 1.27)) hide)) (property "Footprint" "" (at 55.0 425.73 0) (effects (font (size 1.27 1.27)) hide)) (property "Datasheet" "" (at 55.0 425.73 0) (effects (font (size 1.27 1.27)) hide)) (pin "1" (uuid "1791fe90-721d-4c8f-b0df-4ae6eeb229b2"))
+    (instances
+      (project "aurora-dsp-icepower-booster"
+  (path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6" (reference "#PWR148") (unit 1))
+))
+)
     (wire (pts (xy 55.0 503.19) (xy 55.0 505.73)) (stroke (width 0) (type default)) (uuid "db8dc12a-c21b-4bbd-acd1-b9ead3438fa8"))
-    (symbol (lib_id "power:GND") (at 55.0 505.73 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced yes) (uuid "1a88ae74-4189-4ac1-b9a9-661ab6f1fe84") (property "Reference" "#PWR149" (at 55.0 507.0 0) (effects (font (size 1.27 1.27)) hide)) (property "Value" "GND" (at 55.0 509.54 0) (effects (font (size 1.27 1.27)) hide)) (property "Footprint" "" (at 55.0 505.73 0) (effects (font (size 1.27 1.27)) hide)) (property "Datasheet" "" (at 55.0 505.73 0) (effects (font (size 1.27 1.27)) hide)) (pin "1" (uuid "b5a40434-b5c2-41dd-9985-c3b5253959e4")))
+    (symbol (lib_id "power:GND") (at 55.0 505.73 0) (unit 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (dnp no) (fields_autoplaced yes) (uuid "1a88ae74-4189-4ac1-b9a9-661ab6f1fe84") (property "Reference" "#PWR149" (at 55.0 507.0 0) (effects (font (size 1.27 1.27)) hide)) (property "Value" "GND" (at 55.0 509.54 0) (effects (font (size 1.27 1.27)) hide)) (property "Footprint" "" (at 55.0 505.73 0) (effects (font (size 1.27 1.27)) hide)) (property "Datasheet" "" (at 55.0 505.73 0) (effects (font (size 1.27 1.27)) hide)) (pin "1" (uuid "b5a40434-b5c2-41dd-9985-c3b5253959e4"))
+    (instances
+      (project "aurora-dsp-icepower-booster"
+  (path "/09fde901-d8c0-4b5a-a63a-824cb2cd0bb6" (reference "#PWR149") (unit 1))
+))
+)
   (wire (pts (xy 90.16 37.46) (xy 90.16 40)) (stroke (width 0) (type default)) (uuid "efc69d4e-d99c-4dae-9075-bd4ed28d28f1"))
   (wire (pts (xy 90.16 42.54) (xy 90.16 40)) (stroke (width 0) (type default)) (uuid "76dc574d-c448-4807-913c-3070ec3f88c4"))
   (wire (pts (xy 69.84 34.92) (xy 69.84 37.46)) (stroke (width 0) (type default)) (uuid "5fcd949d-7e57-4cd5-a82d-e039bc1b04d8"))
