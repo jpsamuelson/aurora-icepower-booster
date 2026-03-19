@@ -18,21 +18,21 @@
         (font (size 1.27 1.27))
       )
     )
-    (property "Footprint" ""
+    (property "Footprint" "TEL5_DUAL_TRP"
       (at 0 -5.08 0)
       (effects
         (font (size 1.27 1.27))
       )
       (hide yes)
     )
-    (property "Datasheet" "https://www.tracopower.com/products/tel5.pdf"
+    (property "Datasheet" "https://tracopower.com/tel5-datasheet/"
       (at 0 -7.62 0)
       (effects
         (font (size 1.27 1.27))
       )
       (hide yes)
     )
-    (property "Description" "TRACO TEL 5-2422, 5W Isolated DC/DC Converter, 18-36V Input, ±12V/±208mA Output, DIP-24"
+    (property "Description" "TRACO TEL 5-2422, 5W Isolated DC/DC Converter, 18-36V Input, +/-12V Output, DIP-24"
       (at 0 -10.16 0)
       (effects
         (font (size 1.27 1.27))
@@ -48,63 +48,146 @@
     )
     (symbol "TEL5-2422_0_1"
       (rectangle
-        (start -5.08 7.62)
-        (end 5.08 -7.62)
+        (start -7.62 8.89)
+        (end 7.62 -11.43)
         (stroke (width 0.254) (type default))
         (fill (type background))
       )
     )
     (symbol "TEL5-2422_1_1"
       (pin power_in line
-        (at -7.62 2.54 0)
+        (at -10.16 5.08 0)
         (length 2.54)
         (name "+VIN"
           (effects (font (size 1.27 1.27)))
         )
-        (number "1"
+        (number "22"
           (effects (font (size 1.27 1.27)))
         )
       )
       (pin power_in line
-        (at -7.62 -2.54 0)
+        (at -10.16 2.54 0)
         (length 2.54)
-        (name "-VIN"
+        (name "+VIN"
           (effects (font (size 1.27 1.27)))
         )
-        (number "7"
+        (number "23"
           (effects (font (size 1.27 1.27)))
         )
       )
       (pin power_out line
-        (at 7.62 5.08 180)
+        (at -10.16 0 0)
+        (length 2.54)
+        (name "-VIN(GND)"
+          (effects (font (size 1.27 1.27)))
+        )
+        (number "2"
+          (effects (font (size 1.27 1.27)))
+        )
+      )
+      (pin power_out line
+        (at -10.16 -2.54 0)
+        (length 2.54)
+        (name "-VIN(GND)"
+          (effects (font (size 1.27 1.27)))
+        )
+        (number "3"
+          (effects (font (size 1.27 1.27)))
+        )
+      )
+      (pin power_out line
+        (at 10.16 5.08 180)
         (length 2.54)
         (name "+VOUT"
-          (effects (font (size 1.27 1.27)))
-        )
-        (number "24"
-          (effects (font (size 1.27 1.27)))
-        )
-      )
-      (pin power_out line
-        (at 7.62 0 180)
-        (length 2.54)
-        (name "COM"
-          (effects (font (size 1.27 1.27)))
-        )
-        (number "18"
-          (effects (font (size 1.27 1.27)))
-        )
-      )
-      (pin power_out line
-        (at 7.62 -5.08 180)
-        (length 2.54)
-        (name "-VOUT"
           (effects (font (size 1.27 1.27)))
         )
         (number "14"
           (effects (font (size 1.27 1.27)))
         )
       )
+      (pin unspecified line
+        (at 10.16 2.54 180)
+        (length 2.54)
+        (name "COMMON"
+          (effects (font (size 1.27 1.27)))
+        )
+        (number "16"
+          (effects (font (size 1.27 1.27)))
+        )
+      )
+      (pin unspecified line
+        (at 10.16 -2.54 180)
+        (length 2.54)
+        (name "COMMON"
+          (effects (font (size 1.27 1.27)))
+        )
+        (number "9"
+          (effects (font (size 1.27 1.27)))
+        )
+      )
+      (pin power_out line
+        (at 10.16 -5.08 180)
+        (length 2.54)
+        (name "-VOUT"
+          (effects (font (size 1.27 1.27)))
+        )
+        (number "11"
+          (effects (font (size 1.27 1.27)))
+        )
+      )
+    )
+  )
+
+  (symbol "ADP7118ARDZ"
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U"
+      (at 2.54 0 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Value" "ADP7118ARDZ"
+      (at 0 -2.54 0)
+      (effects (font (size 1.27 1.27)))
+    )
+    (property "Footprint" "project:SOIC127P600X175-9N"
+      (at 0 -5.08 0)
+      (effects (font (size 1.27 1.27)))
+      (hide yes)
+    )
+    (property "Datasheet" "https://www.analog.com/media/en/technical-documentation/data-sheets/ADP7118.pdf"
+      (at 0 -7.62 0)
+      (effects (font (size 1.27 1.27)))
+      (hide yes)
+    )
+    (property "Description" "Analog Devices ADP7118ARDZ, 200mA Low-Noise LDO, SOIC-8 with Exposed Pad"
+      (at 0 -10.16 0)
+      (effects (font (size 1.27 1.27)))
+      (hide yes)
+    )
+    (property "ki_keywords" "LDO regulator low-noise ADP7118"
+      (at 0 0 0)
+      (effects (font (size 1.27 1.27)))
+      (hide yes)
+    )
+    (symbol "ADP7118ARDZ_0_1"
+      (rectangle
+        (start -7.62 8.89)
+        (end 7.62 -11.43)
+        (stroke (width 0.254) (type default))
+        (fill (type background))
+      )
+    )
+    (symbol "ADP7118ARDZ_1_1"
+      (pin power_out line (at 10.16 7.62 180) (length 2.54) (name "VOUT" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+      (pin power_out line (at 10.16 5.08 180) (length 2.54) (name "VOUT" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+      (pin input line (at 10.16 2.54 180) (length 2.54) (name "SENSE/ADJ" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+      (pin power_in line (at 10.16 0 180) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+      (pin input line (at -10.16 2.54 0) (length 2.54) (name "EN" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
+      (pin input line (at -10.16 0 0) (length 2.54) (name "SS" (effects (font (size 1.27 1.27)))) (number "6" (effects (font (size 1.27 1.27)))))
+      (pin power_in line (at -10.16 7.62 0) (length 2.54) (name "VIN" (effects (font (size 1.27 1.27)))) (number "7" (effects (font (size 1.27 1.27)))))
+      (pin power_in line (at -10.16 5.08 0) (length 2.54) (name "VIN" (effects (font (size 1.27 1.27)))) (number "8" (effects (font (size 1.27 1.27)))))
+      (pin power_in line (at 10.16 -2.54 180) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "9" (effects (font (size 1.27 1.27)))))
     )
   )
 )

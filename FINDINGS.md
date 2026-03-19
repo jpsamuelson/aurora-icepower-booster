@@ -1,33 +1,74 @@
-# Aurora DSP IcePower Booster — Quality Gate & Implementierungsplan
+# Aurora DSP IcePower Booster — Schaltplan-Review & Fehlerdokumentation
 
-**Datum:** 2025-07-25  
-**Schaltplan-Stand:** 142 Bauteile, 343 Wires, ERC 0 Violations  
-**Analyse-Methode:** Automatisierte Python-Skripte gegen `.kicad_sch` + manuelle Verifikation
+**Datum:** 2025-07-27 (aktualisiert, ersetzt Version 2025-07-25)
+**Schaltplan-Stand:** ~263 Bauteile, 130 Netze, ~5233 Zeilen in `.kicad_sch`
+**ERC-Status:** 0 Errors, 911 Warnings (910× endpoint_off_grid, 1× multiple_net_names)
+**PCB-Status:** Vollständig geroutet (Freerouting), Production-Files exportiert — **ABER basierend auf fehlerhaftem Schaltplan!**
+**Git HEAD:** d022139 (main)
+**Analyse-Methode:** Netlist-Export + Python-Skripte + Datenblatt-Vergleich + manuelle Pin-Level-Verifikation
 
 ---
 
-## 1. Schaltungsübersicht
+## 1. Projektziel & Beschreibung
 
-### Signalkette (pro Kanal, 6 identisch)
+### Zweck
+
+Der **Aurora DSP IcePower Booster** ist ein professionelles 6-Kanal Balanced Audio Interface Board. Es sitzt zwischen einem DSP-Prozessor (Aurora DSP) und ICEpower Class-D Verstärkermodulen. Das Board hat folgende Aufgaben:
+
+1. **Balanced-zu-Single-Ended-Wandlung** (Differenzieller Receiver) des DSP-Ausgangssignals
+2. **Einstellbare Verstärkung** (0 dB bis +11.3 dB) über DIP-Switches pro Kanal
+3. **Re-Balancierung** des Signals (Balanced Driver) für die ICEpower-Module
+4. **Schutzschaltungen**: ESD (TVS-Dioden), EMI-Filter, DC-Blocking, Zobel-Netzwerke
+5. **Muting-Schaltung**: Einschaltverzögerung via BSS138 MOSFET + LDO-Enable
+6. **Saubere Spannungsversorgung**: 24V DC → DC/DC ±12V → LDO ±11V (Low-Noise)
+
+### Hardware-Spezifikationen
+
+| Parameter | Wert |
+|-----------|------|
+| Kanäle | 6 (identisch) |
+| Eingang | 6× XLR Female (Balanced, Pin 2 = Hot) |
+| Ausgang | 6× XLR Male (Balanced, Pin 2 = Hot) |
+| Versorgung | 24V DC Steckernetzteil (Barrel Jack) |
+| Gain-Bereich | 0 dB bis +11.3 dB (8 Stufen, DIP-Switch) |
+| Max. Ausgangspegel | +25.2 dBu (balanced) |
+| Op-Amp | LM4562 (12 Stück, Dual) |
+| SNR-Ziel | > 100 dB |
+| THD+N-Ziel | < 0.01% @ 1 kHz |
+| Fertigung | JLCPCB, 2-Layer, FR-4, HASL |
+| Board-Größe | 200 × 200 mm, abgerundete Ecken |
+
+### Signalkette (pro Kanal, 6× identisch)
 
 ```
-XLR Female In (J1–J6)
-  │ Pin 2 (Hot), Pin 3 (Cold), Pin 1 (GND)
+XLR Female In (J3–J8)
+  │ Pin 1 (GND), Pin 2 (Hot), Pin 3 (Cold)
   ▼
-[Stufe 1: Differenzieller Receiver] — LM4562 OPA-A, G = 1
-  4× 10kΩ 0.1% → CMRR ~62 dB
-  ▼ Single-Ended
-[Stufe 2: Gain-Stufe] — LM4562 OPA-B, invertierend
+[ESD-Schutz] — 2× PESD5V0S1BL (TVS, SOD-323)
+  ▼
+[EMI-Filter] — 2× 47Ω + 2× 100pF C0G (fc = 33.9 MHz)
+  ▼
+[DC-Blocking] — 2× 2.2µF C0G (f-3dB = 7.2 Hz)
+  ▼
+[Stufe 1: Differenzieller Receiver] — LM4562 OPA-A (z.B. U2A), G = 1
+  4× 10kΩ 0.1% Metallfilm → CMRR ~62 dB
+  ▼ Single-Ended (CHx_RX_OUT)
+[Stufe 2: Gain-Stufe] — LM4562 OPA-B (z.B. U2B), invertierend
   Rf = 10kΩ, Rin_base = 10kΩ
-  3× DIP-Switch-Widerstände parallel zu Rin
+  3× DIP-Switch-Widerstände (30k, 15k, 7.5k) parallel zu Rin
   → Gain: 0 dB bis +11.3 dB (8 Stufen)
-  ▼ Invertiert
-[Stufe 3: Balanced Driver] — separater LM4562 (U7–U12)
-  OPA-A: Buffer G = +1 → XLR Pin 3 (Cold)
-  OPA-B: Inverter G = −1 → XLR Pin 2 (Hot)
-  2× 47Ω Serien-R an Ausgängen
+  ▼ Invertiert (CHx_GAIN_OUT)
+[Muting] — BSS138 MOSFET (Q2–Q7), Source → GND, Drain → CHx_GAIN_OUT
   ▼
-XLR Male Out (J7–J12)
+[Stufe 3: Balanced Driver] — separater LM4562 (U7–U12)
+  OPA-A: Non-inverting Buffer G = +1 → CHx_OUT_COLD → 47Ω → XLR Pin 3
+  OPA-B: Inverting G = −1 → CHx_OUT_HOT → 47Ω → XLR Pin 2
+  ▼
+[Zobel-Netzwerk] — 10Ω + 100nF (pro Ausgangspin)
+  ▼
+[Ausgangs-Schutz] — 2× PESD5V0S1BL (TVS)
+  ▼
+XLR Male Out (J9–J14)
 ```
 
 ### DIP-Switch Gain-Tabelle
@@ -43,69 +84,370 @@ XLR Male Out (J7–J12)
 |  1  |  1  |  0  |  3.33 kΩ | 3.00×  | +9.5 dB  |
 |  1  |  1  |  1  |  2.73 kΩ | 3.66×  | +11.3 dB |
 
-**Topologie verifiziert:** DIP-Switch-Widerstände (R_SW1 = 30 kΩ, R_SW2 = 15 kΩ, R_SW3 = 7.5 kΩ) sind parallel zu Rin verbunden (net labels CH1_RX_OUT ↔ CH1_SUMNODE im DIP-Bereich bestätigen dies). Die Schaltung **verstärkt** — kein Abschwächer.
-
 ### Spannungsversorgung
 
 ```
 24V DC Steckernetzteil → J13 (DC-Buchse)
   ▼
-TEL 5-2422 (U13) — DC/DC Wandler
-  ├── +12V (250 mA) → C25 (100nF), C35 (10µF)
-  └── −12V (250 mA) → C26 (100nF), C36 (10µF)
+TEL 5-2422 (U1) — DC/DC Isolierter Wandler, DIP-24
+  ├── +12V (250 mA) → C35 (100µF), C25 (100nF)
+  └── −12V (250 mA) → C36 (100µF), C26 (100nF)
        ▼                              ▼
-ADP7118 (U14) — pos. LDO          ADP7182 (U15) — neg. LDO
-  +12V → +11V                       −12V → −11V
-  C37 (100nF in), C38 (10µF out)    C37/C38 (shared footprint IDs)
+ADP7118ARDZ-11 (U14) — pos. LDO   ADP7182AUJZ-11 (U15) — neg. LDO
+  +12V → +11V, SOIC-8                −12V → −11V, SOT-23-5
+  C25 (100nF in), C37 (10µF out)     C26 (100nF in), C38 (10µF out)
+  SS-Pin → C81 (100nF)               NR-Pin → C82 (100nF)
        ▼                              ▼
-     V+ Rail                        V− Rail
-  → alle LM4562 VCC+               → alle LM4562 VCC−
+     V+ Rail (+11V)                 V− Rail (−11V)
+  → alle 12× LM4562 Pin 8          → alle 12× LM4562 Pin 4
+  → je 100nF C0G Entkopplung       → je 100nF C0G Entkopplung
+```
+
+### REMOTE / Enable-Steuerung
+
+```
+REMOTE Jack (J14, 3.5mm) → D25 (SMBJ15CA TVS) → R105 (10k) → C79 (100nF)
+  → SW7 (SPDT: ALWAYS / REMOTE) → EN_CTRL → U14.EN + U15.EN
+  → R79 (100k Pullup zu +12V), R80 (100k Pullup zu -12V)
+```
+
+### Muting-Schaltung (BSS138 MOSFETs)
+
+```
+Q1: Gate = MUTE_CTRL, Source = GND, Drain = /MUTE (Master-Mute-Netz)
+Q2–Q7: Gate = MUTE (via Netz), Source = GND, Drain = CHx_GAIN_OUT
+```
+
+Wenn MUTE = LOW (LDOs noch nicht aktiv): Q2–Q7 sperren, Gain-Ausgang wird nicht belastet.
+Wenn MUTE = HIGH (LDOs aktiv, Einschaltverzögerung abgelaufen): Q2–Q7 leiten, Audio fließt.
+
+### Bauteil-Inventar (validiert)
+
+| Typ | Anzahl | Details |
+|-----|--------|---------|
+| LM4562 (Dual Op-Amp) | 12 | U2–U13, SOIC-8 |
+| TEL5-2422 (DC/DC) | 1 | U1, DIP-24 |
+| ADP7118ARDZ-11 (pos. LDO) | 1 | U14, SOIC-8 |
+| ADP7182AUJZ-11 (neg. LDO) | 1 | U15, SOT-23-5 |
+| BSS138 (N-MOSFET) | 7 | Q1–Q7, SOT-23 |
+| PESD5V0S1BL (TVS) | 24 | D2–D25, SOD-323 |
+| SMBJ15CA (TVS, REMOTE) | 1 | D1, SMB |
+| BLM18PG221 (Ferrite Bead) | 2 | FB1–FB2 |
+| SW_DIP_x03 | 6 | SW1–SW6 |
+| SW_SPDT | 1 | SW7 (ALWAYS/REMOTE) |
+| XLR Female (Eingang) | 6 | J3–J8 |
+| XLR Male (Ausgang) | 6 | J9–J14 |
+| Barrel Jack (24V) | 1 | J13 |
+| AudioJack2 (REMOTE) | 1 | J14 |
+| 10kΩ 0.1% (Metallfilm) | 36 | Diff-Receiver |
+| 10kΩ | 20 | Gain, Driver, Pullups |
+| 47Ω | 24 | Ausgangs-Serien-R, EMI-Filter |
+| 10Ω | 12 | Zobel-Netzwerk |
+| 30kΩ | 6 | DIP-Switch SW1 |
+| 15kΩ | 6 | DIP-Switch SW2 |
+| 7.5kΩ | 6 | DIP-Switch SW3 |
+| 100kΩ | 3 | Pullups (REMOTE, EN) |
+| 100nF C0G | 43 | Entkopplung, Filter |
+| 100pF C0G | 12 | EMI-Filter |
+| 2.2µF C0G | 12 | DC-Blocking |
+| 10µF X5R | 8 | Bulk-Entkopplung |
+| 100µF Elko | 4 | PSU Bulk |
+| **Gesamt** | **~263** | |
+
+---
+
+## 2. KRITISCHE FEHLER — Schaltplan-Review (2025-07-27)
+
+### Zusammenfassung
+
+| ID | Schwere | Fehler | Auswirkung | Fix-Abhängigkeit |
+|----|---------|--------|------------|-----------------|
+| **F1** | 🔴 KRITISCH | GND und CH1_OUT_COLD sind dasselbe Netz (189 Pins) | Gesamtes Board funktionsunfähig | Root Cause für F2, F3, F7, F8 |
+| **F2** | 🔴 KRITISCH | XLR-Eingang Pin 2 (Hot) auf GND für alle 6 Kanäle | Audio-Eingang kurzgeschlossen | Folge von F1 |
+| **F3** | 🔴 KRITISCH | XLR-Ausgang Pin 3 (Cold) auf GND für alle 6 Kanäle | Balanced-Ausgang kaputt, CH2–6_OUT_COLD fehlen | Folge von F1 |
+| **F4** | 🔴 KRITISCH | Diff-Receiver hat Positives Feedback | Oszillation statt Verstärkung | Unabhängig von F1 |
+| **F5** | 🟠 MITTEL | R2.Pin1 unverbunden (CH1 Rgnd) | Dangling-Widerstand | Unabhängig |
+| **F6** | 🟠 MITTEL | R4/R6/R8/R10/R12 beide Pins auf HOT_IN (CH2–6) | 0Ω Kurzschluss (Rgnd) | Unabhängig |
+| **F7** | 🟠 MITTEL | Zobel Cold-Seite auf GND statt CHx_OUT_COLD | Zobel-Netzwerk unwirksam (Cold-Arm) | Folge von F1 |
+| **F8** | 🟠 MITTEL | Ausgangs-47Ω R58–R63 (Cold) → GND statt CHx_OUT_COLD | Ausgangspuffer kurzgeschlossen (Cold) | Folge von F1 |
+| **F9** | 🟡 KOSMETISCH | ADP7118 lib_id = ACPZN, Value = ARDZ-11 | Keine funktionale Auswirkung, Pinout identisch | Unabhängig |
+
+### F1: GND = /CH1_OUT_COLD Netz-Merge (ROOT CAUSE) 🔴
+
+**ERC-Meldung:** `Both CH1_OUT_COLD and GND are attached to the same items; CH1_OUT_COLD will be used in the netlist`
+
+**Symptom:** Im exportierten Netlist hat `/CH1_OUT_COLD` **189 Pins** — das gesamte GND-Netz. `/GND` hat **0 Pins**. Die Netze `CH2_OUT_COLD` bis `CH6_OUT_COLD` existieren im Netlist **gar nicht**, obwohl 6 Labels pro Kanal im Schaltplan vorhanden sind.
+
+**Root Cause — BSS138 Muting-Transistoren:**
+
+Die BSS138 MOSFETs (Q1–Q7) haben ihren Source-Pin (Pin 2) an Drähten, die sowohl ein "GND"-Label als auch ein "CH1_OUT_COLD"-Label tragen. KiCad merged zwei Netze, wenn verschiedene Labels auf demselben Draht oder derselben Wire-Chain liegen. Da "CH1_OUT_COLD" alphabetisch vor "GND" kommt, gewinnt es als Netzname.
+
+```
+Netlist-Analyse (Q1–Q7):
+  Q1: Gate = Net-(Q1-G),  Source = /CH1_OUT_COLD (= GND!),  Drain = /MUTE
+  Q2: Gate = Net-(Q2-G),  Source = /CH1_OUT_COLD (= GND!),  Drain = /CH1_GAIN_OUT
+  Q3: Gate = Net-(Q3-G),  Source = /CH1_OUT_COLD (= GND!),  Drain = /CH2_GAIN_OUT
+  Q4: Gate = Net-(Q4-G),  Source = /CH1_OUT_COLD (= GND!),  Drain = /CH3_GAIN_OUT
+  Q5: Gate = Net-(Q5-G),  Source = /CH1_OUT_COLD (= GND!),  Drain = /CH4_GAIN_OUT
+  Q6: Gate = Net-(Q6-G),  Source = /CH1_OUT_COLD (= GND!),  Drain = /CH5_GAIN_OUT
+  Q7: Gate = Net-(Q7-G),  Source = /CH1_OUT_COLD (= GND!),  Drain = /CH6_GAIN_OUT
+```
+
+**Wichtig:** Im Schaltplan gibt es **0 power:GND Symbole**. Alle 143 GND-Verbindungen nutzen reguläre Labels (`net_class_flag`), keine Power-Symbole. Das verschärft das Problem, weil KiCad bei regulären Labels keinen Vorrang für Power-Netze hat.
+
+**Kaskaden-Effekt von F1:**
+- F2: XLR-Eingang Pin 2 (Hot) landet auf CH1_OUT_COLD = GND → Audio Eingang kurzgeschlossen
+- F3: XLR-Ausgang Pin 3 (Cold) landet auf CH1_OUT_COLD = GND → Balanced-Ausgang nur Hot
+- F7: Zobel Cold-Pin → auf GND statt auf echtem Cold-Signal
+- F8: Ausgangs-47Ω Cold → auf GND statt auf Balanced-Driver-Ausgang
+- CH2–6_OUT_COLD Labels existieren im Schaltplan, aber ihre Netze werden ebenfalls in den GND-Merge gezogen
+
+**Fix-Strategie (F1):**
+1. Die Wire-Chain, die GND und CH1_OUT_COLD verbindet, muss physisch getrennt werden
+2. BSS138 Source-Pins müssen auf einem eigenen GND-Draht liegen, der NICHT mit CH1_OUT_COLD-Drähten verbunden ist
+3. Idealerweise: Power-GND-Symbole (`power:GND`) statt regulärer Labels verwenden, damit KiCad die Netz-Hierarchie korrekt auflöst
+4. Nach dem Fix: Alle CHx_OUT_COLD Netze müssen als eigenständige Netze im Netlist erscheinen
+
+### F2: XLR-Eingang Pin 2 (Hot) auf GND 🔴
+
+**Befund (alle 6 Kanäle):**
+
+| Kanal | XLR | Pin 1 (GND) | Pin 2 (Hot) | Pin 3 (Cold) | Pin G (Shell) |
+|-------|-----|-------------|-------------|--------------|---------------|
+| CH1 | J3 | GND ✅ | GND ❌ (soll: CH1_HOT_IN) | CH1_COLD_RAW ✅ | GND ✅ |
+| CH2 | J4 | GND ✅ | GND ❌ (soll: CH2_HOT_IN) | CH2_COLD_RAW ✅ | GND ✅ |
+| CH3 | J5 | GND ✅ | GND ❌ (soll: CH3_HOT_IN) | CH3_COLD_RAW ✅ | GND ✅ |
+| CH4 | J6 | GND ✅ | GND ❌ (soll: CH4_HOT_IN) | CH4_COLD_RAW ✅ | GND ✅ |
+| CH5 | J7 | GND ✅ | GND ❌ (soll: CH5_HOT_IN) | CH5_COLD_RAW ✅ | GND ✅ |
+| CH6 | J8 | GND ✅ | GND ❌ (soll: CH6_HOT_IN) | CH6_COLD_RAW ✅ | GND ✅ |
+
+**Auswirkung:** Das Hot-Signal vom DSP wird direkt auf GND kurzgeschlossen. Kein Audio-Signal gelangt in den Diff-Receiver.
+
+**Ursache:** Folge von F1 — das Wire-Netz, das Pin 2 mit dem EMI-Filter verbindet, trägt ein Label, das im gemergten CH1_OUT_COLD/GND-Netz landet.
+
+### F3: XLR-Ausgang Pin 3 (Cold) auf GND 🔴
+
+**Befund (alle 6 Kanäle):**
+
+| Kanal | XLR | Pin 1 (GND) | Pin 2 (Hot) | Pin 3 (Cold) |
+|-------|-----|-------------|-------------|--------------|
+| CH1 | J9  | GND ✅ | CH1_OUT_HOT ✅ | GND ❌ (soll: CH1_OUT_COLD) |
+| CH2 | J10 | GND ✅ | CH2_OUT_HOT ✅ | GND ❌ (soll: CH2_OUT_COLD) |
+| CH3 | J11 | GND ✅ | CH3_OUT_HOT ✅ | GND ❌ (soll: CH3_OUT_COLD) |
+| CH4 | J12 | GND ✅ | CH4_OUT_HOT ✅ | GND ❌ (soll: CH4_OUT_COLD) |
+| CH5 | J13 | GND ✅ | CH5_OUT_HOT ✅ | GND ❌ (soll: CH5_OUT_COLD) |
+| CH6 | J14 | GND ✅ | CH6_OUT_HOT ✅ | GND ❌ (soll: CH6_OUT_COLD) |
+
+**Auswirkung:** Der Balanced-Ausgang hat nur den Hot-Arm. Cold ist auf GND → unbalanced Ausgang, 6 dB weniger Pegel, keine Gleichtaktunterdrückung.
+
+### F4: Differenzieller Receiver — Positives Feedback 🔴
+
+**Soll-Topologie (Standard-Diff-Receiver):**
+```
+               Rf (10k, 0.1%)
+          ┌─────────────────────┐
+          │                     │
+Hot ──[Rin]──┤(−) INV           │
+              │     LM4562  OUT├──┤── CHx_RX_OUT
+Cold ──[Rin]──┤(+) NINV        │
+              │                │
+         [Rgnd]                │
+              │                │
+             GND               │
+                               │
+              Rf geht von OUT nach (−) INV = NEGATIVES Feedback ✅
+```
+
+**Ist-Zustand im Schaltplan (CH1, U2):**
+```
+               R20 (10k, 0.1%)
+          ┌─────────────────────┐
+          │                     │
+Hot ──[R14]──┤(+) NINV          │    ← R20 geht von (+) nach OUT!
+              │     LM4562  OUT├──┤── CH1_RX_OUT
+Cold ──[R15]──┤(−) INV         │
+              │                │
+         [R2]                  │
+              │                │
+             GND (dangling!)   │
+                               │
+              R20 geht von HOT_IN(+) nach OUT = POSITIVES Feedback ❌
+```
+
+**Das gleiche Problem in CH2–CH6** (R21–R25 statt R20).
+
+**Auswirkung:** Positives Feedback → der Op-Amp wird als Komparator arbeiten und sofort an die Rail sättigen. Kein Audio-Signal, nur DC am Ausgang.
+
+**Fix:** Die Feedback-Widerstände R20–R25 müssen von INV_IN(−) nach RX_OUT gehen, nicht von HOT_IN(+) nach RX_OUT.
+
+### F5: R2.Pin1 unverbunden (CH1 Rgnd) 🟠
+
+**Befund:** Im Netlist hat R2 nur einen Pin verbunden (Pin 2). Pin 1 ist `unconnected` / floating.
+
+R2 ist der Rgnd-Widerstand im Diff-Receiver von CH1 (10kΩ, von NINV(+) nach GND). Wenn Pin 1 unverbunden ist, hat der nicht-invertierende Eingang keinen definierten DC-Pfad → Offset-Drift.
+
+**Fix:** R2.Pin1 korrekt mit dem NINV(+)-Knoten verbinden.
+
+### F6: R4/R6/R8/R10/R12 — Beide Pins auf HOT_IN (CH2–CH6 Rgnd) 🟠
+
+**Befund:**
+- CH2: R4 Pin 1 = CH2_HOT_IN, Pin 2 = CH2_HOT_IN → 0Ω Kurzschluss
+- CH3: R6 Pin 1 = CH3_HOT_IN, Pin 2 = CH3_HOT_IN → 0Ω Kurzschluss
+- CH4: R8 Pin 1 = CH4_HOT_IN, Pin 2 = CH4_HOT_IN → 0Ω Kurzschluss
+- CH5: R10 Pin 1 = CH5_HOT_IN, Pin 2 = CH5_HOT_IN → 0Ω Kurzschluss
+- CH6: R12 Pin 1 = CH6_HOT_IN, Pin 2 = CH6_HOT_IN → 0Ω Kurzschluss
+
+Es sind Rgnd-Widerstände (10kΩ, NINV(+) → GND). Ein Pin sollte am NINV(+)-Knoten sein, der andere an GND.
+
+**Fix:** Jeweils ein Pin muss auf GND gehen, der andere auf den NINV(+)-Knoten des Diff-Receivers.
+
+### F7: Zobel Cold-Seite auf GND 🟠
+
+Die Zobel-Netzwerke am Cold-Ausgang (10Ω + 100nF in Serie, Shunt nach GND) wären im aktuellen Zustand am GND-Netz statt am echten CHx_OUT_COLD-Signal angeschlossen. Wird automatisch behoben wenn F1 gelöst ist.
+
+### F8: Output-47Ω R58–R63 Cold → GND 🟠
+
+Die 47Ω Serien-Widerstände am Cold-Ausgang der Balanced Driver gehen aktuell ins GND-Netz statt zu den XLR-Ausgangs-Pins. Wird automatisch behoben wenn F1 gelöst ist.
+
+### F9: ADP7118 Symbol ACPZN vs. ARDZ (Kosmetisch) 🟡
+
+**Befund:**
+- lib_id im Schaltplan: `Regulator_Linear:ADP7118ACPZN` (4-pin LFCSP Variante)
+- Value-Feld: `ADP7118ARDZ-11` (8-pin SOIC Variante)
+- Footprint: `Package_SO:SOIC-8_3.9x4.9mm_P1.27mm` (korrekt für ARDZ)
+
+**Bewertung:** Beide Varianten (ACPZN und ARDZ) haben **identisches Pinout** (1=VOUT, 2=SENSE, 3=GND, 4=EN, 5=SS, 6=VIN, 7=GND). Der Unterschied ist nur das Package. Da der Footprint korrekt als SOIC-8 zugewiesen ist, hat dies **keine funktionale Auswirkung**. Es ist ein rein kosmetisches Problem im Schaltplan.
+
+---
+
+## 3. IC-Pinout-Validierung (gegen Datenblätter)
+
+Alle verwendeten ICs wurden Pin-für-Pin gegen ihre Datenblätter geprüft:
+
+### LM4562 (TI, Dual Op-Amp, SOIC-8) ✅
+
+| Pin | Funktion | Schaltplan | Status |
+|-----|----------|-----------|--------|
+| 1 | Output A | OUT_A | ✅ |
+| 2 | Inverting Input A | IN_A(-) | ✅ |
+| 3 | Non-Inverting Input A | IN_A(+) | ✅ |
+| 4 | V- | V- | ✅ |
+| 5 | Non-Inverting Input B | IN_B(+) | ✅ |
+| 6 | Inverting Input B | IN_B(-) | ✅ |
+| 7 | Output B | OUT_B | ✅ |
+| 8 | V+ | V+ | ✅ |
+
+### TEL5-2422 (TRACO, DC/DC Isoliert, DIP-24) ✅
+
+| Pin | Funktion | Schaltplan | Status |
+|-----|----------|-----------|--------|
+| 1 | +VIN | +24V_IN | ✅ |
+| 7 | -VIN | GND | ✅ |
+| 14 | -VOUT | -12V | ✅ |
+| 18 | COM | GND | ✅ |
+| 24 | +VOUT | +12V | ✅ |
+
+### ADP7118 (ADI, pos. LDO, SOIC-8) ✅
+
+| Pin | Funktion | Schaltplan | Status |
+|-----|----------|-----------|--------|
+| 1 | VOUT | V+ | ✅ |
+| 2 | SENSE | V+ (tied) | ✅ |
+| 3 | GND | GND | ✅ |
+| 4 | EN | EN_CTRL | ✅ |
+| 5 | SS | SS_U14 (100nF) | ✅ |
+| 6 | VIN | +12V | ✅ |
+| 7 | GND | GND | ✅ |
+
+### ADP7182 (ADI, neg. LDO, SOT-23-5) ✅
+
+| Pin | Funktion | Schaltplan | Status |
+|-----|----------|-----------|--------|
+| 1 | GND | GND | ✅ |
+| 2 | VIN | -12V | ✅ |
+| 3 | EN | EN_CTRL | ✅ |
+| 4 | ADJ/NR | NR_U15 (100nF) | ✅ |
+| 5 | VOUT | V- | ✅ |
+
+### BSS138 (ON Semi, N-MOSFET, SOT-23) ✅
+
+| Pin | Funktion | Schaltplan | Status |
+|-----|----------|-----------|--------|
+| 1 | Gate | MUTE / Qx-G | ✅ |
+| 2 | Source | GND (SOLL) | ❌ auf CH1_OUT_COLD (→ F1) |
+| 3 | Drain | MUTE / CHx_GAIN_OUT | ✅ |
+
+---
+
+## 4. Validierte Teilschaltungen (OK)
+
+### Entkopplung ✅
+- 12× 100nF C0G am V+ Pin (Pin 8) jedes LM4562
+- 12× 100nF C0G am V- Pin (Pin 4) jedes LM4562
+- Bulk: 100µF + 100nF am DC/DC, 10µF + 100nF an jedem LDO
+
+### Gain-Stufe ✅
+- Invertierende Topologie: Rf = 10kΩ, Rin = 10kΩ (Basis-Gain = 0 dB)
+- DIP-Switch Widerstände korrekt parallel zu Rin
+- Gain-Bereich 0 dB bis +11.3 dB bestätigt
+
+### ESD-Schutz ✅
+- 24× PESD5V0S1BL an allen XLR-Audio-Pins (12 Ein + 12 Aus)
+- 1× SMBJ15CA am REMOTE-Eingang
+- Parasitäre Kapazität 0.35 pF — vernachlässigbar im Audioband
+
+### EMI-Filter ✅ (aber Hot-Pfad durch F1 auf GND)
+- 2× 47Ω + 2× 100pF pro Kanal
+- fc = 33.9 MHz — weit über Audioband
+
+### DC-Blocking ✅
+- 12× 2.2µF C0G
+- f-3dB = 7.2 Hz — vernachlässigbar
+
+### Zobel-Netzwerk ✅ (Hot-Seite korrekt, Cold-Seite durch F1 auf GND)
+- 10Ω + 100nF pro Ausgangspin
+
+---
+
+## 5. Fix-Priorisierung & Reihenfolge
+
+```
+Fix-Reihenfolge:
+═══════════════
+
+1. F1 → GND/CH1_OUT_COLD Netz-Merge trennen (ZUERST!)
+   │     ├── BSS138 Source-Drähte von CH1_OUT_COLD-Wire-Chain trennen
+   │     ├── Power:GND Symbole statt regulärer Labels verwenden
+   │     └── Verifizieren: 6 eigenständige CHx_OUT_COLD Netze im Netlist
+   │
+   ├── F2 löst sich automatisch (XLR Hot nicht mehr auf GND)
+   ├── F3 löst sich automatisch (XLR Cold bekommt CHx_OUT_COLD)
+   ├── F7 löst sich automatisch (Zobel Cold korrekt)
+   └── F8 löst sich automatisch (Output 47Ω Cold korrekt)
+
+2. F4 → Diff-Receiver Feedback korrigieren
+   │     ├── R20–R25: Von HOT_IN(+) → RX_OUT  umverdrahten auf  INV_IN(-) → RX_OUT
+   │     └── Prüfen: Negative Feedback Schleife → Gain = 1 (Unity)
+   │
+3. F5 → R2.Pin1 verbinden (CH1 Rgnd)
+   │
+4. F6 → R4/R6/R8/R10/R12 korrigieren (CH2–6 Rgnd)
+   │     └── Jeweils ein Pin auf GND, anderer auf NINV(+)-Knoten
+   │
+5. F9 → ADP7118 Symbol-Name (optional, kosmetisch)
+
+Nach allen Fixes:
+  → ERC erneut ausführen (Ziel: 0 Errors, <911 Warnings)
+  → Netlist exportieren und verifizieren
+  → PCB "Update from Schematic" ausführen
+  → Komplett neu routen (Freerouting) — bisheriges Routing ist ungültig
+  → DRC erneut ausführen
+  → Production-Files neu exportieren
 ```
 
 ---
 
-## 2. Quality Gate Ergebnisse
-
-### ✅ Bestanden (15 Checks)
-
-| # | Check | Ergebnis |
-|---|-------|----------|
-| 1 | Dateistruktur (.kicad_pro, .kicad_sch, .kicad_pcb) | ✅ Vorhanden |
-| 2 | Bauteil-Referenzen (142 unique) | ✅ Vollständig |
-| 3 | LM4562 Dual-Unit-Zuordnung (12 ICs × 2 Units) | ✅ Korrekt |
-| 4 | 6 identische Kanäle | ✅ Validiert |
-| 5 | Kanal-Netzlabels (CH1…CH6_RX_OUT, _SUMNODE, _GAIN_OUT) | ✅ Alle vorhanden |
-| 6 | Power-Netze (V+, V−, GND, +12V, −12V, +24V) | ✅ Korrekt |
-| 7 | Diff-Receiver-Widerstände (4× 10 kΩ 0.1%) | ✅ Pro Kanal |
-| 8 | Gain-Widerstände (Rin = 10 kΩ, Rf = 10 kΩ) | ✅ Pro Kanal |
-| 9 | DIP-Switch-Widerstände (30k, 15k, 7.5k) | ✅ Pro Kanal |
-| 10 | Driver-Widerstände (3× 10 kΩ + 2× 47 Ω) | ✅ Pro Kanal |
-| 11 | PSU-Topologie (TEL5-2422 + ADP7118 + ADP7182) | ✅ Korrekt |
-| 12 | Bypass-Kondensatoren (100nF pro Versorgungspin) | ✅ Vorhanden |
-| 13 | Wire-Integrität (343 Wires, keine offenen Enden) | ✅ OK |
-| 14 | ERC (Electrical Rules Check) | ✅ 0 Violations |
-| 15 | Bauteilwerte konsistent über alle Kanäle | ✅ Identisch |
-
-### ⚠️ Warnungen (2)
-
-| # | Check | Befund | Auswirkung |
-|---|-------|--------|------------|
-| H1 | Bypass-Cap-Wertstring | 12× "100n" statt "100nF C0G" | Fertigung: Dielektrikum nicht spezifiziert |
-| H2 | Footprint-Zuweisung | 0 von 154 Instanzen zugewiesen | PCB-Layout nicht möglich |
-
-### ❌ Fehlend (5)
-
-| # | Check | Soll (lt. Design Rules) | Ist | Prio |
-|---|-------|-------------------------|-----|------|
-| F1 | Zobel-Netzwerk | 10 Ω + 100 nF am Verstärkerausgang | Fehlt komplett | 3 |
-| F2 | TVS-Dioden | Bidirektional an allen XLR-Steckern | Fehlt komplett | 4 |
-| F3 | DC-Koppelkondensatoren | ≥ 1 µF Film/C0G am Eingang | Fehlt komplett | 1 |
-| F4 | EMI-Eingangsfilter | 47–100 Ω + 100 pF–1 nF pro Pin | Fehlt komplett | 5 |
-| F5 | Muting-Schaltung | Einschalt-/Ausschalt-Muting | Fehlt komplett | 2 |
-
----
-
-## 3. Headroom-Analyse
+## 6. Headroom-Analyse (unverändert gültig nach Fix)
 
 ### Pegelberechnung bei +4 dBu Eingang (Pro-Line-Level)
 
@@ -120,332 +462,66 @@ ADP7118 (U14) — pos. LDO          ADP7182 (U15) — neg. LDO
 
 **Clip-Punkt balanced:** +25.2 dBu (±10 V × 2 Arme = 14.14 V RMS diff.)
 
-**Bewertung:**
-- Bei 0 dB Gain: **18.2 dB Headroom** — exzellent
-- Bei +11.3 dB Gain: **3.9 dB Headroom** — ausreichend, da DSP-Limiter im Aurora vorgeschaltet
-- Bei +4 dBu Eingang clippt nichts bei keiner Gain-Einstellung ✅
-
 ### Stromverbrauch
 
-| Abschnitt | Strom | Quelle |
-|-----------|-------|--------|
-| 12× LM4562 (Quiescent) | 12 × 5.5 mA = 66 mA | Datenblatt |
-| Signal-Strom (max. 6 Kanäle) | ~30 mA | Berechnet |
-| PSU + LDO Eigenverbrauch | ~15 mA | Datenblatt |
-| **Gesamt** | **~111 mA** pro Rail | |
-| TEL 5-2422 Kapazität | 250 mA pro Rail | Datenblatt |
-| **Reserve** | **~139 mA (56%)** | ✅ Ausreichend |
+| Abschnitt | Strom |
+|-----------|-------|
+| 12× LM4562 (Quiescent) | 66 mA |
+| Signal-Strom (max. 6 Kanäle) | ~30 mA |
+| PSU + LDO Eigenverbrauch | ~15 mA |
+| **Gesamt** | **~111 mA pro Rail** |
+| TEL 5-2422 Kapazität | 250 mA pro Rail |
+| **Reserve** | **~139 mA (56%)** ✅ |
 
 ---
 
-## 4. Implementierungsplan
+## 7. PCB-Layout-Status
 
-### Prio 1: DC-Koppelkondensatoren (Eingang)
+**Aktueller Zustand:** Vollständig geroutet und Production-Files exportiert (Commit d022139).
 
-**Zweck:** DC-Offset-Blockierung am Audio-Eingang. Verhindert, dass DC-Spannung von der Quelle in den Diff-Receiver gelangt und Offset-Probleme verursacht.
+**WARNUNG:** Das PCB basiert auf dem fehlerhaften Schaltplan. Nach Fix der Schaltplan-Fehler F1–F8 muss das PCB **komplett neu synchronisiert und neu geroutet** werden. Die existierenden Production-Files (Gerber, BOM, Position) sind **UNGÜLTIG** und dürfen nicht zur Fertigung verwendet werden.
 
-**Schaltung (pro Kanal, 2 Stück):**
-```
-XLR Pin 2 (Hot)  ──┤├── R1 (10kΩ) → Diff-Receiver +
-XLR Pin 3 (Cold) ──┤├── R2 (10kΩ) → Diff-Receiver −
-                  C_DC
-                 2.2µF
-```
+### Board-Daten (Referenz)
 
-**Bauteile:** 12× 2.2 µF, C0G oder Polypropylen-Film, ≥ 25V  
-**Baugröße:** 0805 (C0G bei 2.2 µF evtl. 1206 nötig) oder Film THT  
-
-**Spannungsabfall-Analyse:**
-- $X_C$ bei 20 Hz: $\frac{1}{2\pi \times 20 \times 2.2\mu} = 3.62\,\Omega$
-- Last: 10 kΩ (Diff-Receiver-Eingangsimpedanz pro Pin)
-- Verlust: $20 \cdot \log_{10}\left(\frac{10000}{10000 + 3.62}\right) = -0.003\,\text{dB}$
-- $f_{-3\text{dB}} = \frac{1}{2\pi \times 10000 \times 2.2\mu} = 7.2\,\text{Hz}$ (weit unter 20 Hz)
-- **Signalverlust: vernachlässigbar** ✅
-
-**Implementierung im Schaltplan:**
-1. Neue Bauteil-Referenzen: C39–C50 (12 Stück, 2 pro Kanal)
-2. Jeweils in Serie zwischen XLR-Pin und erstem Diff-Receiver-Widerstand einfügen
-3. Neue Netzlabels: CHx_IN_HOT_AC, CHx_IN_COLD_AC (nach Koppelkondensator)
+| Parameter | Wert |
+|-----------|------|
+| Dimension | 200 × 200 mm |
+| Layer | 2 (F.Cu + B.Cu) |
+| Footprints | 269 |
+| Trace Segments | 1543 |
+| Vias | 743 |
+| DRC | 0 Errors, 0 Unconnected, 195 Warnings |
 
 ---
 
-### Prio 2: Muting-Schaltung (Einschaltschutz)
+## 8. Analyse-Skripte (zur Referenz)
 
-**Zweck:** Unterdrückt Pop-/Klickgeräusche beim Ein-/Ausschalten. Beim Einschalten brauchen die LDOs und Op-Amps ~50 ms, bis die Arbeitspunkte stabil sind.
+Die folgenden Analyse-Skripte wurden während des Reviews erstellt und können bei Bedarf erneut ausgeführt werden:
 
-**Variante A: Ausgangs-Relay (empfohlen für Audio-Qualität)**
-```
-                    ┌──── V+ (über RC-Verzögerung)
-                    │
-                  [Relay]
-                    │
-Driver Out ────────┤NO├──── XLR Out
-                    │
-                   GND
-```
-- 1× Bistabiles Signal-Relay (z.B. Omron G6K-2F-Y) pro 2 Kanäle (DPDT)
-- RC-Verzögerung: 100 kΩ + 100 µF = τ = 10 s → Relay schaltet ~1 s nach Power-On
-- NPN-Transistor (BC847) als Relay-Treiber
-- Freilaufdiode (1N4148) parallel zur Relayspule
+| Skript | Zweck |
+|--------|-------|
+| `/tmp/netlist_analysis.py` | Netlist parsen, alle Netze + Pin-Zuordnungen anzeigen |
+| `/tmp/full_validation.py` | BSS138 Muting, XLR Pins, IC Pinout, Passive Counts |
+| `/tmp/detailed_validation.py` | Diff-Receiver Topologie, Gain/Buffer/Output Stufen, Entkopplung, Zobel |
+| `/tmp/extract_lib_symbols.py` | Alle 26 lib_symbol Pin-Definitionen extrahieren |
+| `/tmp/check_out_cold.py` | GND-Symbole vs Labels prüfen (0 power:GND bestätigt) |
 
-**Variante B: LDO-Enable-Verzögerung (einfacher, weniger Bauteile)**
-```
-+24V ──[100kΩ]──┬── EN (ADP7118/ADP7182)
-                 │
-               [100µF]
-                 │
-                GND
-```
-- LDOs starten verzögert → Op-Amps erhalten Versorgung erst nach ~1 s
-- Kein Signal-Relay nötig
-- Nachteil: Kein aktives Muting beim Ausschalten (Cap-Entladung = undefinierbares Abschalten)
-
-**Empfehlung: Variante B** — weniger Bauteile, ausreichend für DIY-Booster-Board. Die LDOs haben eingebautes Soft-Start. Zusätzliche RC-Verzögerung am EN-Pin reicht aus.
-
-**Bauteile (Variante B):** 2× 100 kΩ, 2× 100 µF Keramik/Elektrolyt  
-**Spannungsabfall:** Keiner — Muting greift nur beim Ein-/Ausschalten, nicht im Signalpfad ✅
-
-**Implementierung:**
-1. RC-Glied an EN-Pin von U14 (ADP7118) und U15 (ADP7182)
-2. Neue Bauteile: R79–R80 (100 kΩ), C51–C52 (100 µF)
+**Hinweis:** Diese Skripte liegen in `/tmp/` und überleben keinen Neustart. Bei Bedarf neu erstellen.
 
 ---
 
-### Prio 3: Zobel-Netzwerk (Ausgangsstabilisierung)
-
-**Zweck:** Stabilisiert den Op-Amp bei kapazitiver Last (lange Kabel, kapazitive Eingänge). Ohne Zobel kann der LM4562 bei >1 nF Lastkapazität schwingen.
-
-**Schaltung (pro Ausgangspin, 12 Stück):**
-```
-Driver Out (nach 47Ω) ──┬── XLR Out
-                         │
-                      [10Ω]
-                         │
-                      [100nF]
-                         │
-                        GND
-```
-
-**Bauteile:** 12× 10 Ω (0805), 12× 100 nF C0G (0805)  
-**Gesamt:** 24 neue Bauteile
-
-**Spannungsabfall-Analyse:**
-- Zobel ist ein **Shunt-Element** (parallel zur Last) — kein Serienwiderstand im Signalpfad
-- Bei 20 kHz: $Z_{Zobel} = 10 + \frac{1}{2\pi \times 20000 \times 100n} = 10 + 79.6 = 89.6\,\Omega$
-- Parallel zu typischer Last (10 kΩ): $Z_{parallel} = \frac{10000 \times 89.6}{10000 + 89.6} = 88.8\,\Omega$
-- Strombelastung des Op-Amps steigt minimal (< 1 mA zusätzlich bei 20 kHz)
-- **Signalverlust: 0 dB** (kein Serienelement) ✅
-
-**Implementierung:**
-1. Neue Referenzen: R81–R92 (10 Ω), C53–C64 (100 nF C0G)
-2. Platzierung: Direkt am XLR-Ausgang, nach den 47 Ω Serienwiderständen
-3. GND-Anbindung über kurze Traces + Via zur Massefläche
-
----
-
-### Prio 4: TVS-Dioden (ESD-Schutz)
-
-**Zweck:** Schutz gegen elektrostatische Entladung an den XLR-Steckern. Pro-Audio-Equipment wird regelmäßig ein-/ausgesteckt — ESD bis ±8 kV möglich.
-
-**Schaltung (pro Audio-Pin, 24 Stück):**
-```
-XLR Pin 2/3 ──┬── [DC-Block] → Receiver
-               │
-            [TVS]
-               │
-              GND
-```
-
-**Bauteile:** 24× TVS-Diode, bidirektional  
-- Empfehlung: **PESD5V0S1BL** (SOD-323) — $V_{WM}$ = 5 V, $C_j$ = 0.35 pF, $I_{PP}$ = 10.5 A
-- Alternativ: **PRTR5V0U2X** (SOT-363) — 2-Kanal, spart Platz (12 Stück statt 24)
-
-**Spannungsabfall-Analyse:**
-- TVS ist ein **Shunt-Element** — leitet nur bei Überspannung
-- Im Normalbetrieb: $I_{leak}$ < 1 µA → **0 dB Signalverlust**
-- Parasitäre Kapazität 0.35 pF: Bei 20 kHz → $X_C = 22.7\,\text{MΩ}$ → vernachlässigbar
-- **Signalverlust: 0 dB** ✅
-
-**Implementierung:**
-1. Neue Referenzen: D1–D24 (oder D1–D12 bei 2-Kanal-TVS)
-2. Platzierung: So nah wie möglich am XLR-Stecker auf PCB
-3. Kurze GND-Anbindung — separates GND-Via direkt am TVS-Pad
-
----
-
-### Prio 5: EMI-Eingangsfilter
-
-**Zweck:** Unterdrückt hochfrequente Störungen (Mobilfunk, WLAN, Schaltregler-EMI) am Audio-Eingang. Verhindert Demodulation in den Op-Amp-Eingangsstufen.
-
-**Schaltung (pro XLR-Eingangspin, 12 Stück R + 12 Stück C):**
-```
-XLR Pin 2/3 ──[47Ω]──┬──[DC-Block]── R_diff → Receiver
-                       │
-                    [100pF]
-                       │
-                      GND
-```
-
-**Bauteile:** 12× 47 Ω (0805), 12× 100 pF C0G (0805)  
-**Gesamt:** 24 neue Bauteile
-
-**Spannungsabfall-Analyse:**
-- RC-Tiefpass: $f_c = \frac{1}{2\pi \times 47 \times 100p} = 33.9\,\text{MHz}$ — weit über Audioband
-- Serienwiderstand 47 Ω in 10 kΩ Last (pro Pin):
-  - Verlust: $20 \cdot \log_{10}\left(\frac{10000}{10000 + 47}\right) = -0.041\,\text{dB}$
-- Audio bei 20 kHz: $X_C(100\text{pF}) = 79.6\,\text{kΩ}$ → kein messbarer Shunt-Verlust
-- CMRR-Einfluss: 47 Ω Mismatch (1% Toleranz = 0.47 Ω) → $\text{CMRR}_{R_{EMI}} = 20 \cdot \log_{10}\left(\frac{10000}{0.47}\right) = 86.6\,\text{dB}$ → besser als bestehende 62 dB durch Diff-Receiver-Matching
-- **Signalverlust: −0.04 dB** (vernachlässigbar) ✅
-
-**Implementierung:**
-1. Neue Referenzen: R93–R104 (47 Ω), C65–C76 (100 pF C0G)
-2. Platzierung: Direkt an XLR-Eingangs-Pads, vor DC-Koppelkondensator
-3. Reihenfolge Signal: XLR → EMI-R → EMI-C nach GND → DC-Block → Diff-Receiver
-
----
-
-### Prio 6: Bypass-Cap-Wertstrings korrigieren
-
-**Zweck:** Korrekte Bauteilbezeichnung für Fertigung/BOM. Der Wert "100n" spezifiziert kein Dielektrikum — bei JLCPCB-Bestückung könnte ein X7R statt C0G gewählt werden.
-
-**Änderung:** 12× Wertstring von `100n` auf `100nF C0G` ändern  
-**Betroffene Bauteile:** C1, C2, C5, C6, C9, C10, C13, C14, C17, C18, C21, C22
-
-**Spannungsabfall:** Keiner — reine Dokumentationsänderung ✅
-
-**Implementierung:**
-1. Python-Skript: Regex-Replace im `.kicad_sch`
-2. Alle `(value "100n")` → `(value "100nF C0G")` für betroffene Referenzen
-
----
-
-### Prio 7: Footprint-Zuweisung
-
-**Zweck:** PCB-Layout erfordert physische Footprints für jede Bauteilinstanz.
-
-**Zuweisung:**
-
-| Bauteil | Footprint | Package |
-|---------|-----------|---------|
-| R (alle) | Resistor_SMD:R_0805_2012Metric | 0805 |
-| C 100nF, 100pF | Capacitor_SMD:C_0805_2012Metric | 0805 |
-| C 10µF | Capacitor_SMD:C_0805_2012Metric | 0805 (X5R) |
-| C 2.2µF (DC-Block) | Capacitor_SMD:C_1206_3216Metric | 1206 (C0G/Film) |
-| C 100µF (Muting) | Capacitor_SMD:C_1210_3225Metric | 1210 (Keramik) oder THT Elko |
-| LM4562 | Package_SO:SOIC-8_3.9x4.9mm_P1.27mm | SOIC-8 |
-| TEL 5-2422 | Converter_DCDC:Converter_DCDC_TRACO_TEL5_DIP-24 | DIP-24 |
-| ADP7118 | Package_SO:SOIC-8_3.9x4.9mm_P1.27mm | SOIC-8 |
-| ADP7182 | Package_TO_SOT_SMD:SOT-23-5 | TSOT-5 |
-| XLR Female | Connector_Audio:XLR-F_Neutrik_NC3FBH2 | THT |
-| XLR Male | Connector_Audio:XLR-M_Neutrik_NC3MBH | THT |
-| DIP-Switch 3-Pos | Button_Switch_SMD:SW_DIP_SPSTx03_Slide_Omron_A6S-310x | SMD |
-| TVS (PESD5V0S1BL) | Diode_SMD:D_SOD-323 | SOD-323 |
-| DC-Buchse | Connector_BarrelJack:BarrelJack_Horizontal | THT |
-
-**Spannungsabfall:** Keiner — reine Layout-Vorbereitung ✅
-
-**Implementierung:**
-1. KiCad-Schaltplaneditor → Footprint-Zuweisungstool
-2. Oder: Python-Skript für Bulk-Zuweisung im `.kicad_sch`
-3. Anschließend `sync_schematic_to_board()` ausführen
-
----
-
-## 5. Quality Gate: Spannungsabfall-Gesamtanalyse
-
-### Kompletter Signalpfad nach allen Modifikationen
+## 9. Git-Historie (relevant)
 
 ```
-XLR In → [EMI 47Ω] → [100pF→GND] → [DC-Block 2.2µF] → [Diff-Rx G=1]
-  → [Gain 0..+11.3 dB] → [Balanced Driver G=±1] → [47Ω Serie]
-  → [Zobel 10Ω+100nF→GND] → XLR Out
-         ↑                                                   ↑
-       [TVS→GND]                                          [TVS→GND]
+d022139  Production: Gerber, Drill, BOM, Position Files
+56dceab  PCB: Fertigungsvorbereitung - Dangling Vias, Silkscreen
+bf62bd0  PCB: F.Cu Zone auf Solid-Connect, Zone Refill via pcbnew
+84ccfa1  PCB: Zone Fill nach Freerouting
+31b9dca  PCB: Freerouting autoroute + Netzklassen + Design Rules
+0345eaa  PCB: GND-Via cleanup, F.Cu zone, courtyard fixes
+ed28379  PCB: MCP-Routing entfernt + Platzierung korrigiert (sauberes Board)
+99568f2  PCB: 26 Footprints + 10 Netze + Netzklassen + GND-Via-Stitching
+176f876  FB1/FB2: Symbol von Device:L auf Device:FerriteBead geändert
+d7fbc73  Schaltplan-Review: 4 Phasen implementiert
 ```
 
-### Serienverluste (Worst Case: 600 Ω Last)
-
-| Element | Serien-Z | Last-Z | Verlust | Anmerkung |
-|---------|----------|--------|---------|-----------|
-| EMI-Filter (47 Ω × 2) | 94 Ω diff. | 20 kΩ | −0.04 dB | Diff-Receiver-Eingang |
-| DC-Block (2.2 µF @ 20 Hz) | 3.62 Ω × 2 | 20 kΩ | −0.003 dB | Unter Audioband |
-| 47 Ω Ausgangs-R (bestand) | 47 Ω × 2 | 600 Ω* | −1.17 dB | Worst Case 600 Ω |
-| | | 10 kΩ | −0.08 dB | Typisch |
-
-*600 Ω ist eine theoretische Worst-Case-Last. Typische Audio-Eingänge haben 10–47 kΩ Eingangsimpedanz.
-
-### Shunt-Elemente (kein Serienverlust)
-
-| Element | Typ | Verlust |
-|---------|-----|---------|
-| Zobel (10 Ω + 100 nF) | Shunt | 0 dB |
-| TVS-Diode | Shunt (nur bei ESD) | 0 dB |
-| EMI-C (100 pF) | Shunt | 0 dB bei Audio |
-
-### Gesamtverlust durch neue Schutzbeschaltung
-
-| Szenario | Zusätzlicher Verlust | Bemerkung |
-|----------|---------------------|-----------|
-| Typisch (10 kΩ Last) | **−0.05 dB** | EMI + DC-Block |
-| Worst Case (600 Ω Last) | **−0.21 dB** | EMI + DC-Block (47 Ω Ausgangs-R war vorher schon da) |
-
-### Ergebnis
-
-| Parameter | Vor Modifikation | Nach Modifikation | Delta |
-|-----------|------------------|-------------------|-------|
-| Gain-Bereich | 0 bis +11.3 dB | 0 bis +11.3 dB | **±0 dB** |
-| Max. Ausgang (balanced) | +25.2 dBu | +25.2 dBu | **±0 dB** |
-| Headroom @ +4 dBu, G=0 dB | 18.2 dB | 18.2 dB | **±0 dB** |
-| Headroom @ +4 dBu, G=+11.3 dB | 3.9 dB | 3.9 dB | **±0 dB** |
-| Zusätzl. Serienverlust (10 kΩ) | — | −0.05 dB | Vernachlässigbar |
-| Untere Grenzfrequenz (−3 dB) | DC | 7.2 Hz | Weit unter 20 Hz |
-
-**Fazit: Die Booster-Funktion bleibt vollständig erhalten.** Die Schutzbeschaltung fügt maximal 0.05 dB Serienverlust hinzu (typisch), was messtechnisch nicht nachweisbar ist. Kein Gain geht verloren, kein Headroom wird reduziert.
-
----
-
-## 6. Zusammenfassung der neuen Bauteile
-
-### Stückliste Modifikationen
-
-| Prio | Element | Neue Teile | Referenzen |
-|------|---------|------------|------------|
-| 1 | DC-Koppelkondensatoren | 12× 2.2 µF C0G/Film | C39–C50 |
-| 2 | Muting (EN-Verzögerung) | 2× 100 kΩ, 2× 100 µF | R79–R80, C51–C52 |
-| 3 | Zobel-Netzwerke | 12× 10 Ω, 12× 100 nF C0G | R81–R92, C53–C64 |
-| 4 | TVS-Dioden | 24× PESD5V0S1BL | D1–D24 |
-| 5 | EMI-Filter | 12× 47 Ω, 12× 100 pF C0G | R93–R104, C65–C76 |
-| 6 | Cap-Value-Fix | 0 (nur Wertänderung) | — |
-| 7 | Footprints | 0 (nur Zuweisung) | — |
-| **Gesamt** | | **86 neue Bauteile** | |
-
-### Neue Bauteilanzahl nach Modifikation
-
-| Kategorie | Vorher | Nachher | Delta |
-|-----------|--------|---------|-------|
-| Widerstände | 78 | 104 | +26 |
-| Kondensatoren | 38 | 64 | +26 |
-| Dioden | 0 | 24 | +24 |
-| ICs | 15 | 15 | ±0 |
-| Steckverbinder | 13 | 13 | ±0 |
-| Schalter | 6 | 6 | ±0 |
-| Sonstiges | 4 | 14 | +10 |
-| **Total** | **154** | **240** | **+86** |
-
----
-
-## 7. Empfohlene Reihenfolge der Umsetzung
-
-1. **Prio 6** — Cap-Values korrigieren (schnell, kein neues Bauteil)
-2. **Prio 1** — DC-Koppelkondensatoren einfügen (Schaltplan-Änderung, neue Netze)
-3. **Prio 5** — EMI-Filter einfügen (vor DC-Block, neue Netze)
-4. **Prio 3** — Zobel-Netzwerke einfügen (am Ausgang, neue Netze)
-5. **Prio 4** — TVS-Dioden einfügen (Shunt, einfach)
-6. **Prio 2** — Muting-Schaltung (PSU-Bereich, EN-Pin-Beschaltung)
-7. **Prio 7** — Footprint-Zuweisung (als letztes, braucht finale BOM)
-
-Zwischen jedem Schritt: **ERC ausführen** und **Snapshot erstellen**.
-
----
-
-*Generiert aus automatisierter Analyse der `.kicad_sch`-Datei. Alle Berechnungen basieren auf nominalen Bauteilwerten.*
