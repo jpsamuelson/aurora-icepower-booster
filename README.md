@@ -144,11 +144,12 @@ flowchart LR
     COLD["CH1_COLD_IN"]
     GND0["GND"]
 
-    HOT -->|"R1 (10kΩ 0,1%)"| NIN["IN+ (Pin 3)\nU2 Unit A\nLM4562"]
-    HOT -->|"R2 (10kΩ 0,1%)"| NIN
-    COLD -->|"R3 (10kΩ 0,1%)"| IIN["IN− (Pin 2)\nU2 Unit A"]
-    GND0 -->|"R4 (10kΩ 0,1%)"| NIN
-    IIN -->|"R (Feedback)"| OUT["OUT_A (Pin 1)\n→ CH1_RX_OUT"]
+    HOT --> NIN["IN+_A = /CH1_HOT_IN\n(Pin 3 U2)"]
+    GND0 -->|"R2 (10kΩ 0,1%)\nReferenz"| NIN
+    COLD -->|"R3 (10kΩ 0,1%)"| IIN["IN−_A = /CH1_INV_IN\n(Pin 2 U2)"]
+    GND0 -->|"R14 (10kΩ 0,1%)\nReferenz"| IIN
+    OUT["OUT_A (Pin 1)\n= /CH1_RX_OUT"] -->|"R20 (10kΩ 0,1%)\nFeedback"| IIN
+    NIN --> U2A["U2 Unit A\nLM4562\nDiff-Amp G=1"] --> OUT
 
     style NIN fill:#d4edda
     style IIN fill:#f8d7da
@@ -186,9 +187,9 @@ flowchart LR
     RX -->|"R26 (10 kΩ 0,1%)"| SUMNODE
     OUT -->|"R50 (10 kΩ 0,1%) Feedback"| SUMNODE
 
-    SW2_1["SW2.1 → R29 (7,5 kΩ)"] -->|"wenn geschlossen"| SUMNODE
+    SW2_1["SW2.1 → R27 (30 kΩ)"] -->|"wenn geschlossen"| SUMNODE
     SW2_2["SW2.2 → R28 (15 kΩ)"] -->|"wenn geschlossen"| SUMNODE
-    SW2_3["SW2.3 → R27 (30 kΩ)"] -->|"wenn geschlossen"| SUMNODE
+    SW2_3["SW2.3 → R29 (7,5 kΩ)"] -->|"wenn geschlossen"| SUMNODE
 
     GND["GND"] --> SW2_1
     GND --> SW2_2
@@ -206,10 +207,10 @@ flowchart LR
 | U2 (Unit B) | LM4562 | Gain-Verstärker (inv.) | Pin6=IN-_B=/CH1_SUMNODE, Pin5=IN+_B=GND, Pin7=OUT_B |
 | R26 | 10 kΩ 0,1% | Rin (Eingang) | /CH1_RX_OUT → /CH1_SUMNODE |
 | R50 | 10 kΩ 0,1% | Rf (Feedback) | /CH1_GAIN_OUT → /CH1_SUMNODE |
-| R27 | 30 kΩ | DIP SW2 Pos3 | /CH1_SW_OUT_1 → /CH1_SUMNODE (parallel zu Rin wenn SW geschl.) |
+| R27 | 30 kΩ | DIP SW2 Pos1 | /CH1_SW_OUT_1 → /CH1_SUMNODE (parallel zu Rin wenn SW geschl.) |
 | R28 | 15 kΩ | DIP SW2 Pos2 | /CH1_SW_OUT_2 → /CH1_SUMNODE |
-| R29 | 7,5 kΩ | DIP SW2 Pos1 | /CH1_SW_OUT_3 → /CH1_SUMNODE |
-| SW2 | SW_DIP_x03 | Gain-Wahl CH1 | Pos1→/CH1_SW_OUT_3, Pos2→/CH1_SW_OUT_2, Pos3→/CH1_SW_OUT_1 (andere Seite je = /CH1_RX_OUT) |
+| R29 | 7,5 kΩ | DIP SW2 Pos3 | /CH1_SW_OUT_3 → /CH1_SUMNODE |
+| SW2 | SW_DIP_x03 | Gain-Wahl CH1 | Pos1→/CH1_SW_OUT_1, Pos2→/CH1_SW_OUT_2, Pos3→/CH1_SW_OUT_3 (andere Seite je = /CH1_RX_OUT) |
 
 ---
 
@@ -294,11 +295,10 @@ flowchart LR
     R58_n -->|"/CH1_OUT_COLD"| D9_n["D9 ESD\nPESD5V0S1BL"]
     R76_n -->|"/CH1_OUT_HOT"| D2_n["D2 ESD\nPESD5V0S1BL"]
 
-    D9_n --> R88_n["R88 (10Ω) + C44 (100nF)\nZobel COLD → GND"]
-    D2_n --> R82_n["R82 (10Ω) + C38 (100nF)\nZobel HOT → GND"]
-
-    R88_n -->|"Pin3 COLD"| XOUT["XLR OUT J9\nPin1=GND\nPin2=/CH1_OUT_PROT_HOT\nPin3=/CH1_OUT_PROT_COLD"]
-    R82_n -->|"Pin2 HOT"| XOUT
+    D9_n -->|"Pin3"| XOUT["XLR OUT J9\nPin1=GND\nPin2=/CH1_OUT_HOT\nPin3=/CH1_OUT_COLD"]
+    D2_n -->|"Pin2"| XOUT
+    D9_n --> ZOB_C["R88 (10Ω)+C44 (100nF)\nZobel /CH1_OUT_COLD\n→ /CH1_OUT_PROT_COLD → GND"]
+    D2_n --> ZOB_H["R82 (10Ω)+C38 (100nF)\nZobel /CH1_OUT_HOT\n→ /CH1_OUT_PROT_HOT → GND"]
 
     style UA fill:#d4edda
     style UB fill:#d4edda
@@ -320,7 +320,7 @@ flowchart LR
 | C44 | 100 nF C0G | Zobel C COLD | /CH1_OUT_PROT_COLD → GND |
 | R82 | 10 Ω | Zobel R HOT | /CH1_OUT_HOT → /CH1_OUT_PROT_HOT |
 | C38 | 100 nF C0G | Zobel C HOT | /CH1_OUT_PROT_HOT → GND |
-| J9 | XLR Male | Ausgang CH1 | Pin1=GND, Pin2=/CH1_OUT_PROT_HOT, Pin3=/CH1_OUT_PROT_COLD |
+| J9 | XLR Male | Ausgang CH1 | Pin1=GND, Pin2=/CH1_OUT_HOT, Pin3=/CH1_OUT_COLD |
 
 ---
 
@@ -480,7 +480,9 @@ flowchart TD
 Jeder Kanal hat einen **3-poligen DIP-Switch** (SW2 = CH1, SW3 = CH2, …, SW7 = CH6).
 Die drei Positionen schalten Widerstände **parallel** zum Eingangs-Widerstand der Gain-Stufe. Mehr aktive Schalter = niedrigerer Rin_eff = höhere Verstärkung.
 
-| SW Pos 3 (30kΩ) | SW Pos 2 (15kΩ) | SW Pos 1 (7,5kΩ) | Rin_eff | Gain (×) | Gain (dB) |
+> **Positions-Zuordnung:** Pos1 (pin1/pin6) = 30kΩ, Pos2 (pin2/pin5) = 15kΩ, Pos3 (pin3/pin4) = 7,5kΩ.
+
+| SW Pos 1 (30kΩ) | SW Pos 2 (15kΩ) | SW Pos 3 (7,5kΩ) | Rin_eff | Gain (×) | Gain (dB) |
 |:---:|:---:|:---:|---:|---:|---:|
 | OFF | OFF | OFF | 10,00 kΩ | 1,00 | 0,0 dB |
 | OFF | OFF | ON | 7,50 kΩ | 1,33 | +2,5 dB |
@@ -492,7 +494,7 @@ Die drei Positionen schalten Widerstände **parallel** zum Eingangs-Widerstand d
 | ON | ON | ON | 2,73 kΩ | 3,66 | **+11,3 dB** |
 
 **Formel:**
-$$G = 1 + \frac{R_f}{R_{in,eff}} \quad\text{mit}\quad R_{in,eff} = R_{base} \parallel R_{pos3} \parallel R_{pos2} \parallel R_{pos1}$$
+$$G = \frac{R_f}{R_{in,eff}} \quad\text{mit}\quad R_{in,eff} = R_{base} \parallel R_{pos1} \parallel R_{pos2} \parallel R_{pos3}$$
 
 $$R_{in,base} = R26 = 10\,k\Omega,\quad R_f = R50 = 10\,k\Omega$$
 
@@ -500,18 +502,18 @@ $$R_{in,base} = R26 = 10\,k\Omega,\quad R_f = R50 = 10\,k\Omega$$
 graph LR
     SIG["CH1_RX_OUT\nSignal"]
     R26["R26: 10kΩ\nEingang"]
-    R27["R27: 30kΩ\n(SW2 Pos3)"]
+    R27["R27: 30kΩ\n(SW2 Pos1)"]
     R28["R28: 15kΩ\n(SW2 Pos2)"]
-    R29["R29: 7,5kΩ\n(SW2 Pos1)"]
+    R29["R29: 7,5kΩ\n(SW2 Pos3)"]
     GND["GND"]
     OP["U2B IN−\n(SUMNODE=Pin6)"]
     RF["R50: 10kΩ\nFeedback"]
     OUT["CH1_GAIN_OUT"]
 
     SIG --> R26 --> OP
-    R27 -->|"SW2.3"| OP
+    R27 -->|"SW2.1"| OP
     R28 -->|"SW2.2"| OP
-    R29 -->|"SW2.1"| OP
+    R29 -->|"SW2.3"| OP
     GND --> R27
     GND --> R28
     GND --> R29
@@ -731,12 +733,12 @@ Zuordnung pro Kanal:
 | J6 | XLR_IN_4 | XLR-F 3pol | Eingang CH4 | Pin1=GND, Pin2=/CH4_HOT_RAW, Pin3=/CH4_COLD_RAW, PinG=GND |
 | J7 | XLR_IN_5 | XLR-F 3pol | Eingang CH5 | Pin1=GND, Pin2=/CH5_HOT_RAW, Pin3=/CH5_COLD_RAW, PinG=GND |
 | J8 | XLR_IN_6 | XLR-F 3pol | Eingang CH6 | Pin1=GND, Pin2=/CH6_HOT_RAW, Pin3=/CH6_COLD_RAW, PinG=GND |
-| J9 | XLR3_OUT | XLR-M 3pol | Ausgang CH1 | Pin1=GND, Pin2=/CH1_OUT_PROT_HOT, Pin3=/CH1_OUT_PROT_COLD |
-| J10 | XLR3_OUT | XLR-M 3pol | Ausgang CH2 | Pin1=GND, Pin2=/CH2_OUT_PROT_HOT, Pin3=/CH2_OUT_PROT_COLD |
-| J11 | XLR3_OUT | XLR-M 3pol | Ausgang CH3 | Pin1=GND, Pin2=/CH3_OUT_PROT_HOT, Pin3=/CH3_OUT_PROT_COLD |
-| J12 | XLR3_OUT | XLR-M 3pol | Ausgang CH4 | Pin1=GND, Pin2=/CH4_OUT_PROT_HOT, Pin3=/CH4_OUT_PROT_COLD |
-| J13 | XLR3_OUT | XLR-M 3pol | Ausgang CH5 | Pin1=GND, Pin2=/CH5_OUT_PROT_HOT, Pin3=/CH5_OUT_PROT_COLD |
-| J14 | XLR3_OUT | XLR-M 3pol | Ausgang CH6 | Pin1=GND, Pin2=/CH6_OUT_PROT_HOT, Pin3=/CH6_OUT_PROT_COLD |
+| J9 | XLR3_OUT | XLR-M 3pol | Ausgang CH1 | Pin1=GND, Pin2=/CH1_OUT_HOT, Pin3=/CH1_OUT_COLD |
+| J10 | XLR3_OUT | XLR-M 3pol | Ausgang CH2 | Pin1=GND, Pin2=/CH2_OUT_HOT, Pin3=/CH2_OUT_COLD |
+| J11 | XLR3_OUT | XLR-M 3pol | Ausgang CH3 | Pin1=GND, Pin2=/CH3_OUT_HOT, Pin3=/CH3_OUT_COLD |
+| J12 | XLR3_OUT | XLR-M 3pol | Ausgang CH4 | Pin1=GND, Pin2=/CH4_OUT_HOT, Pin3=/CH4_OUT_COLD |
+| J13 | XLR3_OUT | XLR-M 3pol | Ausgang CH5 | Pin1=GND, Pin2=/CH5_OUT_HOT, Pin3=/CH5_OUT_COLD |
+| J14 | XLR3_OUT | XLR-M 3pol | Ausgang CH6 | Pin1=GND, Pin2=/CH6_OUT_HOT, Pin3=/CH6_OUT_COLD |
 
 ---
 
@@ -849,11 +851,13 @@ Diese Anleitung beschreibt die minimalen Verbindungen, um den Schaltplan von Gru
 13. D8 (PESD5V0S1BL): A=GND, K=/CH1_HOT_RAW   ← ESD Eingang HOT
     D10 (PESD5V0S1BL): A=GND, K=/CH1_COLD_RAW  ← ESD Eingang COLD
 
-14. C62 (2,2µF C0G): /CH1_HOT_RAW ─┤├─ → R94 (47Ω) → /CH1_HOT_IN
-    C50 (100pF C0G): /CH1_HOT_IN → GND  ← EMI-Tiefpass
+14. R94 (47Ω): /CH1_HOT_RAW → /CH1_EMI_HOT         ← EMI-Serienwiderstand HOT
+    C50 (100pF C0G): /CH1_EMI_HOT → GND             ← HF-Tiefpass (fc ≈ 33 MHz)
+    C62 (2,2µF C0G): /CH1_EMI_HOT → /CH1_HOT_IN    ← DC-Blocking HOT
 
-    C63 (2,2µF C0G): /CH1_COLD_RAW ─┤├─ → R95 (47Ω) → /CH1_COLD_IN
-    C51 (100pF C0G): /CH1_COLD_IN → GND
+    R95 (47Ω): /CH1_COLD_RAW → /CH1_EMI_COLD        ← EMI-Serienwiderstand COLD
+    C51 (100pF C0G): /CH1_EMI_COLD → GND            ← HF-Tiefpass
+    C63 (2,2µF C0G): /CH1_EMI_COLD → /CH1_COLD_IN  ← DC-Blocking COLD
 ```
 
 ### Schritt 4 — Differenzieller Receiver CH1 (U2 Unit A)
@@ -888,10 +892,10 @@ Diese Anleitung beschreibt die minimalen Verbindungen, um den Schaltplan von Gru
     IN+_B (Pin 5 U2) → GND
 
     SW2 (DIP 3pol, CH1) — Gain-Widerstände (verbinden SW-Ausgang mit SUMNODE):
-      SW2-Pos3 (30kΩ):  R27 → /CH1_SUMNODE  → Gain ×3 (+9,5dB)
-      SW2-Pos2 (15kΩ):  R28 → /CH1_SUMNODE  → Gain ×1,5 (+3,5dB)
-      SW2-Pos1 (7,5kΩ): R29 → /CH1_SUMNODE  → Gain ×0,75 (−2,5dB)
-    (Mehrere Positionen kombinierbar für feinere Abstufung)
+      SW2-Pos1 (30kΩ):  R27 → /CH1_SUMNODE  → Gain ×1,33 (+2,5dB) allein
+      SW2-Pos2 (15kΩ):  R28 → /CH1_SUMNODE  → Gain ×1,67 (+4,4dB) allein
+      SW2-Pos3 (7,5kΩ): R29 → /CH1_SUMNODE  → Gain ×2,33 (+7,4dB) allein
+    (Mehrere Positionen kombinierbar, max. ×3,66 = +11,3dB bei allen ON)
 
     OUT_B (Pin 7 U2) = /CH1_GAIN_OUT
 ```
@@ -939,8 +943,10 @@ Diese Anleitung beschreibt die minimalen Verbindungen, um den Schaltplan von Gru
 
 22. J9 (XLR Male, CH1):
     Pin 1 → GND
-    Pin 2 → /CH1_OUT_PROT_HOT  (nach Zobel)
-    Pin 3 → /CH1_OUT_PROT_COLD
+    Pin 2 → /CH1_OUT_HOT   (gleiches Netz wie D2 K und R82 Pin1)
+    Pin 3 → /CH1_OUT_COLD  (gleiches Netz wie D9 K und R88 Pin1)
+    Hinweis: R82+C38 und R88+C44 sind Zobel-Snubber (Parallel zu GND)
+             /CH1_OUT_PROT_HOT = Netz zwischen R82 und C38 (nur intern)
 ```
 
 ---
@@ -972,9 +978,9 @@ Diese Anleitung beschreibt die minimalen Verbindungen, um den Schaltplan von Gru
 | **Rf (OUT_A→IN-_A)** | R20 | R21 | R22 | R23 | R24 | R25 |
 | **Rin_gain (RX→SUM)** | R26 | R30 | R34 | R38 | R42 | R46 |
 | **Rf_gain (OUT→SUM)** | R50 | R51 | R52 | R53 | R54 | R55 |
-| **R_30k (DIP SW pos3)** | R27 | R31 | R35 | R39 | R43 | R47 |
+| **R_30k (DIP SW pos1)** | R27 | R31 | R35 | R39 | R43 | R47 |
 | **R_15k (DIP SW pos2)** | R28 | R32 | R36 | R40 | R44 | R48 |
-| **R_7.5k (DIP SW pos1)** | R29 | R33 | R37 | R41 | R45 | R49 |
+| **R_7.5k (DIP SW pos3)** | R29 | R33 | R37 | R41 | R45 | R49 |
 | **Rin_inv (Driver)** | R64 | R65 | R66 | R67 | R68 | R69 |
 | **Rf_inv (Driver)** | R70 | R71 | R72 | R73 | R74 | R75 |
 | **R_47Ω COLD (BUF→OUT)** | R58 | R59 | R60 | R61 | R62 | R63 |
