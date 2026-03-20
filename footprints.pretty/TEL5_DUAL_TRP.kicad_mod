@@ -45,4 +45,9 @@
   (pad "16" thru_hole circle (at 15.24 17.78) (size 1.3208 1.3208) (drill 0.8128) (layers *.Cu *.Mask))
   (pad "22" thru_hole circle (at 15.24 2.54) (size 1.3208 1.3208) (drill 0.8128) (layers *.Cu *.Mask))
   (pad "23" thru_hole circle (at 15.24 0) (size 1.3208 1.3208) (drill 0.8128) (layers *.Cu *.Mask))
+  (model "${KIPRJMOD}/footprints.pretty/3dshapes/REC5-2412DRW_H_B.step"
+    (offset (xyz 0.0 0.0 0.0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
 )

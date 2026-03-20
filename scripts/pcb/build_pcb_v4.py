@@ -100,6 +100,8 @@ EXTRA_FOOTPRINTS = {
         KICAD_FP + '/Capacitor_SMD.pretty/C_1210_3225Metric.kicad_mod',
     'Package_TO_SOT_SMD:SOT-23-5':
         KICAD_FP + '/Package_TO_SOT_SMD.pretty/SOT-23-5.kicad_mod',
+    'Package_TO_SOT_SMD:SOT-23':
+        KICAD_FP + '/Package_TO_SOT_SMD.pretty/SOT-23.kicad_mod',
     'Inductor_SMD:L_0805_2012Metric':
         KICAD_FP + '/Inductor_SMD.pretty/L_0805_2012Metric.kicad_mod',
     'Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical':
@@ -592,10 +594,12 @@ def apply_position_to_footprint(block, ref, value, x, y, rot, net_to_id, pins_ma
     # Inject correct nets
     def inject_net(m):
         pad_text = m.group(0)
-        pn_m = re.match(r'\(pad\s+"([^"]+)"', pad_text)
+        # Match both quoted "1" and unquoted 1 pad names
+        pn_m = re.match(r'\(pad\s+(?:"([^"]+)"|(\S+))', pad_text)
         if not pn_m:
             return pad_text
-        net_name = pins_map.get(pn_m.group(1), '')
+        pad_name = pn_m.group(1) or pn_m.group(2)
+        net_name = pins_map.get(pad_name, '')
         if not net_name:
             return pad_text
         nid = net_to_id.get(net_name, 0)
@@ -608,8 +612,10 @@ def apply_position_to_footprint(block, ref, value, x, y, rot, net_to_id, pins_ma
             return pad_text[:ins] + f'\n\t\t\t(net {nid} "{escaped_net}")' + pad_text[ins:]
         return pad_text[:-1] + f'\n\t\t\t(net {nid} "{escaped_net}")\n\t\t)'
 
+    # Match pads with both quoted and unquoted names
+    # \s* inside repetition to consume whitespace between sub-expressions
     block = re.sub(
-        r'\(pad\s+"[^"]+"\s+\w+\s+\w+[^(]*(?:\([^)]*\))*[^)]*\)',
+        r'\(pad\s+(?:"[^"]+"|[^\s)]+)\s+\w+\s+\w+\s*(?:\([^)]*\)\s*)*\)',
         inject_net, block
     )
     return block
@@ -748,10 +754,18 @@ def main():
         template = templates.get(lookup_fp)
         if not template:
             fp_short = lookup_fp.split(':')[-1] if ':' in lookup_fp else lookup_fp
+            # Try exact match on short name first (e.g. "SOT-23" != "SOT-23-5")
             for tid, tblock in templates.items():
-                if fp_short in tid:
+                tid_short = tid.split(':')[-1] if ':' in tid else tid
+                if fp_short == tid_short:
                     template = tblock
                     break
+            # Fallback: substring match
+            if not template:
+                for tid, tblock in templates.items():
+                    if fp_short in tid:
+                        template = tblock
+                        break
 
         if not template:
             print(f"  [MISS]    {ref} ({lookup_fp}): no template")
