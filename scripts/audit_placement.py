@@ -94,15 +94,20 @@ def get_supply_pin_positions(ic):
         # SOIC-8: V+ = Pin 8 at local (+2.475, -1.905), V- = Pin 4 at local (-2.475, +1.905)
         local_pins = [('V+', 2.475, -1.905), ('V-', -2.475, 1.905)]
         for name, lx, ly in local_pins:
-            # Rotate local offset by IC rotation (KiCad: Y-axis inverted, CCW positive)
             rx = lx * math.cos(rot_rad) - ly * math.sin(rot_rad)
             ry = lx * math.sin(rot_rad) + ly * math.cos(rot_rad)
             pins.append((name, cx + rx, cy + ry))
     elif 'SOT-23-5' in fp or 'SOT' in fp:
-        # SOT-23-5: pins at local offsets ~±0.95mm x, ±0.65mm y
-        # ADP7182: Pin 1=EN (-0.95, -0.65), Pin 2=VOUT (-0.95, 0.65), Pin 3=GND (0.95, 0.65)
-        # Pin 4=NR (0.95, -0.65), Pin 5=VIN (0.95, 0) — but supply pins are VIN(5) and GND(3)
+        # SOT-23-5: ADP7182 supply pins VIN(5) and GND(3)
         local_pins = [('VIN', 0.95, 0.0), ('GND', 0.95, 0.65)]
+        for name, lx, ly in local_pins:
+            rx = lx * math.cos(rot_rad) - ly * math.sin(rot_rad)
+            ry = lx * math.sin(rot_rad) + ly * math.cos(rot_rad)
+            pins.append((name, cx + rx, cy + ry))
+    elif 'DIP' in fp or 'TEL5' in fp:
+        # TEL5 DIP-24: Pin 14 (+12V_RAW out) at local (15.24, 22.86)
+        #              Pin 11 (-12V_RAW out) at local (0, 22.86)
+        local_pins = [('+12V_RAW', 15.24, 22.86), ('-12V_RAW', 0.0, 22.86)]
         for name, lx, ly in local_pins:
             rx = lx * math.cos(rot_rad) - ly * math.sin(rot_rad)
             ry = lx * math.sin(rot_rad) + ly * math.cos(rot_rad)
@@ -169,25 +174,38 @@ def audit(comps):
     print(f"{'─'*70}")
 
     # For each IC, find its nearest 100nF cap
+    # LDO voltage regulators (SOT-23-5) need µF bulk, not nF — relaxed to 6mm
     channel_ics = {r: c for r, c in ics.items()
                    if 'SOIC' in c['fp'] or 'LM4562' in c['fp'] or 'SOIC127P600' in c['fp']}
     power_ics = {r: c for r, c in ics.items()
                  if 'SOT-23-5' in c['fp'] or 'DIP' in c['fp'] or 'TEL5' in c['fp']}
+    ldo_refs = {r for r, c in ics.items()
+                if 'SOT-23-5' in c.get('fp', '') or 'SOT' in c.get('fp', '')}
 
     for ref, ic in sorted(ics.items()):
-        nearest_dist, nearest_100nf, pin_name = min_dist_to_caps(ic, caps_100nf)
-        center_dist = min(dist(ic, cap) for cap in caps_100nf.values()) if caps_100nf else float('inf')
+        is_ldo = ref in ldo_refs
+        if is_ldo:
+            # LDOs: check bulk cap (≥1µF) within 6mm instead of 100nF within 3mm
+            nearest_dist, nearest_cap, pin_name = min_dist_to_caps(ic, caps_bulk)
+            threshold = 6.0
+            cap_type = "bulk≥1µF"
+        else:
+            nearest_dist, nearest_cap, pin_name = min_dist_to_caps(ic, caps_100nf)
+            threshold = 3.0
+            cap_type = "100nF"
+        center_dist = min(dist(ic, cap) for cap in (caps_bulk if is_ldo else caps_100nf).values()) \
+                      if (caps_bulk if is_ldo else caps_100nf) else float('inf')
 
-        if nearest_dist > 3.0:
+        if nearest_dist > threshold:
             errors.append(f"  ❌ {ref} ({ic['value']}) @ ({ic['x']:.1f}, {ic['y']:.1f}): "
-                         f"nearest 100nF = {nearest_100nf} @ {nearest_dist:.1f}mm pin/{center_dist:.1f}mm center (>3mm!)")
-        elif nearest_dist > 2.0:
+                         f"nearest {cap_type} = {nearest_cap} @ {nearest_dist:.1f}mm pin/{center_dist:.1f}mm center (>{threshold}mm!)")
+        elif nearest_dist > threshold * 0.67:
             warnings.append(f"  ⚠️  {ref} ({ic['value']}) @ ({ic['x']:.1f}, {ic['y']:.1f}): "
-                           f"nearest 100nF = {nearest_100nf} @ {nearest_dist:.1f}mm pin (ok but >2mm)")
+                           f"nearest {cap_type} = {nearest_cap} @ {nearest_dist:.1f}mm pin (ok but >{threshold*0.67:.1f}mm)")
             ok_count += 1
         else:
             ok_count += 1
-            print(f"  ✅ {ref} ({ic['value']}): {nearest_100nf} @ {nearest_dist:.1f}mm from {pin_name} pin")
+            print(f"  ✅ {ref} ({ic['value']}): {nearest_cap} @ {nearest_dist:.1f}mm from {pin_name} pin [{cap_type}]")
 
     for e in errors:
         print(e)

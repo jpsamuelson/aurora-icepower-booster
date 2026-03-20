@@ -426,16 +426,16 @@ def build_positions(comps):
         'C37': (103.5, 188.0,  90.0),   # 100nF V- bypass → U13 (CH6 Drv)
 
         # ══════════════════════════════════════════════════════════════
-        # DISTRIBUTED BULK CAPS — 10µF between channel pairs
-        # Rx side: all 6 channels within ~13mm ✅
-        # Driver side: covered partially by C20/C21 (schematic limit)
+        # DISTRIBUTED BULK CAPS — 10µF Rx + Driver coverage
+        # Rx side: 5 caps cover all 6 Rx ICs ✅
+        # Driver side: C20/C21/C77 repositioned ✅
         # ══════════════════════════════════════════════════════════════
         'C24': ( 75.0,  58.0,  90.0),   # 10µF V+ Rx CH1/CH2
         'C74': ( 75.0, 114.0,  90.0),   # 10µF V+ Rx CH3/CH4
         'C76': ( 75.0, 169.0,  90.0),   # 10µF V+ Rx CH5/CH6
         'C25': ( 64.0,  58.0,  90.0),   # 10µF V- Rx CH1/CH2
         'C75': ( 64.0, 114.0,  90.0),   # 10µF V- Rx CH3/CH4
-        'C77': ( 64.0, 169.0,  90.0),   # 10µF V- Rx CH5/CH6
+        'C77': (104.0, 176.0,  90.0),   # 10µF V- → Drv U13 (6.9mm)
 
         # ══════════════════════════════════════════════════════════════
         # POWER ENTRY CAPS — near TEL5 output / LDO / ferrite beads
@@ -444,22 +444,22 @@ def build_positions(comps):
         'FB1': (102.0,   8.0,  90.0),   # +12V_RAW → +12V
         'FB2': ( 96.0,  32.0,  90.0),   # -12V_RAW → -12V
 
-        # +12V_RAW entry (near FB1 input, x~99-105)
-        'C14': ( 99.0,   8.0,  90.0),   # 100nF +12V_RAW bypass (at FB1)
-        'C16': ( 96.0,   8.0,  90.0),   # 100µF +12V_RAW bulk (at FB1)
-        # +12V post-FB (near FB1 output)
-        'C18': (105.0,   5.0,  90.0),   # 100nF +12V bypass (post-FB)
+        # TEL5 output bypass — inside U1 CrtYd, between DIP rows
+        # Pin 14 (+12V_RAW) at world (87.14, 34.24)
+        # Pin 11 (-12V_RAW) at world (87.14, 19.00)
+        'C14': ( 85.0,  34.0,  90.0),   # 100nF +12V_RAW @ TEL5 pin 14 (2.2mm)
+        'C15': ( 84.5,  19.0,  90.0),   # 100nF -12V_RAW @ TEL5 pin 11 (2.6mm)
 
-        # -12V_RAW entry (near FB2 input)
-        'C15': ( 93.0,  32.0,  90.0),   # 100nF -12V_RAW bypass (at FB2)
+        # Ferrite bead area — bulk caps + post-FB bypass
+        'C16': ( 96.0,   8.0,  90.0),   # 100µF +12V_RAW bulk (at FB1)
+        'C18': (105.0,   5.0,  90.0),   # 100nF +12V bypass (post-FB)
         'C17': ( 90.0,  32.0,  90.0),   # 100µF -12V_RAW bulk (at FB2)
-        # -12V post-FB (near FB2 output)
         'C19': ( 99.0,  32.0,  90.0),   # 100nF -12V bypass (post-FB)
 
-        # V+ bulk centered among driver ICs (covers U10/U11 <15mm)
-        'C20': (111.0, 114.0,  90.0),   # 100µF V+ bulk (Drv CH3/CH4)
-        # V- bulk centered among driver ICs (covers U10/U11 <15mm)
-        'C21': (101.0, 114.0,  90.0),   # 100µF V- bulk (Drv CH3/CH4)
+        # V+ bulk for drivers U9/U10 (Drv CH2/CH3)
+        'C20': (108.0,  85.0,  90.0),   # 100µF V+ bulk (U9: 11.8mm, U10: 12.9mm)
+        # V- bulk for drivers U11/U12 (Drv CH4/CH5)
+        'C21': (104.0, 141.0,  90.0),   # 100µF V- bulk (U11: 11.5mm, U12: 13.3mm)
 
         # ══════════════════════════════════════════════════════════════
         # U14 (ADP7118 SOIC-9) BYPASS — avoid MH2 at (154,4)
