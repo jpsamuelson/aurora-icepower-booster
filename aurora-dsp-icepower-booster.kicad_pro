@@ -548,7 +548,7 @@
       },
       {
         "bus_width": 12,
-        "clearance": 0.2,
+        "clearance": 0.25,
         "diff_pair_gap": 0.25,
         "diff_pair_via_gap": 0.25,
         "diff_pair_width": 0.5,
@@ -563,6 +563,21 @@
         "via_diameter": 0.8,
         "via_drill": 0.4,
         "wire_width": 6
+      },
+      {
+        "bus_width": 12.0,
+        "clearance": 0.5,
+        "color": "",
+        "line_style": 0,
+        "micro_via_diameter": 0.3,
+        "micro_via_drill": 0.1,
+        "name": "HV",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "track_width": 0.5,
+        "via_diameter": 0.8,
+        "via_drill": 0.4,
+        "wire_width": 6.0
       }
     ],
     "meta": {
@@ -580,7 +595,7 @@
         "pattern": "-12V"
       },
       {
-        "netclass": "Power",
+        "netclass": "HV",
         "pattern": "+24V_IN"
       },
       {
@@ -672,7 +687,7 @@
         "pattern": "-12V_RAW"
       },
       {
-        "netclass": "Power",
+        "netclass": "HV",
         "pattern": "+24V*"
       }
     ],
