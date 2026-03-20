@@ -400,6 +400,7 @@ Weitere Regeln:
 ### Schaltplan
 
 - [ ] ERC fehlerfrei (`run_erc`)
+- [ ] Keine losen/unverbundenen Bauteile — alle Pins angeschlossen oder `no_connect`
 - [ ] Low-Noise Op-Amps ausgewählt
 - [ ] Entkopplung: 100 nF C0G + 10 µF an jedem IC-Versorgungspin
 - [ ] Feedback-Widerstände: Metallfilm, ±1%
@@ -412,6 +413,7 @@ Weitere Regeln:
 ### PCB-Layout
 
 - [ ] DRC fehlerfrei (`run_drc`)
+- [ ] Keine losen/unverbundenen Footprints — 0 Unconnected Items
 - [ ] Alle Netze verbunden (keine Ratsnest-Linien)
 - [ ] Massefläche unter Audio-Signalpfaden ununterbrochen
 - [ ] Audio-Traces auf Top-Layer, keine unnötigen Vias
@@ -442,6 +444,14 @@ Weitere Regeln:
 ---
 
 ## 9. Kern-Prinzipien — IMMER befolgen!
+
+### Keine losen / unverbundenen Bauteile — NIEMALS!
+
+- **Jedes elektrische Bauteil** im Schaltplan und auf dem PCB **muss vollständig verbunden** sein — keine offenen Pins, keine floating Components
+- **Schaltplan**: Alle Pins eines Bauteils müssen entweder an ein Netz angeschlossen, explizit als `no_connect` markiert oder über Power-Flags versorgt sein
+- **PCB**: Kein Footprint darf unverbundene Pads (Ratsnest-Linien) haben — alle Netze müssen geroutet sein
+- **Validierung**: Nach jeder Änderung ERC/DRC ausführen und sicherstellen, dass 0 Unconnected Items existieren
+- **Aufräumen**: Nicht mehr benötigte Bauteile sofort aus Schaltplan UND PCB entfernen — keine "Leichen" im Design belassen
 
 ### KEINE Annahmen — NIEMALS!
 
