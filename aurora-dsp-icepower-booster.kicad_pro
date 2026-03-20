@@ -675,7 +675,222 @@
         "netclass": "Power",
         "pattern": "+24V*"
       }
-    ]
+    ],
+    "nets": {
+      "/+12V": {
+        "net_class": "Power"
+      },
+      "/+12V_RAW": {
+        "net_class": "Power"
+      },
+      "/+24V_IN": {
+        "net_class": "Power"
+      },
+      "/-12V": {
+        "net_class": "Power"
+      },
+      "/-12V_RAW": {
+        "net_class": "Power"
+      },
+      "/CH1_BUF_DRIVE": {
+        "net_class": "Audio_Output"
+      },
+      "/CH1_EMI_COLD": {
+        "net_class": "Audio_Input"
+      },
+      "/CH1_EMI_HOT": {
+        "net_class": "Audio_Input"
+      },
+      "/CH1_GAIN_FB": {
+        "net_class": "Audio_Output"
+      },
+      "/CH1_INV_IN": {
+        "net_class": "Audio_Input"
+      },
+      "/CH1_OUT_DRIVE": {
+        "net_class": "Audio_Output"
+      },
+      "/CH1_OUT_PROT_COLD": {
+        "net_class": "Audio_Output"
+      },
+      "/CH1_OUT_PROT_HOT": {
+        "net_class": "Audio_Output"
+      },
+      "/CH1_SW_OUT_1": {
+        "net_class": "Audio_Output"
+      },
+      "/CH1_SW_OUT_2": {
+        "net_class": "Audio_Output"
+      },
+      "/CH1_SW_OUT_3": {
+        "net_class": "Audio_Output"
+      },
+      "/CH2_BUF_DRIVE": {
+        "net_class": "Audio_Output"
+      },
+      "/CH2_EMI_COLD": {
+        "net_class": "Audio_Input"
+      },
+      "/CH2_EMI_HOT": {
+        "net_class": "Audio_Input"
+      },
+      "/CH2_GAIN_FB": {
+        "net_class": "Audio_Output"
+      },
+      "/CH2_INV_IN": {
+        "net_class": "Audio_Input"
+      },
+      "/CH2_OUT_DRIVE": {
+        "net_class": "Audio_Output"
+      },
+      "/CH2_OUT_PROT_COLD": {
+        "net_class": "Audio_Output"
+      },
+      "/CH2_OUT_PROT_HOT": {
+        "net_class": "Audio_Output"
+      },
+      "/CH2_SW_OUT_1": {
+        "net_class": "Audio_Output"
+      },
+      "/CH2_SW_OUT_2": {
+        "net_class": "Audio_Output"
+      },
+      "/CH2_SW_OUT_3": {
+        "net_class": "Audio_Output"
+      },
+      "/CH3_BUF_DRIVE": {
+        "net_class": "Audio_Output"
+      },
+      "/CH3_EMI_COLD": {
+        "net_class": "Audio_Input"
+      },
+      "/CH3_EMI_HOT": {
+        "net_class": "Audio_Input"
+      },
+      "/CH3_GAIN_FB": {
+        "net_class": "Audio_Output"
+      },
+      "/CH3_INV_IN": {
+        "net_class": "Audio_Input"
+      },
+      "/CH3_OUT_DRIVE": {
+        "net_class": "Audio_Output"
+      },
+      "/CH3_OUT_PROT_COLD": {
+        "net_class": "Audio_Output"
+      },
+      "/CH3_OUT_PROT_HOT": {
+        "net_class": "Audio_Output"
+      },
+      "/CH3_SW_OUT_1": {
+        "net_class": "Audio_Output"
+      },
+      "/CH3_SW_OUT_2": {
+        "net_class": "Audio_Output"
+      },
+      "/CH3_SW_OUT_3": {
+        "net_class": "Audio_Output"
+      },
+      "/CH4_BUF_DRIVE": {
+        "net_class": "Audio_Output"
+      },
+      "/CH4_EMI_COLD": {
+        "net_class": "Audio_Input"
+      },
+      "/CH4_EMI_HOT": {
+        "net_class": "Audio_Input"
+      },
+      "/CH4_GAIN_FB": {
+        "net_class": "Audio_Output"
+      },
+      "/CH4_INV_IN": {
+        "net_class": "Audio_Input"
+      },
+      "/CH4_OUT_DRIVE": {
+        "net_class": "Audio_Output"
+      },
+      "/CH4_OUT_PROT_COLD": {
+        "net_class": "Audio_Output"
+      },
+      "/CH4_OUT_PROT_HOT": {
+        "net_class": "Audio_Output"
+      },
+      "/CH4_SW_OUT_1": {
+        "net_class": "Audio_Output"
+      },
+      "/CH4_SW_OUT_2": {
+        "net_class": "Audio_Output"
+      },
+      "/CH4_SW_OUT_3": {
+        "net_class": "Audio_Output"
+      },
+      "/CH5_BUF_DRIVE": {
+        "net_class": "Audio_Output"
+      },
+      "/CH5_EMI_COLD": {
+        "net_class": "Audio_Input"
+      },
+      "/CH5_EMI_HOT": {
+        "net_class": "Audio_Input"
+      },
+      "/CH5_GAIN_FB": {
+        "net_class": "Audio_Output"
+      },
+      "/CH5_INV_IN": {
+        "net_class": "Audio_Input"
+      },
+      "/CH5_OUT_DRIVE": {
+        "net_class": "Audio_Output"
+      },
+      "/CH5_OUT_PROT_COLD": {
+        "net_class": "Audio_Output"
+      },
+      "/CH5_OUT_PROT_HOT": {
+        "net_class": "Audio_Output"
+      },
+      "/CH5_SW_OUT_1": {
+        "net_class": "Audio_Output"
+      },
+      "/CH5_SW_OUT_2": {
+        "net_class": "Audio_Output"
+      },
+      "/CH5_SW_OUT_3": {
+        "net_class": "Audio_Output"
+      },
+      "/CH6_BUF_DRIVE": {
+        "net_class": "Audio_Output"
+      },
+      "/CH6_EMI_COLD": {
+        "net_class": "Audio_Input"
+      },
+      "/CH6_EMI_HOT": {
+        "net_class": "Audio_Input"
+      },
+      "/CH6_GAIN_FB": {
+        "net_class": "Audio_Output"
+      },
+      "/CH6_INV_IN": {
+        "net_class": "Audio_Input"
+      },
+      "/CH6_OUT_DRIVE": {
+        "net_class": "Audio_Output"
+      },
+      "/CH6_OUT_PROT_COLD": {
+        "net_class": "Audio_Output"
+      },
+      "/CH6_OUT_PROT_HOT": {
+        "net_class": "Audio_Output"
+      },
+      "/CH6_SW_OUT_1": {
+        "net_class": "Audio_Output"
+      },
+      "/CH6_SW_OUT_2": {
+        "net_class": "Audio_Output"
+      },
+      "/CH6_SW_OUT_3": {
+        "net_class": "Audio_Output"
+      }
+    }
   },
   "pcbnew": {
     "last_paths": {

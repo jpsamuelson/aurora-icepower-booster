@@ -738,6 +738,18 @@ def build_zones(net_to_id):
     z2 = tmpl.format(nid=gnd_id, nm=gnd_name, layer='B.Cu', uid=str(uuid_mod.uuid4()), bw=bw, bh=bh)
     return '\n' + z1 + z2
 
+def build_board_text():
+    """Add project info silkscreen text per copilot-instructions Section 5."""
+    texts = []
+    # Single-line format required for kicad-cli compatibility; use B.SilkS (not B.Silkscreen)
+    tmpl = '\t(gr_text "{text}" (at {x} {y}) (layer "{layer}") (uuid "{uid}") (effects (font (size 1.2 1.2) (thickness 0.15))))\n'
+    texts.append(tmpl.format(text="Aurora DSP IcePower Booster", x=30.0, y=197.0,
+                             layer="B.SilkS", uid=str(uuid_mod.uuid4())))
+    texts.append(tmpl.format(text="Rev 1.0", x=30.0, y=199.0,
+                             layer="B.SilkS", uid=str(uuid_mod.uuid4())))
+    return ''.join(texts)
+
+
 # ─────────────────────────────────────────────────────────────────────
 # MAIN
 # ─────────────────────────────────────────────────────────────────────
@@ -848,6 +860,10 @@ def main():
     # 8. Board outline + zones
     parts.append(build_board_outline())
     parts.append(build_zones(net_to_id))
+
+    # 9. Board silkscreen text (Projektname, Version, Datum)
+    parts.append(build_board_text())
+
     parts.append(')\n')
 
     # 9. Write + validate

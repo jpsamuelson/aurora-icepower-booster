@@ -31,6 +31,13 @@
     (constraint track_width (min 0.3mm)))
 
 # ============================================================
+# Audio Power (analoge Versorgung, breitere Traces)
+# ============================================================
+(rule audio_power_width
+    (condition "A.hasNetclass('Audio_Power')")
+    (constraint track_width (min 0.5mm)))
+
+# ============================================================
 # Board-Edge
 # ============================================================
 (rule board_edge
