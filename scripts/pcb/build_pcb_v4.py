@@ -362,93 +362,129 @@ def build_positions(comps):
         pos[ref] = (x, y, 0)
         print(f"  [UNCLASS] {ref} (CH{ch}, fp={comp['footprint'].split(':')[-1]}) → ({x:.0f},{y:.0f})")
 
-    # ── POWER ZONE COMPONENTS ────────────────────────────────────
-    # Explicit positions for all global (no CHn_ net) components.
-    # Verified from kicad-cli XML netlist: U1=TEL5, U14=ADP7118, U15=ADP7182,
-    # SW1=ALWAYS/REMOTE, J1=barrel jack, J2=remote (all already in FIXED).
-    # Layout: x=20-80 (remote/switch area), x=80-180 (power rail area, y=0-40)
+    # ── POWER ZONE + IC BYPASS CAPS ─────────────────────────────
+    # Per copilot-instructions.md:
+    #   HF-Entkopplung (100nF C0G): <3mm from IC V+/V- pin
+    #   Lokale Entkopplung (10µF):  <20mm from IC
+    #   Bulk (100µF):               at supply entry
+    #
+    # SOIC-8 LM4562 pin positions (from footprint extraction):
+    #   Pin 8 (V+) at local (+2.475, -1.905) → right-top
+    #   Pin 4 (V-) at local (-2.475, +1.905) → left-bottom
+    # 0805 cap courtyard: 3.4×1.96mm
+    #
+    # Strategy: Place V+ cap at IC_x+2.5, CH_Y-4.7 (above IC, near V+ pin 8)
+    #           Place V- cap at IC_x-2.5, CH_Y+4.7 (below IC, near V- pin 4)
+    #           At 90° orientation, cap CrtYd is ±0.98mm X, ±1.7mm Y
+    #           IC CrtYd (SOIC-8): ±3.70mm X, ±2.70mm Y
+    #           Cap CrtYd bottom = CH_Y-4.7+1.7 = CH_Y-3.0 < IC top CH_Y-2.7 ✓
+    #           Pin-to-cap distance: ~2.8mm ✓ (< 3mm spec)
     POWER_ZONE = {
-        # ── ICs ──────────────────────────────────────────────────────
-        # U1 TEL5-2422 DIP-24 rotated 90° to avoid CH1 collision
-        # CrtYd at 90°CW: x=[105..137], y=[1..22] — clears CH1@y=44
-        'U1':  (110.0,  19.0,  90.0),
-        # U14 ADP7118 +LDO — kept clear of MH2 @(154,4) courtyard
-        'U14': (146.0,   4.0,   0.0),
-        # U15 ADP7182 -LDO — below U1 CrtYd, left of J9 CrtYd (x<132)
-        'U15': (125.0,  25.0,   0.0),
+        # ══════════════════════════════════════════════════════════════
+        # ICs
+        # ══════════════════════════════════════════════════════════════
+        'U1':  (110.0,  19.0,  90.0),   # TEL5-2422 DIP-24 rotated 90°
+        'U14': (146.0,   4.0,   0.0),   # ADP7118 +LDO
+        'U15': (125.0,  25.0,   0.0),   # ADP7182 -LDO
 
-        # ── Ferrite beads ±12V (left of U1) ──────────────────────────
+        # ══════════════════════════════════════════════════════════════
+        # Rx IC BYPASS CAPS — 100nF V+/V- per Rx LM4562 (<3mm from pin)
+        # U2-U7 at x=69, CH_Y[1..6]
+        # V+ cap: x=71.5 (IC+2.5), y=CH_Y-4.7  (~2.8mm from V+ pin 8)
+        # V- cap: x=66.5 (IC-2.5), y=CH_Y+4.7  (~2.8mm from V- pin 4)
+        # ══════════════════════════════════════════════════════════════
+        'C2':  ( 71.5,  39.5,  90.0),   # 100nF V+ bypass → U2 (CH1 Rx)
+        'C3':  ( 71.5,  67.5,  90.0),   # 100nF V+ bypass → U3 (CH2 Rx)
+        'C4':  ( 71.5,  95.0,  90.0),   # 100nF V+ bypass → U4 (CH3 Rx)
+        'C5':  ( 71.5, 123.0,  90.0),   # 100nF V+ bypass → U5 (CH4 Rx)
+        'C6':  ( 71.5, 150.5,  90.0),   # 100nF V+ bypass → U6 (CH5 Rx)
+        'C7':  ( 71.5, 178.5,  90.0),   # 100nF V+ bypass → U7 (CH6 Rx)
+        'C8':  ( 66.5,  49.0,  90.0),   # 100nF V- bypass → U2 (CH1 Rx)
+        'C9':  ( 66.5,  77.0,  90.0),   # 100nF V- bypass → U3 (CH2 Rx)
+        'C10': ( 66.5, 104.5,  90.0),   # 100nF V- bypass → U4 (CH3 Rx)
+        'C11': ( 66.5, 132.5,  90.0),   # 100nF V- bypass → U5 (CH4 Rx)
+        'C12': ( 66.5, 160.0,  90.0),   # 100nF V- bypass → U6 (CH5 Rx)
+        'C13': ( 66.5, 188.0,  90.0),   # 100nF V- bypass → U7 (CH6 Rx)
+
+        # ══════════════════════════════════════════════════════════════
+        # Driver IC BYPASS CAPS — 100nF V+/V- per Driver LM4562 (<3mm)
+        # U8-U13 at x=106, CH_Y[1..6]
+        # V+ cap: x=108.5 (IC+2.5), y=CH_Y-4.7  (~2.8mm from V+ pin 8)
+        # V- cap: x=103.5 (IC-2.5), y=CH_Y+4.7  (~2.8mm from V- pin 4)
+        # ══════════════════════════════════════════════════════════════
+        'C26': (108.5,  39.5,  90.0),   # 100nF V+ bypass → U8  (CH1 Drv)
+        'C27': (108.5,  67.5,  90.0),   # 100nF V+ bypass → U9  (CH2 Drv)
+        'C28': (108.5,  95.0,  90.0),   # 100nF V+ bypass → U10 (CH3 Drv)
+        'C29': (108.5, 123.0,  90.0),   # 100nF V+ bypass → U11 (CH4 Drv)
+        'C30': (108.5, 150.5,  90.0),   # 100nF V+ bypass → U12 (CH5 Drv)
+        'C31': (108.5, 178.5,  90.0),   # 100nF V+ bypass → U13 (CH6 Drv)
+        'C32': (103.5,  49.0,  90.0),   # 100nF V- bypass → U8  (CH1 Drv)
+        'C33': (103.5,  77.0,  90.0),   # 100nF V- bypass → U9  (CH2 Drv)
+        'C34': (103.5, 104.5,  90.0),   # 100nF V- bypass → U10 (CH3 Drv)
+        'C35': (103.5, 132.5,  90.0),   # 100nF V- bypass → U11 (CH4 Drv)
+        'C36': (103.5, 160.0,  90.0),   # 100nF V- bypass → U12 (CH5 Drv)
+        'C37': (103.5, 188.0,  90.0),   # 100nF V- bypass → U13 (CH6 Drv)
+
+        # ══════════════════════════════════════════════════════════════
+        # DISTRIBUTED BULK CAPS — 10µF between channel pairs
+        # Rx side: all 6 channels within ~13mm ✅
+        # Driver side: covered partially by C20/C21 (schematic limit)
+        # ══════════════════════════════════════════════════════════════
+        'C24': ( 75.0,  58.0,  90.0),   # 10µF V+ Rx CH1/CH2
+        'C74': ( 75.0, 114.0,  90.0),   # 10µF V+ Rx CH3/CH4
+        'C76': ( 75.0, 169.0,  90.0),   # 10µF V+ Rx CH5/CH6
+        'C25': ( 64.0,  58.0,  90.0),   # 10µF V- Rx CH1/CH2
+        'C75': ( 64.0, 114.0,  90.0),   # 10µF V- Rx CH3/CH4
+        'C77': ( 64.0, 169.0,  90.0),   # 10µF V- Rx CH5/CH6
+
+        # ══════════════════════════════════════════════════════════════
+        # POWER ENTRY CAPS — near TEL5 output / LDO / ferrite beads
+        # ══════════════════════════════════════════════════════════════
+        # Ferrite beads
         'FB1': (102.0,   8.0,  90.0),   # +12V_RAW → +12V
-        'FB2': ( 93.0,  32.0,  90.0),   # -12V_RAW → -12V (between C13@90 and C19@96)
+        'FB2': ( 96.0,  32.0,  90.0),   # -12V_RAW → -12V
 
-        # ── Enable / Mute MOSFETs ─────────────────────────────────────
+        # +12V_RAW entry (near FB1 input, x~99-105)
+        'C14': ( 99.0,   8.0,  90.0),   # 100nF +12V_RAW bypass (at FB1)
+        'C16': ( 96.0,   8.0,  90.0),   # 100µF +12V_RAW bulk (at FB1)
+        # +12V post-FB (near FB1 output)
+        'C18': (105.0,   5.0,  90.0),   # 100nF +12V bypass (post-FB)
+
+        # -12V_RAW entry (near FB2 input)
+        'C15': ( 93.0,  32.0,  90.0),   # 100nF -12V_RAW bypass (at FB2)
+        'C17': ( 90.0,  32.0,  90.0),   # 100µF -12V_RAW bulk (at FB2)
+        # -12V post-FB (near FB2 output)
+        'C19': ( 99.0,  32.0,  90.0),   # 100nF -12V bypass (post-FB)
+
+        # V+ bulk centered among driver ICs (covers U10/U11 <15mm)
+        'C20': (111.0, 114.0,  90.0),   # 100µF V+ bulk (Drv CH3/CH4)
+        # V- bulk centered among driver ICs (covers U10/U11 <15mm)
+        'C21': (101.0, 114.0,  90.0),   # 100µF V- bulk (Drv CH3/CH4)
+
+        # ══════════════════════════════════════════════════════════════
+        # U14 (ADP7118 SOIC-9) BYPASS — avoid MH2 at (154,4)
+        # VOUT (pin 2) at (143.5, 3.4), VIN (pin 8) at (148.5, 2.1)
+        # ══════════════════════════════════════════════════════════════
+        'C22': (141.0,   4.0,  90.0),   # 100nF VOUT bypass (~2.6mm from VOUT)
+        'C78': (148.0,   9.0,  90.0),   # 10µF VIN bulk (below U14)
+        'C81': (144.0,   9.0,  90.0),   # 22nF SS cap (below U14)
+
+        # ══════════════════════════════════════════════════════════════
+        # U15 (ADP7182 SOT-23-5) BYPASS — clear of SOT courtyard
+        # U15 at (125,25): VOUT ~(123.8,24.4), NR ~(123.8,25.6)
+        # ══════════════════════════════════════════════════════════════
+        'C23': (121.5,  28.5,  90.0),   # 100nF /NR_U15 (~3.5mm NR pin)
+        'C79': (121.5,  21.5,  90.0),   # 10µF V- near VOUT pin
+
+        # ══════════════════════════════════════════════════════════════
+        # REMAINING COMPONENTS
+        # ══════════════════════════════════════════════════════════════
         'Q1':  ( 50.0,  30.0,   0.0),   # BSS138 mute enable MOSFET
-
-        # ── Remote input TVS (SMBJ15CA, SMB pkg) ─────────────────────
-        # D1 moved to y=20 to clear BOTH J2 courtyard AND SW1 pads
-        'D1':  ( 40.0,  20.0,   0.0),
-
-        # ── V+ rail caps, Row A (y=8, x=78..99) ─────────────────────
-        # Starts at x=78 to clear J1 barrel-jack courtyard (~x=66..75)
-        'C14': ( 78.0,   8.0,  90.0),   # 100nF +12V_RAW bypass
-        'C16': ( 81.0,   8.0,  90.0),   # 100µF +12V_RAW bulk (1210)
-        'C2':  ( 84.0,   8.0,  90.0),
-        'C3':  ( 87.0,   8.0,  90.0),
-        'C4':  ( 90.0,   8.0,  90.0),
-        'C5':  ( 93.0,   8.0,  90.0),
-        'C6':  ( 96.0,   8.0,  90.0),
-        'C7':  ( 99.0,   8.0,  90.0),
-
-        # ── V+ rail caps, Row B (y=25, below U1 CrtYd) ──────────────
-        'C18': (106.0,  25.0,  90.0),   # 100nF +12V bypass (post-FB)
-        'C20': (109.0,  25.0,  90.0),   # 100µF V+ bulk (1210)
-        'C22': (112.0,  25.0,  90.0),   # 100nF V+
-        'C24': (115.0,  25.0,  90.0),   # 10µF V+ X5R
-        'C26': (118.0,  25.0,  90.0),
-        'C27': (121.0,  25.0,  90.0),
-
-        # ── V+ rail caps, Row C (y=10, x=139..148, right of U1) ────
-        # y=10 gives 3mm clearance from U14 courtyard bottom (~y=7)
-        'C28': (139.0,  10.0,  90.0),
-        'C29': (142.0,  10.0,  90.0),
-        'C30': (145.0,  10.0,  90.0),
-        'C31': (148.0,  10.0,  90.0),
-        # ── V+ rail caps, Row D (y=14, below Row C, clear of MH2) ───
-        'C74': (139.0,  14.0,  90.0),   # 10µF V+ X5R
-        'C76': (142.0,  14.0,  90.0),
-        'C78': (145.0,  14.0,  90.0),
-
-        # ── V- rail caps, single Row A (y=32, x=69..129) ─────────────
-        # Starts at x=69 (J1 courtyard doesn't reach y=32)
-        # 21 items at 3mm pitch, ends at x=129 (before J9 CrtYd @x=132)
-        'C15': ( 69.0,  32.0,  90.0),   # 100nF -12V_RAW bypass
-        'C17': ( 72.0,  32.0,  90.0),   # 100µF -12V_RAW bulk (1210)
-        'C8':  ( 75.0,  32.0,  90.0),
-        'C9':  ( 78.0,  32.0,  90.0),
-        'C10': ( 81.0,  32.0,  90.0),
-        'C11': ( 84.0,  32.0,  90.0),
-        'C12': ( 87.0,  32.0,  90.0),
-        'C13': ( 90.0,  32.0,  90.0),
-        'C19': ( 96.0,  32.0,  90.0),   # 100nF -12V bypass (post-FB)
-        'C21': ( 99.0,  32.0,  90.0),   # 100µF V- bulk (1210)
-        'C25': (102.0,  32.0,  90.0),   # 10µF V- X5R
-        'C32': (105.0,  32.0,  90.0),
-        'C33': (108.0,  32.0,  90.0),
-        'C34': (111.0,  32.0,  90.0),
-        'C35': (114.0,  32.0,  90.0),
-        'C36': (117.0,  32.0,  90.0),
-        'C37': (120.0,  32.0,  90.0),
-        'C75': (123.0,  32.0,  90.0),   # 10µF V- X5R
-        'C77': (126.0,  32.0,  90.0),
-        'C79': (129.0,  32.0,  90.0),
-
-        # ── Special single caps ──────────────────────────────────────
+        'D1':  ( 40.0,  20.0,   0.0),   # Remote input TVS (SMBJ15CA)
         'C1':  ( 43.0,  12.0,  90.0),   # 100nF /REMOTE_FILT bypass
-        'C23': (129.0,  25.0,  90.0),   # 22nF /NR_U15 noise reduction (near U15)
         'C80': ( 46.0,  28.0,   0.0),   # 10µF mute timing cap
-        'C81': (141.0,   4.0,  90.0),   # 22nF /SS_U14 soft-start (near U14)
 
-        # ── Enable / power-zone resistors ────────────────────────────
+        # Enable / power-zone resistors
         'R1':   (40.0,  15.0,  90.0),   # 10k /REMOTE_IN → /REMOTE_FILT
         'R56':  (58.0,  25.0,  90.0),   # 100k /EN_CTRL → /V+ pullup
         'R57':  (58.0,  29.0,  90.0),   # 100k /EN_CTRL → GND pulldown
