@@ -179,22 +179,22 @@ Platzierung vom IC aus: 100nF direkt am Pin → 1µF dahinter → 10µF am Verso
 
 #### Widerstände
 
-| Typ | Einsatz | Eigenschaften |
-|-----|---------|---------------|
-| **Metallfilm (Dünnfilm)** | Gain-Setting, Feedback | Niedrigstes Rauschen, ±1%, ≤50 ppm/°C |
-| **Metallschicht (Dickfilm)** | Allgemein | Standard, akzeptabel |
-| **Kohleschicht** | ❌ Vermeiden | Spannungsabhängig → nichtlineare Verzerrung |
+| Typ                          | Einsatz                | Eigenschaften                               |
+| ---------------------------- | ---------------------- | ------------------------------------------- |
+| **Metallfilm (Dünnfilm)**    | Gain-Setting, Feedback | Niedrigstes Rauschen, ±1%, ≤50 ppm/°C       |
+| **Metallschicht (Dickfilm)** | Allgemein              | Standard, akzeptabel                        |
+| **Kohleschicht**             | ❌ Vermeiden           | Spannungsabhängig → nichtlineare Verzerrung |
 
 Im Audio-Signalpfad Widerstände so niedrig wie möglich wählen (1k–10 kΩ).
 
 #### Kondensatoren
 
-| Typ | Einsatz | Hinweis |
-|-----|---------|---------|
-| **C0G/NP0 MLCC** | Entkopplung, Filter | Ideal für Audio — kein Mikrofonie-Effekt |
-| **Polypropylen Film** | Signal-Kopplung, Filter | Niedrigster Verlustfaktor, exzellent |
-| **X7R/X5R MLCC** | ⚠️ Nur Entkopplung | Mikrofonie + DC-Bias-Derating bis -80% |
-| **Elektrolyt** | Bulk-Entkopplung | Nur Versorgung, nicht im Signalpfad |
+| Typ                   | Einsatz                 | Hinweis                                  |
+| --------------------- | ----------------------- | ---------------------------------------- |
+| **C0G/NP0 MLCC**      | Entkopplung, Filter     | Ideal für Audio — kein Mikrofonie-Effekt |
+| **Polypropylen Film** | Signal-Kopplung, Filter | Niedrigster Verlustfaktor, exzellent     |
+| **X7R/X5R MLCC**      | ⚠️ Nur Entkopplung      | Mikrofonie + DC-Bias-Derating bis -80%   |
+| **Elektrolyt**        | Bulk-Entkopplung        | Nur Versorgung, nicht im Signalpfad      |
 
 #### Op-Amps
 
@@ -230,6 +230,7 @@ Im Audio-Signalpfad Widerstände so niedrig wie möglich wählen (1k–10 kΩ).
 6. **Passive, Testpunkte** in verbleibende Flächen
 
 Weitere Regeln:
+
 - **Bauteile an 0.5mm / 1.27mm Raster** ausrichten
 - **Gleiche Orientierung** bei R/C (erleichtert Bestückung)
 - **Wärmequellen** von temperatursensitiven Bauteilen fernhalten
@@ -238,21 +239,21 @@ Weitere Regeln:
 
 #### Trace-Breiten
 
-| Anwendung | Empfohlen | Strom (1oz Cu, 10°C ΔT) |
-|-----------|-----------|-------------------------|
-| Signal (Standard) | 0.2–0.25mm | ~0.3A |
-| Audio-Signal | 0.3mm | — |
-| Power (1A) | 0.5mm | ~1A |
-| Power (3A+) | 1.5mm+ | ~3A+ |
-| Speaker | 1.5mm | hoher Strom |
+| Anwendung         | Empfohlen  | Strom (1oz Cu, 10°C ΔT) |
+| ----------------- | ---------- | ----------------------- |
+| Signal (Standard) | 0.2–0.25mm | ~0.3A                   |
+| Audio-Signal      | 0.3mm      | —                       |
+| Power (1A)        | 0.5mm      | ~1A                     |
+| Power (3A+)       | 1.5mm+     | ~3A+                    |
+| Speaker           | 1.5mm      | hoher Strom             |
 
 #### Via-Design
 
-| Parameter | JLCPCB Min | Standard |
-|-----------|-----------|----------|
-| Via-Pad | 0.45mm | 0.6mm |
-| Via-Bohrung | 0.2mm | 0.3mm |
-| Annular Ring | 0.125mm | 0.15mm |
+| Parameter    | JLCPCB Min | Standard |
+| ------------ | ---------- | -------- |
+| Via-Pad      | 0.45mm     | 0.6mm    |
+| Via-Bohrung  | 0.2mm      | 0.3mm    |
+| Annular Ring | 0.125mm    | 0.15mm   |
 
 #### Audio-Signalführung
 
@@ -319,27 +320,27 @@ Weitere Regeln:
 
 ### Minimale Design-Regeln
 
-| Regel | Minimum | Empfehlung |
-|-------|---------|------------|
-| Leiterbahnbreite | 0.1mm | ≥ 0.15mm |
-| Leiterbahnabstand | 0.1mm | ≥ 0.15mm |
-| Annular Ring | 0.125mm | ≥ 0.15mm |
-| Bohrung (PTH) | 0.2mm | ≥ 0.3mm |
-| Pad-Größe (min) | 0.45mm | ≥ 0.6mm |
-| Board-Edge zu Kupfer | 0.2mm | ≥ 0.3mm |
-| Silkscreen-Höhe | 0.8mm | ≥ 1.0mm |
+| Regel                | Minimum | Empfehlung |
+| -------------------- | ------- | ---------- |
+| Leiterbahnbreite     | 0.1mm   | ≥ 0.15mm   |
+| Leiterbahnabstand    | 0.1mm   | ≥ 0.15mm   |
+| Annular Ring         | 0.125mm | ≥ 0.15mm   |
+| Bohrung (PTH)        | 0.2mm   | ≥ 0.3mm    |
+| Pad-Größe (min)      | 0.45mm  | ≥ 0.6mm    |
+| Board-Edge zu Kupfer | 0.2mm   | ≥ 0.3mm    |
+| Silkscreen-Höhe      | 0.8mm   | ≥ 1.0mm    |
 
 ### Netzklassen
 
-| Netzklasse | Clearance | Track Width | Via Size | Via Drill | Beschreibung |
-|------------|-----------|-------------|----------|-----------|-------------|
-| Default | 0.2mm | 0.25mm | 0.6mm | 0.3mm | Standard-Signale |
-| Power | 0.2mm | 0.5mm | 0.8mm | 0.4mm | Versorgung, hohe Ströme |
-| Audio_Input | 0.25mm | 0.3mm | 0.6mm | 0.3mm | Empfindliche Audio-Eingänge |
-| Audio_Output | 0.2mm | 0.5mm | 0.6mm | 0.3mm | Audio-Ausgänge |
-| Audio_Power | 0.2mm | 0.8mm | 0.8mm | 0.4mm | Analoge Versorgung |
-| Speaker | 0.3mm | 1.5mm | 0.8mm | 0.4mm | Lautsprecherausgänge |
-| HV | 0.5mm | 0.3mm | 0.8mm | 0.4mm | > 50V Signale |
+| Netzklasse   | Clearance | Track Width | Via Size | Via Drill | Beschreibung                |
+| ------------ | --------- | ----------- | -------- | --------- | --------------------------- |
+| Default      | 0.2mm     | 0.25mm      | 0.6mm    | 0.3mm     | Standard-Signale            |
+| Power        | 0.2mm     | 0.5mm       | 0.8mm    | 0.4mm     | Versorgung, hohe Ströme     |
+| Audio_Input  | 0.25mm    | 0.3mm       | 0.6mm    | 0.3mm     | Empfindliche Audio-Eingänge |
+| Audio_Output | 0.2mm     | 0.5mm       | 0.6mm    | 0.3mm     | Audio-Ausgänge              |
+| Audio_Power  | 0.2mm     | 0.8mm       | 0.8mm    | 0.4mm     | Analoge Versorgung          |
+| Speaker      | 0.3mm     | 1.5mm       | 0.8mm    | 0.4mm     | Lautsprecherausgänge        |
+| HV           | 0.5mm     | 0.3mm       | 0.8mm    | 0.4mm     | > 50V Signale               |
 
 ### Custom Design Rules (kicad_dru)
 
@@ -397,6 +398,7 @@ Weitere Regeln:
 ## 8. Checkliste vor Fertigung
 
 ### Schaltplan
+
 - [ ] ERC fehlerfrei (`run_erc`)
 - [ ] Low-Noise Op-Amps ausgewählt
 - [ ] Entkopplung: 100 nF C0G + 10 µF an jedem IC-Versorgungspin
@@ -408,6 +410,7 @@ Weitere Regeln:
 - [ ] Analoge und digitale Versorgung getrennt geregelt
 
 ### PCB-Layout
+
 - [ ] DRC fehlerfrei (`run_drc`)
 - [ ] Alle Netze verbunden (keine Ratsnest-Linien)
 - [ ] Massefläche unter Audio-Signalpfaden ununterbrochen
@@ -420,6 +423,7 @@ Weitere Regeln:
 - [ ] Via-Stitching entlang Audio-Traces
 
 ### Fertigung
+
 - [ ] Board-Outline geschlossen (Edge.Cuts)
 - [ ] Vias getented
 - [ ] Silkscreen nicht auf Pads
@@ -429,7 +433,271 @@ Weitere Regeln:
 - [ ] JLCPCB Basic Parts bevorzugt
 
 ### Klangqualität
+
 - [ ] SNR-Ziel definiert (> 100 dB)
 - [ ] THD+N Budget (< 0.01% bei 1 kHz)
 - [ ] Crosstalk zwischen Kanälen minimiert (> 70 dB)
 - [ ] Keine Mikrofonie-empfindlichen Bauteile im Signalpfad
+
+---
+
+## 9. Kern-Prinzipien — IMMER befolgen!
+
+### KEINE Annahmen — NIEMALS!
+
+- **Keine Werte raten**: Pin-Belegungen, Spannungen, Ströme, Footprints, Bauteilwerte — IMMER aus Datenblatt oder Recherche ableiten
+- **Keine Schaltungs-Annahmen**: Beschaltung, Pull-Up/Down-Werte, Filter-Dimensionierung — IMMER berechnen oder aus Datenblatt/Appnotes entnehmen
+- **Keine Footprint-Annahmen**: Package-Maße, Pin-Pitch, Pad-Größen — IMMER Datenblatt prüfen
+- **Keine Netz-Annahmen**: Pin-Funktionen, Netz-Zuordnungen — IMMER Datenblatt-Pinout lesen
+
+### Recherche-Pflicht
+
+1. **Datenblätter lesen** — vor jeder Bauteil-Entscheidung das Datenblatt konsultieren (fetch_webpage oder lokale Dateien in datasheets/)
+2. **Application Notes prüfen** — Hersteller-Empfehlungen für Beschaltung haben Vorrang
+3. **Berechnungen durchführen** — Filterwerte, Strombelastung, Wärmeableitung etc. immer nachrechnen
+4. **Referenzdesigns suchen** — Evaluation-Boards und Referenzschaltungen als Basis nutzen
+
+### Wenn Recherche nicht weiterkommt → FRAGEN!
+
+- **Interaktiv nachfragen** statt raten — lieber einmal zu viel fragen als einmal falsch annehmen
+- **Plan kommunizieren**: Was wurde recherchiert, was fehlt, welche Optionen gibt es
+- **Entscheidungen explizit machen**: "Laut Datenblatt S.12 empfiehlt der Hersteller X" statt stillschweigend X einsetzen
+
+### Arbeitsweise bei neuen Bauteilen/Schaltungen
+
+1. Datenblatt beschaffen und relevante Seiten lesen
+2. Typische Applikationsschaltung aus Datenblatt extrahieren
+3. Werte berechnen/verifizieren (nicht blind aus Datenblatt kopieren wenn Randbedingungen anders sind)
+4. Bei Unklarheiten: User fragen mit konkreten Optionen + Begründung
+5. Erst nach Klärung implementieren
+
+---
+
+## 10. KiCad + AI — Learnings & Optimierungen
+
+### MCP Server vs. Direkte Dateimanipulation
+
+- MCP Server ist **für einfache Boards brauchbar**, für komplexe Projekte **unzuverlässig**
+- Ab ~50+ Bauteile oder Multi-Unit-Symbolen häufen sich Bugs exponentiell
+- **Bewährter Ansatz**: Python-Skripte die .kicad_sch direkt als S-Expression manipulieren + kicad-cli für ERC/Netlist
+- MCP nützlich für: Schnelle Prototypen, Library-Suche, Footprint-Info, Einzelbauteil-Platzierung
+
+### Wiederkehrende Probleme
+
+#### Terminal-Heredoc-Korruption
+
+- zsh korruptiert inline Python/heredoc in Copilot-Terminal
+- **Fix**: IMMER .py-Datei schreiben → `python3 datei.py` ausführen
+- Nie `python3 -c "..."` oder `cat << 'EOF'` verwenden
+
+#### Greedy Regex über Symbol-Grenzen
+
+- **Fix**: Balanced-Paren-Block zuerst extrahieren, dann innerhalb suchen
+
+#### lib_symbols Cache Naming
+
+- Sub-Symbole im Cache dürfen KEINEN Library-Prefix haben
+- Falsch: `(symbol "Connector_Audio:AudioJack2_0_1")` → Richtig: `(symbol "AudioJack2_0_1")`
+
+#### Pin-Position-Berechnung bei Rotation
+
+- Formel: symbol_pos + rotate(local_pin_pos, symbol_rotation)
+- KiCad Y-Achse invertiert: schematic_y = symbol_y - rotated_y
+- **IMMER** lib_symbols-Cache lesen und Pin `(at x y angle)` extrahieren!
+
+#### Single-Line S-Expression Format
+
+- MCP erzeugt .kicad_sch als einzeilige Datei (kein \n)
+- replace_string_in_file unzuverlässig → Python-Skripte verwenden
+- Klammer-Balance-Check nach jeder Manipulation obligatorisch
+
+#### Pin-Namen sind bibliotheksabhängig
+
+- Device:R → Pins "1"/"2" (Nummern), AudioJack2 → "T"/"S", XLR3 → "1"/"2"/"3"/"G"
+- Regex `\d+` matcht keine Buchstaben-Pins → `[^"]+` verwenden
+
+#### Wire-Endpunkt-Regel (kritisch)
+
+- KiCad eeschema verbindet Pins NUR an Wire-ENDPUNKTEN oder Junctions
+- Pins mitten auf einem Wire-Segment werden NICHT verbunden
+- kicad-cli ERC ist toleranter → **eeschema ERC ist maßgeblich!**
+- **Fix**: Drähte an JEDEM Pin-Endpunkt aufteilen (Segmente statt ein langer Draht)
+
+#### Koordinaten-Format in .kicad_sch
+
+- Ganze Zahlen werden als `285.0` geschrieben (nicht `285`)
+- Python fmt: `f"{v:.1f}"` für Integer-Werte
+
+#### Einfügen in .kicad_sch: Scope-Problem
+
+- `rfind('\n)')` findet NICHT den kicad_sch-Closer! → Bracket-Depth-Counting verwenden
+- Validation: Depth am Einfügepunkt muss 1 sein (innerhalb kicad_sch)
+
+#### Symbol instances-Sektion
+
+- Jedes Symbol in KiCad 9 MUSS eine `(instances ...)` Sektion haben
+- Symbole OHNE instances werden von eeschema als nicht-annotiert behandelt
+- kicad-cli ERC erkennt diesen Fehler NICHT — nur eeschema GUI!
+
+### Optimale Workflows
+
+#### Schaltplan-Erstellung (komplexe Projekte)
+
+1. MCP: Projekt erstellen, initiale Bauteile platzieren
+2. Python-Skript: Kanäle replizieren, Bulk-Verdrahtung
+3. kicad-cli: ERC + Netlist-Export nach jeder Änderung
+4. Quality-Gate-Skript: Automatische Netz-Validierung
+
+#### Validierung (nach jeder Änderung)
+
+1. Klammer-Balance prüfen
+2. kicad-cli Netlist-Export (testet Parser)
+3. kicad-cli ERC (Baseline-Vergleich)
+4. Netz-Verbindungen im Netlist prüfen
+
+### PCB-Routing: Freerouting-Workflow (IMMER so machen!)
+
+- Eigene Routing-Skripte funktionieren NICHT (Shorts mit GND-Zonen, keine Hinderniserkennung)
+
+#### Schritt 1: Netzklassen zuweisen (.kicad_pro)
+
+#### Schritt 2: Design Rules (.kicad_dru)
+
+#### Schritt 3: Freerouting (Autorouter)
+
+```bash
+pcbnew.ExportSpecctraDSN(board, "/tmp/board.dsn")
+java -jar /tmp/freerouting.jar -de /tmp/board.dsn -do /tmp/board.ses -mp 20 -mt 4
+pcbnew.ImportSpecctraSES(board, "/tmp/board.ses")
+pcbnew.SaveBoard("/tmp/board-routed.kicad_pcb", board)  # NUR auf temp!
+```
+
+#### Schritt 4: Text-Merge Routing in Original (Segments + Vias extrahieren, Net-IDs mappen)
+
+#### Schritt 5: Zone-Fill via pcbnew + Text-Merge
+
+#### Schritt 6: DRC via kicad-cli
+
+### Zone-Probleme und Lösungen
+
+- **starved_thermal** → Zone auf `connect_pads yes` (Solid) umstellen
+- **pcbnew.SaveBoard()** korruptiert KiCad 9 Dateien — IMMER Text-Merge verwenden
+- **kicad-cli füllt Zonen nicht** — pcbnew Python API nötig für Zone-Fill
+
+### User-Präferenzen
+
+- **NIEMALS** .bak-Kopien anlegen — git für Versionierung nutzen
+- **Keine temporären Skripte in /tmp/** — Skripte in scripts/ ablegen
+
+---
+
+## 11. KiCad MCP Server Setup
+
+### MCP Server
+
+- Repo: ~/MCP/KiCAD-MCP-Server/
+- Entry: dist/index.js (Node.js), Python backend: python/kicad_interface.py
+- 64 tools: ~17 direct + ~47 routed (7 Kategorien) + 4 router tools
+- Router-Pattern: list_tool_categories → get_category_tools → execute_tool
+
+### Grid/Raster
+
+- MCP-Server hat **KEIN Grid/Snap** — Koordinaten werden als rohe Floats durchgereicht
+- **Regel**: Koordinaten IMMER als Vielfache von **1.27mm** (50mil) oder **2.54mm** (100mil)
+- Pin-Offsets berücksichtigen: LM4562 Pins bei ±7.62mm (6×1.27) und ±2.54mm (2×1.27)
+
+### PCB Text Manipulation — Kritische Regeln (KiCad 9)
+
+- **NEVER** pcbnew.SaveBoard() auf die echte PCB-Datei — korruptiert KiCad 9 Dateien
+- Footprint-Library-Prefix: pcbnew generiert `"R_0805_2012Metric"` → muss `"Resistor_SMD:R_0805_2012Metric"` sein
+- Net-ID-Remapping nach pcbnew-Generierung obligatorisch
+- GND Zone: `(connect_pads` (ohne Keyword) = thermal relief; `(connect_pads thermal` ist INVALID
+
+### MCP API Kurzreferenz
+
+| Tool                       | Wichtige Parameter                                                |
+| -------------------------- | ----------------------------------------------------------------- |
+| `add_schematic_component`  | library, type, reference, value, x, y, footprint — KEIN rotation! |
+| `connect_to_net`           | reference, netName, **pinName** (nicht "pin"!)                    |
+| `add_schematic_connection` | sourceRef, sourcePin, targetRef, targetPin, routing               |
+| `add_schematic_net_label`  | netName, position=[x,y] (Array!), labelType, orientation          |
+
+### Pin-Referenz Schlüssel-Symbole
+
+| Symbol        | Pins                                       |
+| ------------- | ------------------------------------------ |
+| LM4562 Unit 1 | 1=Out, 2=−In, 3=+In                        |
+| LM4562 Unit 2 | 5=+In, 6=−In, 7=Out                        |
+| LM4562 Unit 3 | 4=V−, 8=V+                                 |
+| XLR3_Ground   | Pins: 1, 2, 3, G (Namen alle `~`)          |
+| TEL5-2422     | 1=+VIN, 7=−VIN, 24=+VOUT, 18=COM, 14=−VOUT |
+| ADP7118       | 8=VIN, 2=VOUT, 1=EN, 4=GND                 |
+
+### Bekannte Bugs & Fixes
+
+- **Issue #52**: `extends`-basierte Symbole brechen alles — Fix: PR #53 merged
+- **Issue #40**: `add_schematic_component` korrumpiert .kicad_sch — Fix: merged
+- **PinLocator Cache Bug**: Lokal gefixt — `invalidate_cache()` hinzugefügt
+
+---
+
+## 12. Projekt-Status
+
+### Schaltplan-Status
+
+- **242 Symbole**: 104 R, 64+4 C, 24 D (TVS), 15 U, 13 J, 6 SW
+- **143 Netze**, Schaltplan exportiert sauber
+- **ERC**: 0 Fehler (von 115→66→0 reduziert), 890 Warnungen (838 off-grid, akzeptabel)
+- Alle Fixes (F1-F10) verifiziert und bestanden
+
+### PCB Routing-Status (Commit bf62bd0)
+
+- **0 Errors, 0 Unconnected, 198 Warnings** (alle akzeptabel)
+- 1543 Trace-Segments + 476 Vias via Freerouting v2.0.1
+- 2 GND-Zonen: F.Cu (solid connect) + B.Cu (thermal)
+- 269 Footprints, 135 Nets in 5 Klassen
+
+#### DRC Breakdown (198 Warnings)
+
+- 138× holes_co_located, 27× silk_edge_clearance, 11× silk_overlap
+- 10× silk_over_copper, 9× hole_to_hole, 3× via_dangling
+
+#### Netzklassen
+
+| Klasse       | Nets | Track  | Clearance |
+| ------------ | ---- | ------ | --------- |
+| Default      | 62   | 0.25mm | 0.2mm     |
+| Audio_Input  | 30   | 0.3mm  | 0.25mm    |
+| Audio_Output | 36   | 0.5mm  | 0.2mm     |
+| Audio_Power  | 0    | 0.8mm  | 0.2mm     |
+| Power        | 7    | 0.5mm  | 0.2mm     |
+
+### Nächste Schritte
+
+1. Dangling Vias entfernen (3 Stück)
+2. Gerber + Drill exportieren
+3. BOM + Bestückungsdaten exportieren
+4. Visuelle Prüfung in KiCad
+
+### Wire-Dangling-Fix Referenz
+
+- Wire-to-pin-Verbindungen funktionieren NUR zuverlässig mit mindestens einem Net-Label
+- Fix: `(label "NET_NAME" (at x y 0) ...)` an jedem Dangling-Endpunkt hinzufügen
+
+### Kanal-Netnamen (11 Netze × 6 Kanäle = 66)
+
+CHn_INV_IN, CHn_SW_OUT_1/2/3, CHn_BUF_DRIVE, CHn_GAIN_FB, CHn_OUT_DRIVE, CHn_OUT_PROT_HOT, CHn_OUT_PROT_COLD, CHn_EMI_HOT, CHn_EMI_COLD
+
+### Schlüssel-Koordinaten
+
+- Kanäle: CY = 110 + (ch-1) × 80, für ch=1..6
+- Input-Protection: X_PROT = 280
+- Output-Zobel HOT: X=265, COLD: X=280
+
+### S-Expression Templates
+
+```
+Symbol: (symbol (lib_id "LIB") (at X Y A) (unit 1) (in_bom yes) (on_board yes) (dnp no) (uuid "UUID") (property "Reference" ...) ...)
+Wire:   (wire (pts (xy X1 Y1) (xy X2 Y2)) (stroke (width 0) (type default)) (uuid "UUID"))
+Label:  (label "NAME" (at X Y A) (fields_autoplaced yes) (effects ...) (uuid "UUID"))
+```
