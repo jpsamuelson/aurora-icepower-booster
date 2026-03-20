@@ -239,7 +239,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -374,7 +374,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -509,7 +509,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -644,7 +644,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -779,7 +779,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -914,7 +914,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -1049,7 +1049,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -1184,7 +1184,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100uF/25V"
 			(at 0 2.3 0)
@@ -1319,7 +1319,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100uF/25V"
 			(at 0 2.3 0)
@@ -1454,7 +1454,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -1589,7 +1589,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -1724,7 +1724,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -1859,7 +1859,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100uF"
 			(at 0 2.3 0)
@@ -1994,7 +1994,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100uF"
 			(at 0 2.3 0)
@@ -2129,7 +2129,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -2264,7 +2264,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -2399,7 +2399,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10uF X5R"
 			(at 0 1.68 0)
@@ -2534,7 +2534,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10uF X5R"
 			(at 0 1.68 0)
@@ -2669,7 +2669,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -2804,7 +2804,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -2939,7 +2939,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -3074,7 +3074,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -3209,7 +3209,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -3344,7 +3344,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -3479,7 +3479,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -3614,7 +3614,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -3749,7 +3749,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -3884,7 +3884,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -4019,7 +4019,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -4154,7 +4154,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -4289,7 +4289,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -4424,7 +4424,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -4559,7 +4559,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -4694,7 +4694,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -4829,7 +4829,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -4964,7 +4964,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -5099,7 +5099,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -5234,7 +5234,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -5369,7 +5369,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -5504,7 +5504,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -5639,7 +5639,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -5774,7 +5774,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -5909,7 +5909,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -6044,7 +6044,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -6179,7 +6179,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -6314,7 +6314,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100pF C0G"
 			(at 0 1.68 0)
@@ -6449,7 +6449,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100pF C0G"
 			(at 0 1.68 0)
@@ -6584,7 +6584,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100pF C0G"
 			(at 0 1.68 0)
@@ -6719,7 +6719,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100pF C0G"
 			(at 0 1.68 0)
@@ -6854,7 +6854,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100pF C0G"
 			(at 0 1.68 0)
@@ -6989,7 +6989,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100pF C0G"
 			(at 0 1.68 0)
@@ -7124,7 +7124,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100pF C0G"
 			(at 0 1.68 0)
@@ -7259,7 +7259,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100pF C0G"
 			(at 0 1.68 0)
@@ -7394,7 +7394,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100pF C0G"
 			(at 0 1.68 0)
@@ -7529,7 +7529,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100pF C0G"
 			(at 0 1.68 0)
@@ -7664,7 +7664,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -7799,7 +7799,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100pF C0G"
 			(at 0 1.68 0)
@@ -7934,7 +7934,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100pF C0G"
 			(at 0 1.68 0)
@@ -8069,7 +8069,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "2.2uF C0G"
 			(at 0 1.85 0)
@@ -8204,7 +8204,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "2.2uF C0G"
 			(at 0 1.85 0)
@@ -8339,7 +8339,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "2.2uF C0G"
 			(at 0 1.85 0)
@@ -8474,7 +8474,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "2.2uF C0G"
 			(at 0 1.85 0)
@@ -8609,7 +8609,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "2.2uF C0G"
 			(at 0 1.85 0)
@@ -8744,7 +8744,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "2.2uF C0G"
 			(at 0 1.85 0)
@@ -8879,7 +8879,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "2.2uF C0G"
 			(at 0 1.85 0)
@@ -9014,7 +9014,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "2.2uF C0G"
 			(at 0 1.85 0)
@@ -9149,7 +9149,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -9284,7 +9284,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "2.2uF C0G"
 			(at 0 1.85 0)
@@ -9419,7 +9419,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "2.2uF C0G"
 			(at 0 1.85 0)
@@ -9554,7 +9554,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "2.2uF C0G"
 			(at 0 1.85 0)
@@ -9689,7 +9689,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "2.2uF C0G"
 			(at 0 1.85 0)
@@ -9824,7 +9824,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10uF X5R"
 			(at 0 1.68 0)
@@ -9959,7 +9959,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10uF X5R"
 			(at 0 1.68 0)
@@ -10094,7 +10094,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10uF X5R"
 			(at 0 1.68 0)
@@ -10229,7 +10229,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10uF X5R"
 			(at 0 1.68 0)
@@ -10364,7 +10364,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10uF X5R"
 			(at 0 1.68 0)
@@ -10499,7 +10499,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10uF X5R"
 			(at 0 1.68 0)
@@ -10634,7 +10634,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -10769,7 +10769,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10u"
 			(at 0 1.68 0)
@@ -10903,7 +10903,7 @@
 				(size 1 1)
 				(thickness 0.15)
 			)
-		)
+		 hide)
 	)
 	(property "Value" "22nF C0G"
 		(at 0 1.16 0)
@@ -11006,7 +11006,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100nF C0G"
 			(at 0 1.68 0)
@@ -11141,7 +11141,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "SMBJ15CA"
 			(at 0 3.1 0)
@@ -11406,7 +11406,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -11671,7 +11671,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -11936,7 +11936,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -12201,7 +12201,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -12466,7 +12466,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -12731,7 +12731,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -12996,7 +12996,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -13261,7 +13261,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -13526,7 +13526,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -13791,7 +13791,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -14056,7 +14056,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -14321,7 +14321,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -14586,7 +14586,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -14851,7 +14851,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -15116,7 +15116,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -15381,7 +15381,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -15646,7 +15646,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -15911,7 +15911,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -16176,7 +16176,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -16441,7 +16441,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -16706,7 +16706,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -16971,7 +16971,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -17236,7 +17236,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -17501,7 +17501,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "PESD5V0S1BL"
 			(at 0.1 1.9 0)
@@ -17765,7 +17765,7 @@
 				(size 1 1)
 				(thickness 0.15)
 			)
-		)
+		 hide)
 	)
 	(property "Value" "BLM18PG221"
 		(at 0 1.55 0)
@@ -17867,7 +17867,7 @@
 				(size 1 1)
 				(thickness 0.15)
 			)
-		)
+		 hide)
 	)
 	(property "Value" "BLM18PG221"
 		(at 0 1.55 0)
@@ -17970,7 +17970,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "24V DC"
 			(at -6.2 -5.5 270)
@@ -18011,26 +18011,6 @@
 		)
 		(attr through_hole)
 		(fp_line
-			(start -13.8 4.6)
-			(end -13.8 -4.6)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "86c83397-f022-43fa-a0ab-02eccaba8744")
-		)
-		(fp_line
-			(start -5 4.6)
-			(end -13.8 4.6)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "cef1b05b-823b-458e-97cc-e28055d1df0d")
-		)
-		(fp_line
 			(start 0.9 4.6)
 			(end -1 4.6)
 			(stroke
@@ -18059,16 +18039,6 @@
 			)
 			(layer "F.SilkS")
 			(uuid "3532574b-3046-4387-b308-41520fe3749e")
-		)
-		(fp_line
-			(start -13.8 -4.6)
-			(end 0.9 -4.6)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "084e855c-a23c-4431-b516-bbdb2bc15e31")
 		)
 		(fp_line
 			(start 0.9 -4.6)
@@ -18347,7 +18317,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "XLR3_OUT"
 			(at 3.81 22 90)
@@ -18845,7 +18815,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "XLR3_OUT"
 			(at 3.81 22 90)
@@ -19343,7 +19313,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "XLR3_OUT"
 			(at 3.81 22 90)
@@ -19841,7 +19811,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "XLR3_OUT"
 			(at 3.81 22 90)
@@ -20339,7 +20309,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "XLR3_OUT"
 			(at 3.81 22 90)
@@ -20838,7 +20808,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "REMOTE 3.5mm"
 			(at 0 9.5 0)
@@ -21274,7 +21244,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "XLR_IN_1"
 			(at 4.3 18 180)
@@ -21314,76 +21284,6 @@
 			)
 		)
 		(attr through_hole)
-		(fp_line
-			(start 15.52 -7.31)
-			(end 15.52 14.93)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "7f365c10-f577-4acc-889c-d59a8ad48ed7")
-		)
-		(fp_line
-			(start 12.82 16.73)
-			(end 6.08 16.73)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "0af673d3-c51a-43b9-96cf-4aed771fd80f")
-		)
-		(fp_line
-			(start 12.82 14.93)
-			(end 15.52 14.93)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "457797f9-8ea6-4cea-aa0b-ec9db5275e59")
-		)
-		(fp_line
-			(start 12.82 14.93)
-			(end 12.82 16.73)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "3c777a3d-2158-4147-938d-3cbfab34cea7")
-		)
-		(fp_line
-			(start 12.82 -7.31)
-			(end 15.52 -7.31)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "151e8dfc-5e2c-4df1-85e5-d782f19cc024")
-		)
-		(fp_line
-			(start 12.82 -8.81)
-			(end 12.82 -7.31)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "8726b6ec-873a-43d9-9170-8283df55a0da")
-		)
-		(fp_line
-			(start 12.82 -8.81)
-			(end 6.08 -8.81)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "c1c123c7-b0f6-4bac-adb5-398e0f1b916a")
-		)
 		(fp_line
 			(start 6.08 16.73)
 			(end 6.08 14.68)
@@ -21743,7 +21643,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "XLR_IN_2"
 			(at 4.3 18 180)
@@ -21783,76 +21683,6 @@
 			)
 		)
 		(attr through_hole)
-		(fp_line
-			(start 15.52 -7.31)
-			(end 15.52 14.93)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "06fe9afe-0bdc-4aac-af3c-3d107fafe4c1")
-		)
-		(fp_line
-			(start 12.82 16.73)
-			(end 6.08 16.73)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "86867594-108e-4924-980b-5919db4541ea")
-		)
-		(fp_line
-			(start 12.82 14.93)
-			(end 15.52 14.93)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "db33272a-e016-4f81-976b-3e51e8ed56cb")
-		)
-		(fp_line
-			(start 12.82 14.93)
-			(end 12.82 16.73)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "70352121-97eb-4454-9d78-a89146b41cff")
-		)
-		(fp_line
-			(start 12.82 -7.31)
-			(end 15.52 -7.31)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "e6293f2e-55da-4a43-ab8d-cf37d86c6847")
-		)
-		(fp_line
-			(start 12.82 -8.81)
-			(end 12.82 -7.31)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "fbcab9bc-ce21-4d2d-b4c8-e99ecd717d84")
-		)
-		(fp_line
-			(start 12.82 -8.81)
-			(end 6.08 -8.81)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "83392ee3-5a87-4ff4-90b7-7df503862ff7")
-		)
 		(fp_line
 			(start 6.08 16.73)
 			(end 6.08 14.68)
@@ -22212,7 +22042,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "XLR_IN_3"
 			(at 4.3 18 180)
@@ -22252,76 +22082,6 @@
 			)
 		)
 		(attr through_hole)
-		(fp_line
-			(start 15.52 -7.31)
-			(end 15.52 14.93)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "3dea0f0e-70fa-4466-b8a4-3f2594687d26")
-		)
-		(fp_line
-			(start 12.82 16.73)
-			(end 6.08 16.73)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "00d91b09-1549-4bfc-8212-6df7245ad145")
-		)
-		(fp_line
-			(start 12.82 14.93)
-			(end 15.52 14.93)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "28683a3f-54f4-43b5-a60f-d903bd214cbb")
-		)
-		(fp_line
-			(start 12.82 14.93)
-			(end 12.82 16.73)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "2ff7b99e-df01-493c-a6db-cc653a6441cb")
-		)
-		(fp_line
-			(start 12.82 -7.31)
-			(end 15.52 -7.31)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "c2b5a50f-bfec-4985-b6ec-3f98f27da86e")
-		)
-		(fp_line
-			(start 12.82 -8.81)
-			(end 12.82 -7.31)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "58660f97-3421-485b-94c0-670b7eb01d3e")
-		)
-		(fp_line
-			(start 12.82 -8.81)
-			(end 6.08 -8.81)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "d7f28b97-3169-445e-98f2-0df4f301cba8")
-		)
 		(fp_line
 			(start 6.08 16.73)
 			(end 6.08 14.68)
@@ -22681,7 +22441,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "XLR_IN_4"
 			(at 4.3 18 180)
@@ -22721,76 +22481,6 @@
 			)
 		)
 		(attr through_hole)
-		(fp_line
-			(start 15.52 -7.31)
-			(end 15.52 14.93)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "29aae8c4-304c-45f8-9d06-9d33694d23ad")
-		)
-		(fp_line
-			(start 12.82 16.73)
-			(end 6.08 16.73)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "1b39f38f-b737-4a12-ab9c-27cf80e53b73")
-		)
-		(fp_line
-			(start 12.82 14.93)
-			(end 15.52 14.93)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "860d2a08-a82a-4c20-9629-6f5d11672f74")
-		)
-		(fp_line
-			(start 12.82 14.93)
-			(end 12.82 16.73)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "5b49f307-9620-4641-86fa-ef8c218f4926")
-		)
-		(fp_line
-			(start 12.82 -7.31)
-			(end 15.52 -7.31)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "117ffe9a-d2fc-4d74-a686-914120bc6ed0")
-		)
-		(fp_line
-			(start 12.82 -8.81)
-			(end 12.82 -7.31)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "d569da00-94d4-48e9-9d2d-224275144a06")
-		)
-		(fp_line
-			(start 12.82 -8.81)
-			(end 6.08 -8.81)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "b1fadb30-43bc-47a5-9a63-11655555ed56")
-		)
 		(fp_line
 			(start 6.08 16.73)
 			(end 6.08 14.68)
@@ -23150,7 +22840,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "XLR_IN_5"
 			(at 4.3 18 180)
@@ -23190,76 +22880,6 @@
 			)
 		)
 		(attr through_hole)
-		(fp_line
-			(start 15.52 -7.31)
-			(end 15.52 14.93)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "bcfa80f3-ef2a-413f-9a6b-78986ee9cf30")
-		)
-		(fp_line
-			(start 12.82 16.73)
-			(end 6.08 16.73)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "34e90cd6-69ef-43ec-b88f-d91a7b6b566e")
-		)
-		(fp_line
-			(start 12.82 14.93)
-			(end 15.52 14.93)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "880fb88f-1f87-464c-8186-8d7ad5609af7")
-		)
-		(fp_line
-			(start 12.82 14.93)
-			(end 12.82 16.73)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "a5f44bbb-6e2c-4e67-8ba9-d997c1cb5253")
-		)
-		(fp_line
-			(start 12.82 -7.31)
-			(end 15.52 -7.31)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "05a955fc-25a2-4802-ae09-9b9bf8b427ac")
-		)
-		(fp_line
-			(start 12.82 -8.81)
-			(end 12.82 -7.31)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "d4cd0974-9255-468d-b38b-6f62ef0fcbed")
-		)
-		(fp_line
-			(start 12.82 -8.81)
-			(end 6.08 -8.81)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "66b52dde-2070-432b-9985-506d315694b1")
-		)
 		(fp_line
 			(start 6.08 16.73)
 			(end 6.08 14.68)
@@ -23619,7 +23239,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "XLR_IN_6"
 			(at 4.3 18 180)
@@ -23659,76 +23279,6 @@
 			)
 		)
 		(attr through_hole)
-		(fp_line
-			(start 15.52 -7.31)
-			(end 15.52 14.93)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "12bfaee8-ad09-4241-bc15-7848e71c359c")
-		)
-		(fp_line
-			(start 12.82 16.73)
-			(end 6.08 16.73)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "8173c90d-251a-4895-8589-72bedafb9026")
-		)
-		(fp_line
-			(start 12.82 14.93)
-			(end 15.52 14.93)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "c2ff607a-597b-48af-a7a5-828423a6e67f")
-		)
-		(fp_line
-			(start 12.82 14.93)
-			(end 12.82 16.73)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "7990938d-c6b3-41ab-93de-200ba10a005d")
-		)
-		(fp_line
-			(start 12.82 -7.31)
-			(end 15.52 -7.31)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "f9da92fc-5207-4205-8632-72ce814a699a")
-		)
-		(fp_line
-			(start 12.82 -8.81)
-			(end 12.82 -7.31)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "2c1cc7c2-d9e7-4f58-bfb9-6777bfc690cb")
-		)
-		(fp_line
-			(start 12.82 -8.81)
-			(end 6.08 -8.81)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "a60a6e4f-d9d9-4c09-9216-c309505ff59c")
-		)
 		(fp_line
 			(start 6.08 16.73)
 			(end 6.08 14.68)
@@ -24088,7 +23638,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "XLR3_OUT"
 			(at 3.81 22 90)
@@ -24585,7 +24135,7 @@
 				(size 1 1)
 				(thickness 0.15)
 			)
-		)
+		 hide)
 	)
 	(property "Value" "BSS138"
 		(at 0 2.4 0)
@@ -24891,7 +24441,7 @@
 				(size 1 1)
 				(thickness 0.15)
 			)
-		)
+		 hide)
 	)
 	(property "Value" "BSS138"
 		(at 0 2.4 0)
@@ -25197,7 +24747,7 @@
 				(size 1 1)
 				(thickness 0.15)
 			)
-		)
+		 hide)
 	)
 	(property "Value" "BSS138"
 		(at 0 2.4 0)
@@ -25503,7 +25053,7 @@
 				(size 1 1)
 				(thickness 0.15)
 			)
-		)
+		 hide)
 	)
 	(property "Value" "BSS138"
 		(at 0 2.4 0)
@@ -25809,7 +25359,7 @@
 				(size 1 1)
 				(thickness 0.15)
 			)
-		)
+		 hide)
 	)
 	(property "Value" "BSS138"
 		(at 0 2.4 0)
@@ -26115,7 +25665,7 @@
 				(size 1 1)
 				(thickness 0.15)
 			)
-		)
+		 hide)
 	)
 	(property "Value" "BSS138"
 		(at 0 2.4 0)
@@ -26421,7 +25971,7 @@
 				(size 1 1)
 				(thickness 0.15)
 			)
-		)
+		 hide)
 	)
 	(property "Value" "BSS138"
 		(at 0 2.4 0)
@@ -26728,7 +26278,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -26863,7 +26413,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -26998,7 +26548,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -27133,7 +26683,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -27268,7 +26818,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -27403,7 +26953,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -27538,7 +27088,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -27673,7 +27223,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -27808,7 +27358,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -27943,7 +27493,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100k"
 			(at 0 1.65 0)
@@ -28078,7 +27628,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -28213,7 +27763,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -28348,7 +27898,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -28483,7 +28033,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -28618,7 +28168,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -28753,7 +28303,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -28888,7 +28438,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -29023,7 +28573,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -29158,7 +28708,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -29293,7 +28843,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -29428,7 +28978,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -29563,7 +29113,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -29698,7 +29248,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -29833,7 +29383,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -29968,7 +29518,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -30103,7 +29653,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -30238,7 +29788,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -30373,7 +29923,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -30508,7 +30058,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -30643,7 +30193,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -30778,7 +30328,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -30913,7 +30463,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -31048,7 +30598,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -31183,7 +30733,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "30k"
 			(at 0 1.65 0)
@@ -31318,7 +30868,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "15k"
 			(at 0 1.65 0)
@@ -31453,7 +31003,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "7.5k"
 			(at 0 1.65 0)
@@ -31588,7 +31138,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -31723,7 +31273,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -31858,7 +31408,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "30k"
 			(at 0 1.65 0)
@@ -31993,7 +31543,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "15k"
 			(at 0 1.65 0)
@@ -32128,7 +31678,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "7.5k"
 			(at 0 1.65 0)
@@ -32263,7 +31813,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -32398,7 +31948,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "30k"
 			(at 0 1.65 0)
@@ -32533,7 +32083,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "15k"
 			(at 0 1.65 0)
@@ -32668,7 +32218,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "7.5k"
 			(at 0 1.65 0)
@@ -32803,7 +32353,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -32938,7 +32488,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "30k"
 			(at 0 1.65 0)
@@ -33073,7 +32623,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -33208,7 +32758,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "15k"
 			(at 0 1.65 0)
@@ -33343,7 +32893,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "7.5k"
 			(at 0 1.65 0)
@@ -33478,7 +33028,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -33613,7 +33163,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "30k"
 			(at 0 1.65 0)
@@ -33748,7 +33298,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "15k"
 			(at 0 1.65 0)
@@ -33883,7 +33433,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "7.5k"
 			(at 0 1.65 0)
@@ -34018,7 +33568,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -34153,7 +33703,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "30k"
 			(at 0 1.65 0)
@@ -34288,7 +33838,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "15k"
 			(at 0 1.65 0)
@@ -34423,7 +33973,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "7.5k"
 			(at 0 1.65 0)
@@ -34558,7 +34108,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -34693,7 +34243,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -34828,7 +34378,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -34963,7 +34513,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -35098,7 +34648,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -35233,7 +34783,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -35368,7 +34918,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -35503,7 +35053,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100k"
 			(at 0 1.65 0)
@@ -35638,7 +35188,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "100k"
 			(at 0 1.65 0)
@@ -35773,7 +35323,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -35908,7 +35458,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -36043,7 +35593,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -36178,7 +35728,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -36313,7 +35863,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -36448,7 +35998,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -36583,7 +36133,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -36718,7 +36268,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -36853,7 +36403,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -36988,7 +36538,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -37123,7 +36673,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -37258,7 +36808,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -37393,7 +36943,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -37528,7 +37078,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -37663,7 +37213,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -37798,7 +37348,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -37933,7 +37483,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -38068,7 +37618,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -38203,7 +37753,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -38338,7 +37888,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k"
 			(at 0 1.65 0)
@@ -38473,7 +38023,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -38608,7 +38158,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -38743,7 +38293,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -38878,7 +38428,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -39013,7 +38563,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -39148,7 +38698,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -39283,7 +38833,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -39418,7 +38968,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10"
 			(at 0 1.65 0)
@@ -39553,7 +39103,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10"
 			(at 0 1.65 0)
@@ -39688,7 +39238,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10"
 			(at 0 1.65 0)
@@ -39823,7 +39373,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10"
 			(at 0 1.65 0)
@@ -39958,7 +39508,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10"
 			(at 0 1.65 0)
@@ -40093,7 +39643,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10"
 			(at 0 1.65 0)
@@ -40228,7 +39778,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10"
 			(at 0 1.65 0)
@@ -40363,7 +39913,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10"
 			(at 0 1.65 0)
@@ -40498,7 +40048,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10k 0.1%"
 			(at 0 1.65 0)
@@ -40633,7 +40183,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10"
 			(at 0 1.65 0)
@@ -40768,7 +40318,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10"
 			(at 0 1.65 0)
@@ -40903,7 +40453,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10"
 			(at 0 1.65 0)
@@ -41038,7 +40588,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "10"
 			(at 0 1.65 0)
@@ -41173,7 +40723,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -41308,7 +40858,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -41443,7 +40993,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -41578,7 +41128,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -41713,7 +41263,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -41848,7 +41398,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "47"
 			(at 0 1.65 0)
@@ -41983,7 +41533,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "ALWAYS/REMOTE"
 			(at 4 14.45 180)
@@ -42341,7 +41891,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "Gain CH1"
 			(at 0 5.34 0)
@@ -42704,7 +42254,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "Gain CH2"
 			(at 0 5.34 0)
@@ -43067,7 +42617,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "Gain CH3"
 			(at 0 5.34 0)
@@ -43430,7 +42980,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "Gain CH4"
 			(at 0 5.34 0)
@@ -43793,7 +43343,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "Gain CH5"
 			(at 0 5.34 0)
@@ -44156,7 +43706,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "Gain CH6"
 			(at 0 5.34 0)
@@ -44580,7 +44130,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "LM4562"
 			(at 0 3.4 0)
@@ -44925,7 +44475,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "LM4562"
 			(at 0 3.4 0)
@@ -45270,7 +44820,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "LM4562"
 			(at 0 3.4 0)
@@ -45615,7 +45165,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "LM4562"
 			(at 0 3.4 0)
@@ -46013,7 +45563,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "ADP7182AUJZ-11"
 			(at 0 2.4 0)
@@ -46384,7 +45934,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "LM4562"
 			(at 0 3.4 0)
@@ -46729,7 +46279,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "LM4562"
 			(at 0 3.4 0)
@@ -47074,7 +46624,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "LM4562"
 			(at 0 3.4 0)
@@ -47419,7 +46969,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "LM4562"
 			(at 0 3.4 0)
@@ -47764,7 +47314,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "LM4562"
 			(at 0 3.4 0)
@@ -48109,7 +47659,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "LM4562"
 			(at 0 3.4 0)
@@ -48454,7 +48004,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "LM4562"
 			(at 0 3.4 0)
@@ -48799,7 +48349,7 @@
 					(size 1 1)
 					(thickness 0.15)
 				)
-			)
+			 hide)
 		)
 		(property "Value" "LM4562"
 			(at 0 3.4 0)
@@ -49143,7 +48693,7 @@
 				(size 1 1)
 				(thickness 0.15)
 			)
-		)
+		 hide)
 	)
 	(property "Value" "MountingHole"
 		(at 0 4.15 0)
@@ -49208,7 +48758,7 @@
 				(size 1 1)
 				(thickness 0.15)
 			)
-		)
+		 hide)
 	)
 	(property "Value" "MountingHole"
 		(at 0 4.15 0)
@@ -49273,7 +48823,7 @@
 				(size 1 1)
 				(thickness 0.15)
 			)
-		)
+		 hide)
 	)
 	(property "Value" "MountingHole"
 		(at 0 4.15 0)
@@ -49338,7 +48888,7 @@
 				(size 1 1)
 				(thickness 0.15)
 			)
-		)
+		 hide)
 	)
 	(property "Value" "MountingHole"
 		(at 0 4.15 0)
@@ -70077,6 +69627,8 @@
 			)
 		)
 	)
-	(gr_text "Aurora DSP IcePower Booster" (at 30.0 197.0) (layer "B.SilkS") (uuid "b17739cc-d9d2-4219-acba-db033cfa7c36") (effects (font (size 1.2 1.2) (thickness 0.15))))
-	(gr_text "Rev 1.0" (at 30.0 199.0) (layer "B.SilkS") (uuid "8834ccb5-b9fe-410a-8356-39c240796f04") (effects (font (size 1.2 1.2) (thickness 0.15))))
+	(gr_text "Aurora DSP IcePower Booster" (at 30.0 197.0) (layer "B.SilkS") (uuid "b17739cc-d9d2-4219-acba-db033cfa7c36") (effects (font (size 1.2 1.2) (thickness 0.15))
+				(justify mirror)))
+	(gr_text "Rev 1.0" (at 30.0 199.0) (layer "B.SilkS") (uuid "8834ccb5-b9fe-410a-8356-39c240796f04") (effects (font (size 1.2 1.2) (thickness 0.15))
+				(justify mirror)))
 )
