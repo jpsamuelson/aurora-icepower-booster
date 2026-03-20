@@ -25,7 +25,7 @@ PROJ     = os.path.join(PROJ_DIR, 'aurora-dsp-icepower-booster')
 OUT_PCB  = PROJ + '.kicad_pcb'
 KICAD_FP = '/Applications/KiCad/KiCad.app/Contents/SharedSupport/footprints'
 
-BOARD_W, BOARD_H = 180.0, 200.0
+BOARD_W, BOARD_H = 158.0, 200.0
 
 # ─────────────────────────────────────────────────────────────────────
 # FIXED CONNECTOR POSITIONS (user-confirmed physical positions)
@@ -43,13 +43,13 @@ FIXED = {
     'J6':  (12.58, 127.64,  180.0),
     'J7':  (12.58, 155.45,  180.0),
     'J8':  (12.58, 183.22,  180.0),
-    # J9-J14 = XLR male outputs (CH1-CH6)
-    'J9':  (162.31,  44.45,  90.0),
-    'J10': (162.31,  72.14,  90.0),
-    'J11': (162.31,  99.82,  90.0),
-    'J12': (162.31, 127.51,  90.0),
-    'J13': (162.31, 155.45,  90.0),
-    'J14': (162.31, 183.13,  90.0),
+    # J9-J14 = XLR male outputs (CH1-CH6) — x=134 for 158mm board
+    'J9':  (134.0,  44.45,  90.0),
+    'J10': (134.0,  72.14,  90.0),
+    'J11': (134.0,  99.82,  90.0),
+    'J12': (134.0, 127.51,  90.0),
+    'J13': (134.0, 155.45,  90.0),
+    'J14': (134.0, 183.13,  90.0),
     # SW1 = ALWAYS/REMOTE switch (EG1224 SPDT)
     'SW1': (53.88,   6.79,  180.0),
 }
@@ -61,24 +61,24 @@ CH_Y = {1: 44.45, 2: 72.14, 3: 99.82, 4: 127.64, 5: 155.45, 6: 183.22}
 # X COLUMNS (signal path left → right, collision-free)
 # ─────────────────────────────────────────────────────────────────────
 X_XLR_IN   = 12.58   # XLR female (fixed)
-X_TVS_IN   = 24.0    # Input TVS SOD-323  (moved in from 28 → symmetric)
-X_EMI_R    = 30.0    # 47Ω EMI series R
-X_EMI_C    = 47.0    # 100pF EMI bypass cap
-X_DC_BLOCK = 54.0    # 2.2µF DC blocking cap
-X_INPUT_R  = 63.0    # 10k input matched Rs (3 per channel, 3.5mm pitch)
-X_FB_R     = 70.0    # 10k feedback/summing Rs
-X_GAIN_R   = 76.0    # SUMNODE→GAIN_OUT R
-X_RX_IC    = 82.0    # LM4562 Rx/Gain SOIC-8
-X_RX_DEC   = 88.0    # Rx IC decouple caps
-X_DIP_SW   = 97.0    # DIP gain switch (13mm wide)
-X_MUTE_Q   = 113.0   # BSS138 mute MOSFET SOT-23
-X_DRV_IC   = 128.0   # LM4562 Driver SOIC-8
-X_DRV_DEC  = 134.0   # Driver IC decouple caps
-X_DRV_R    = 140.0   # Driver feedback Rs (10k)
-X_OUT_R    = 145.0   # Output series Rs (47Ω HOT/COLD)
-X_OUT_TVS  = 150.0   # Output TVS SOD-323 (was 155 → collision fix)
-X_OUT_DEC  = 155.0   # Output bypass/prot caps (was 158 → collision fix)
-X_XLR_OUT  = 162.31  # XLR male (fixed)
+X_TVS_IN   = 22.0    # Input TVS SOD-323
+X_EMI_R    = 29.0    # 47Ω EMI series R (+2mm TVS clearance)
+X_EMI_C    = 40.0    # 100pF EMI bypass cap
+X_DC_BLOCK = 46.0    # 2.2µF DC blocking cap
+X_INPUT_R  = 53.0    # 10k input matched Rs (3 per channel, 3mm pitch)
+X_FB_R     = 59.0    # 10k feedback/summing Rs
+X_GAIN_R   = 61.0    # SUMNODE→GAIN_OUT R (moved left for RX_IC clearance)
+X_RX_IC    = 69.0    # LM4562 Rx/Gain SOIC-8
+X_RX_DEC   = 74.0    # Rx IC decouple caps
+X_DIP_SW   = 84.0    # DIP gain switch (13mm wide)
+X_MUTE_Q   = 96.0    # BSS138 mute MOSFET SOT-23
+X_DRV_IC   = 106.0   # LM4562 Driver SOIC-8
+X_DRV_DEC  = 111.0   # Driver IC decouple caps
+X_DRV_R    = 116.0   # Driver feedback Rs (10k)
+X_OUT_R    = 120.0   # Output series Rs (47Ω HOT/COLD)
+X_OUT_TVS  = 126.0   # Output TVS SOD-323 (offset from prot Rs @X_OUT_R+4)
+X_OUT_DEC  = 130.0   # Output bypass/prot caps
+X_XLR_OUT  = 134.0   # XLR male (fixed, 158mm board)
 
 # ─────────────────────────────────────────────────────────────────────
 # FOOTPRINT OVERRIDES
@@ -267,7 +267,7 @@ def classify_function(ref, footprint, nets_dict):
 
     # Switch output Rs (connect between DIP switch and sumnode)
     if h('_SW_OUT_1') and h('_SUMNODE'):
-        return (X_DIP_SW - 7.0, -7.0, 90)  # 30k, x=90 (was 87 — collision with U1)
+        return (X_DIP_SW - 7.0, -7.0, 90)  # 30k
     if h('_SW_OUT_2') and h('_SUMNODE'):
         return (X_DIP_SW - 7.0, -3.5, 90)  # 15k
     if h('_SW_OUT_3') and h('_SUMNODE'):
@@ -281,7 +281,7 @@ def classify_function(ref, footprint, nets_dict):
 
     # Gain feedback R #1 — GAIN_FB ↔ GAIN_OUT
     if h('_GAIN_FB') and h('_GAIN_OUT'):
-        return (X_DRV_R - 6.0, -3.5, 90)
+        return (X_DRV_R - 4.0, -3.5, 90)
 
     # Gain feedback R #2 — GAIN_FB ↔ OUT_DRIVE
     if h('_GAIN_FB') and h('_OUT_DRIVE'):
@@ -289,19 +289,19 @@ def classify_function(ref, footprint, nets_dict):
 
     # Output series Rs — OUT_DRIVE → OUT_HOT  (47Ω)
     if h('_OUT_DRIVE') and h('_OUT_HOT'):
-        return (143.0, -3.5, 90)
+        return (X_OUT_R, -3.5, 90)
 
     # Output series Rs — BUF_DRIVE → OUT_COLD  (47Ω)
     if h('_BUF_DRIVE') and h('_OUT_COLD'):
-        return (143.0, +3.5, 90)
+        return (X_OUT_R, +3.5, 90)
 
     # Output protection Rs — OUT_HOT → OUT_PROT_HOT  (10Ω)
     if h('_OUT_HOT') and h('_OUT_PROT_HOT'):
-        return (147.0, -3.5, 90)
+        return (X_OUT_R + 3.0, -3.5, 90)
 
     # Output protection Rs — OUT_COLD → OUT_PROT_COLD  (10Ω)
     if h('_OUT_COLD') and h('_OUT_PROT_COLD'):
-        return (147.0, +3.5, 90)
+        return (X_OUT_R + 3.0, +3.5, 90)
 
     # Output TVS diodes — OUT_HOT + GND, no DRIVE no PROT (diode between signal and GND)
     if h('_OUT_HOT') and has_gnd and not has('_OUT_DRIVE') and not has('_PROT_HOT'):
@@ -369,82 +369,91 @@ def build_positions(comps):
     # Layout: x=20-80 (remote/switch area), x=80-180 (power rail area, y=0-40)
     POWER_ZONE = {
         # ── ICs ──────────────────────────────────────────────────────
-        'U1':  (88.7,  20.0,   0.0),   # TEL5-2422 DC/DC DIP-24, rot=0
-        'U14': (138.0, 13.0,   0.0),   # ADP7118 positive LDO
-        'U15': (155.0, 27.0,   0.0),   # ADP7182 negative LDO
+        # U1 TEL5-2422 DIP-24 rotated 90° to avoid CH1 collision
+        # CrtYd at 90°CW: x=[105..137], y=[1..22] — clears CH1@y=44
+        'U1':  (110.0,  19.0,  90.0),
+        # U14 ADP7118 +LDO — kept clear of MH2 @(154,4) courtyard
+        'U14': (146.0,   4.0,   0.0),
+        # U15 ADP7182 -LDO — below U1 CrtYd, left of J9 CrtYd (x<132)
+        'U15': (125.0,  25.0,   0.0),
 
-        # ── Ferrite beads ±12V ───────────────────────────────────────
-        'FB1': (112.0, 10.0,  90.0),   # +12V_RAW → +12V
-        'FB2': (112.0, 30.0,  90.0),   # -12V_RAW → -12V
+        # ── Ferrite beads ±12V (left of U1) ──────────────────────────
+        'FB1': (102.0,   8.0,  90.0),   # +12V_RAW → +12V
+        'FB2': ( 93.0,  32.0,  90.0),   # -12V_RAW → -12V (between C13@90 and C19@96)
 
         # ── Enable / Mute MOSFETs ─────────────────────────────────────
-        'Q1':  ( 50.0,  30.0,   0.0),  # BSS138 mute enable MOSFET
+        'Q1':  ( 50.0,  30.0,   0.0),   # BSS138 mute enable MOSFET
 
         # ── Remote input TVS (SMBJ15CA, SMB pkg) ─────────────────────
-        'D1':  ( 38.0,   8.0,   0.0),
+        # D1 moved to y=20 to clear BOTH J2 courtyard AND SW1 pads
+        'D1':  ( 40.0,  20.0,   0.0),
 
-        # ── +24V/±12V_RAW rail caps ───────────────────────────────────
-        'C14': ( 80.0,  10.0,  90.0),  # 100nF +12V_RAW bypass
-        'C15': ( 80.0,  30.0,  90.0),  # 100nF -12V_RAW bypass
-        'C16': ( 84.0,  10.0,  90.0),  # 100µF +12V_RAW bulk (1210)
-        'C17': ( 84.0,  30.0,  90.0),  # 100µF -12V_RAW bulk (1210)
+        # ── V+ rail caps, Row A (y=8, x=78..99) ─────────────────────
+        # Starts at x=78 to clear J1 barrel-jack courtyard (~x=66..75)
+        'C14': ( 78.0,   8.0,  90.0),   # 100nF +12V_RAW bypass
+        'C16': ( 81.0,   8.0,  90.0),   # 100µF +12V_RAW bulk (1210)
+        'C2':  ( 84.0,   8.0,  90.0),
+        'C3':  ( 87.0,   8.0,  90.0),
+        'C4':  ( 90.0,   8.0,  90.0),
+        'C5':  ( 93.0,   8.0,  90.0),
+        'C6':  ( 96.0,   8.0,  90.0),
+        'C7':  ( 99.0,   8.0,  90.0),
 
-        # ── ±12V (post ferrite) rail caps ────────────────────────────
-        'C18': (118.0,  10.0,  90.0),  # 100nF +12V bypass
-        'C19': (118.0,  30.0,  90.0),  # 100nF -12V bypass
+        # ── V+ rail caps, Row B (y=25, below U1 CrtYd) ──────────────
+        'C18': (106.0,  25.0,  90.0),   # 100nF +12V bypass (post-FB)
+        'C20': (109.0,  25.0,  90.0),   # 100µF V+ bulk (1210)
+        'C22': (112.0,  25.0,  90.0),   # 100nF V+
+        'C24': (115.0,  25.0,  90.0),   # 10µF V+ X5R
+        'C26': (118.0,  25.0,  90.0),
+        'C27': (121.0,  25.0,  90.0),
 
-        # ── /V+ rail decouple caps (multiple, spread in power zone) ──
-        # U14 input/output, U2-U7 supply rail
-        'C2':  ( 90.0,  10.0,  90.0),
-        'C3':  ( 93.0,  10.0,  90.0),
-        'C4':  ( 96.0,  10.0,  90.0),
-        'C5':  ( 99.0,  10.0,  90.0),
-        'C6':  (102.0,  10.0,  90.0),
-        'C7':  (105.0,  10.0,  90.0),
-        'C20': (124.0,  10.0,  90.0),  # 100µF V+ bulk (1210)
-        'C22': (128.0,  10.0,  90.0),  # 100nF V+
-        'C24': (131.0,  10.0,  90.0),  # 10µF V+ X5R
-        'C26': (144.0,  10.0,  90.0),  # 100nF V+ — moved from 134 (was inside U14 courtyard)
-        'C27': (143.0,  10.0,  90.0),  # 100nF V+
-        'C28': (146.0,  10.0,  90.0),  # 100nF V+
-        'C29': (149.0,  10.0,  90.0),  # 100nF V+
-        'C30': (152.0,  10.0,  90.0),  # 100nF V+
-        'C31': (155.0,  10.0,  90.0),  # 100nF V+
-        'C74': (158.0,  10.0,  90.0),  # 10µF V+ X5R
-        'C76': (161.0,  10.0,  90.0),  # 10µF V+
-        'C78': (164.0,  10.0,  90.0),  # 10µF V+
+        # ── V+ rail caps, Row C (y=10, x=139..148, right of U1) ────
+        # y=10 gives 3mm clearance from U14 courtyard bottom (~y=7)
+        'C28': (139.0,  10.0,  90.0),
+        'C29': (142.0,  10.0,  90.0),
+        'C30': (145.0,  10.0,  90.0),
+        'C31': (148.0,  10.0,  90.0),
+        # ── V+ rail caps, Row D (y=14, below Row C, clear of MH2) ───
+        'C74': (139.0,  14.0,  90.0),   # 10µF V+ X5R
+        'C76': (142.0,  14.0,  90.0),
+        'C78': (145.0,  14.0,  90.0),
 
-        # ── /V- rail decouple caps ───────────────────────────────────
-        'C8':  ( 90.0,  30.0,  90.0),
-        'C9':  ( 93.0,  30.0,  90.0),
-        'C10': ( 96.0,  30.0,  90.0),
-        'C11': ( 99.0,  30.0,  90.0),
-        'C12': (102.0,  30.0,  90.0),
-        'C13': (105.0,  30.0,  90.0),
-        'C21': (124.0,  30.0,  90.0),  # 100µF V- bulk (1210)
-        'C25': (128.0,  30.0,  90.0),  # 10µF V- X5R
-        'C32': (131.0,  30.0,  90.0),  # 100nF V-
-        'C33': (134.0,  30.0,  90.0),  # 100nF V-
-        'C34': (137.0,  30.0,  90.0),  # 100nF V-
-        'C35': (140.0,  30.0,  90.0),  # 100nF V-
-        'C36': (143.0,  30.0,  90.0),  # 100nF V-
-        'C37': (146.0,  30.0,  90.0),  # 100nF V-
-        'C75': (149.0,  30.0,  90.0),  # 10µF V- X5R
-        'C77': (152.0,  30.0,  90.0),  # 10µF V-
-        'C79': (155.0,  30.0,  90.0),  # 10µF V- — moved from 164 (was inside J9 courtyard)
+        # ── V- rail caps, single Row A (y=32, x=69..129) ─────────────
+        # Starts at x=69 (J1 courtyard doesn't reach y=32)
+        # 21 items at 3mm pitch, ends at x=129 (before J9 CrtYd @x=132)
+        'C15': ( 69.0,  32.0,  90.0),   # 100nF -12V_RAW bypass
+        'C17': ( 72.0,  32.0,  90.0),   # 100µF -12V_RAW bulk (1210)
+        'C8':  ( 75.0,  32.0,  90.0),
+        'C9':  ( 78.0,  32.0,  90.0),
+        'C10': ( 81.0,  32.0,  90.0),
+        'C11': ( 84.0,  32.0,  90.0),
+        'C12': ( 87.0,  32.0,  90.0),
+        'C13': ( 90.0,  32.0,  90.0),
+        'C19': ( 96.0,  32.0,  90.0),   # 100nF -12V bypass (post-FB)
+        'C21': ( 99.0,  32.0,  90.0),   # 100µF V- bulk (1210)
+        'C25': (102.0,  32.0,  90.0),   # 10µF V- X5R
+        'C32': (105.0,  32.0,  90.0),
+        'C33': (108.0,  32.0,  90.0),
+        'C34': (111.0,  32.0,  90.0),
+        'C35': (114.0,  32.0,  90.0),
+        'C36': (117.0,  32.0,  90.0),
+        'C37': (120.0,  32.0,  90.0),
+        'C75': (123.0,  32.0,  90.0),   # 10µF V- X5R
+        'C77': (126.0,  32.0,  90.0),
+        'C79': (129.0,  32.0,  90.0),
 
         # ── Special single caps ──────────────────────────────────────
-        'C1':  ( 43.0,  12.0,  90.0),  # 100nF /REMOTE_FILT bypass
-        'C23': (152.0,  20.0,  90.0),  # 22nF /NR_U15 (ADP7182 noise reduction)
-        'C80': ( 46.0,  28.0,   0.0),  # 10µF mute timing cap (Net-(Q1-G))
-        'C81': (170.0,  20.0,  90.0),  # 22nF /SS_U14 (ADP7118 soft-start) — moved to clear C22
+        'C1':  ( 43.0,  12.0,  90.0),   # 100nF /REMOTE_FILT bypass
+        'C23': (129.0,  25.0,  90.0),   # 22nF /NR_U15 noise reduction (near U15)
+        'C80': ( 46.0,  28.0,   0.0),   # 10µF mute timing cap
+        'C81': (141.0,   4.0,  90.0),   # 22nF /SS_U14 soft-start (near U14)
 
         # ── Enable / power-zone resistors ────────────────────────────
-        'R1':   (40.0,  15.0,  90.0),  # 10k /REMOTE_IN → /REMOTE_FILT
-        'R56':  (58.0,  25.0,  90.0),  # 100k /EN_CTRL → /V+ pullup
-        'R57':  (58.0,  29.0,  90.0),  # 100k /EN_CTRL → GND pulldown
-        'R106': (48.0,  21.0,  90.0),  # 10k /V+ → Net-(Q1-G) pullup
-        'R107': (48.0,  25.0,  90.0),  # 100k /MUTE pullup to /V+
+        'R1':   (40.0,  15.0,  90.0),   # 10k /REMOTE_IN → /REMOTE_FILT
+        'R56':  (58.0,  25.0,  90.0),   # 100k /EN_CTRL → /V+ pullup
+        'R57':  (58.0,  29.0,  90.0),   # 100k /EN_CTRL → GND pulldown
+        'R106': (48.0,  21.0,  90.0),   # 10k /V+ → Net-(Q1-G) pullup
+        'R107': (48.0,  25.0,  90.0),   # 100k /MUTE pullup to /V+
     }
 
     for ref, pos_tuple in POWER_ZONE.items():
@@ -682,13 +691,15 @@ def build_zones(net_to_id):
 \t\t)
 \t\t(polygon
 \t\t\t(pts
-\t\t\t\t(xy 0.5 0.5) (xy 179.5 0.5) (xy 179.5 199.5) (xy 0.5 199.5)
+\t\t\t\t(xy 0.5 0.5) (xy {bw} 0.5) (xy {bw} {bh}) (xy 0.5 {bh})
 \t\t\t)
 \t\t)
 \t)
 '''
-    z1 = tmpl.format(nid=gnd_id, nm=gnd_name, layer='F.Cu', uid=str(uuid_mod.uuid4()))
-    z2 = tmpl.format(nid=gnd_id, nm=gnd_name, layer='B.Cu', uid=str(uuid_mod.uuid4()))
+    bw = f'{BOARD_W - 0.5:.1f}'
+    bh = f'{BOARD_H - 0.5:.1f}'
+    z1 = tmpl.format(nid=gnd_id, nm=gnd_name, layer='F.Cu', uid=str(uuid_mod.uuid4()), bw=bw, bh=bh)
+    z2 = tmpl.format(nid=gnd_id, nm=gnd_name, layer='B.Cu', uid=str(uuid_mod.uuid4()), bw=bw, bh=bh)
     return '\n' + z1 + z2
 
 # ─────────────────────────────────────────────────────────────────────
