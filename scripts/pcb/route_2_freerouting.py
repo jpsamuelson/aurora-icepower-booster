@@ -36,8 +36,8 @@ print(f'  SES: {SES}')
 print(f'  Max passes: 20, Threads: 4')
 
 result = subprocess.run(
-    ['java', '-jar', JAR, '-de', DSN, '-do', SES, '-mp', '20', '-mt', '4'],
-    capture_output=True, text=True, timeout=300
+    ['java', '-Djava.awt.headless=true', '-jar', JAR, '-de', DSN, '-do', SES, '-mp', '30', '-mt', '1'],
+    capture_output=True, text=True, timeout=600
 )
 
 print(f'\nFreerouting stdout:')
