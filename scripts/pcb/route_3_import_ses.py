@@ -4,7 +4,7 @@ Phase 3: Import SES into pcbnew temp file (NOT the original!).
 pcbnew.SaveBoard() corrupts KiCad 9 format — so we save to temp only.
 """
 import sys, os
-sys.path.insert(0, '/Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/Current/lib/python3.11/site-packages')
+sys.path.insert(0, '/Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/Current/lib/python3.9/site-packages')
 import pcbnew
 
 BASE = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
