@@ -88,55 +88,62 @@ def get_placement_candidates(fp_type, fp_angle):
         fp_a = int(fp_angle) % 360
         if fp_a == 0 or fp_a == 180:
             # Horizontal component: pads left/right
+            # F.SilkS outline extends ~0.74mm from center in Y
+            # Soldermask opening extends ~1.5mm from center in X
+            # Text at 0° needs clearance: outline(0.74) + margin(0.1) + half_font(0.4) = 1.24 → use 1.5
             candidates = [
-                (0, -1.2, 0),     # above
-                (0, 1.2, 0),      # below
-                (-1.8, 0, 90),    # left, rotated
-                (1.8, 0, 90),     # right, rotated
+                (0, -1.5, 0),     # above (clear of outline + mask)
+                (0, 1.5, 0),      # below
+                (-2.0, 0, 90),    # left, rotated
+                (2.0, 0, 90),     # right, rotated
             ]
         elif fp_a == 90 or fp_a == 270:
-            # Vertical component: pads top/bottom
+            # Vertical component: pads top/bottom (in board coords)
+            # Pad mask edge at ~1.5mm from center along component axis
+            # 90° text (3-char) extends ±0.9mm → need offset > 1.5+0.9 = 2.4mm
+            # Use 2.5mm for safe clearance
             candidates = [
-                (1.3, 0, 90),     # right, rotated
-                (-1.3, 0, 90),    # left, rotated
-                (0, -1.8, 0),     # above
-                (0, 1.8, 0),      # below
+                (2.5, 0, 90),     # right (along axis), 90° text
+                (-2.5, 0, 90),    # left (along axis), 90° text
+                (0, -2.0, 0),     # above, horizontal text (perpendicular to axis)
+                (0, 2.0, 0),      # below, horizontal text
             ]
         else:
-            candidates = [(0, -1.2, 0), (0, 1.2, 0), (1.3, 0, 90), (-1.3, 0, 90)]
+            candidates = [(0, -1.5, 0), (0, 1.5, 0), (1.5, 0, 90), (-1.5, 0, 90)]
 
     elif "1206" in fp_type:
         fp_a = int(fp_angle) % 360
         if fp_a == 0 or fp_a == 180:
+            # 1206: body ~3.2×1.6mm, outline extends further
             candidates = [
-                (0, -1.5, 0),     # above
-                (0, 1.5, 0),      # below
-                (2.2, 0, 90),     # right
-                (-2.2, 0, 90),    # left
+                (0, -1.8, 0),     # above
+                (0, 1.8, 0),      # below
+                (2.5, 0, 90),     # right
+                (-2.5, 0, 90),    # left
             ]
         else:
             candidates = [
-                (2.0, 0, 90),     # right
-                (-2.0, 0, 90),    # left
-                (0, -2.0, 0),     # above
-                (0, 2.0, 0),      # below
+                (2.2, 0, 90),     # right
+                (-2.2, 0, 90),    # left
+                (0, -2.2, 0),     # above
+                (0, 2.2, 0),      # below
             ]
 
     elif "1210" in fp_type:
         fp_a = int(fp_angle) % 360
         if fp_a == 0 or fp_a == 180:
             candidates = [
-                (0, -2.0, 0),
-                (0, 2.0, 0),
-                (2.5, 0, 90),
-                (-2.5, 0, 90),
+                (0, -2.2, 0),
+                (0, 2.2, 0),
+                (2.8, 0, 90),
+                (-2.8, 0, 90),
             ]
         else:
             candidates = [
-                (2.0, 0, 90),
-                (-2.0, 0, 90),
-                (0, -2.5, 0),
-                (0, 2.5, 0),
+                (2.5, 0, 90),
+                (-2.5, 0, 90),
+                (0, -2.8, 0),
+                (0, 2.8, 0),
             ]
 
     elif "MountingHole" in fp_type:
@@ -260,9 +267,85 @@ def main():
         text = m.group(1)
         x, y = float(m.group(2)), float(m.group(3))
         angle = float(m.group(4)) if m.group(4) else 0
-        # Estimate bbox (board texts can be bigger)
         bbox = text_bbox(x, y, text[:20], 1.0, 1.0, angle)
         placed_bboxes.append(bbox)
+
+    # NOTE: We do NOT add pad/FP-outline obstacles here!
+    # The offsets are calculated to clear the component's own geometry.
+    # We only check text-vs-text collisions to avoid overlapping labels.
+    # Adding own-component obstacles would block ALL candidate positions.
+
+    # Build a map of pad centers per footprint for OTHER-component proximity check
+    # (We'll check if a ref text overlaps pads of NEARBY other components)
+    other_pad_bboxes = []  # list of (bbox, fp_ref) tuples
+    MASK_EXPANSION = 0.05
+    for fp_start_idx in fp_starts:
+        fp_block, _ = extract_balanced(pcb, fp_start_idx)
+        if not fp_block:
+            continue
+        fp_at_m = re.search(r'\(at ([\d.-]+) ([\d.-]+)(?:\s+([\d.-]+))?\)', fp_block[:500])
+        if not fp_at_m:
+            continue
+        fp_x = float(fp_at_m.group(1))
+        fp_y = float(fp_at_m.group(2))
+        fp_ang = float(fp_at_m.group(3)) if fp_at_m.group(3) else 0
+
+        ref_m = re.search(r'"Reference" "([^"]+)"', fp_block)
+        fp_ref = ref_m.group(1) if ref_m else "?"
+
+        for pm in re.finditer(r'\(pad "[^"]*" \w+ \w+\s*\n\s*\(at ([\d.-]+) ([\d.-]+)', fp_block):
+            pad_lx = float(pm.group(1))
+            pad_ly = float(pm.group(2))
+            after = fp_block[pm.end():pm.end()+200]
+            size_m = re.search(r'\(size ([\d.]+) ([\d.]+)\)', after)
+            if not size_m:
+                continue
+            pad_sx = float(size_m.group(1))
+            pad_sy = float(size_m.group(2))
+
+            rx, ry = rotate_offset(pad_lx, pad_ly, fp_ang)
+            abs_px = fp_x + rx
+            abs_py = fp_y + ry
+
+            half_sx = (pad_sx / 2 + MASK_EXPANSION)
+            half_sy = (pad_sy / 2 + MASK_EXPANSION)
+            if abs(fp_ang % 180 - 90) < 1:
+                half_sx, half_sy = half_sy, half_sx
+
+            pad_bbox = (abs_px - half_sx, abs_py - half_sy,
+                        abs_px + half_sx, abs_py + half_sy)
+            other_pad_bboxes.append((pad_bbox, fp_ref))
+
+    # Build FP silkscreen outline obstacles (tagged with owner ref)
+    other_outline_bboxes = []  # list of (bbox, fp_ref) tuples
+    for fp_start_idx in fp_starts:
+        fp_block, _ = extract_balanced(pcb, fp_start_idx)
+        if not fp_block:
+            continue
+        fp_at_m = re.search(r'\(at ([\d.-]+) ([\d.-]+)(?:\s+([\d.-]+))?\)', fp_block[:500])
+        if not fp_at_m:
+            continue
+        fp_x = float(fp_at_m.group(1))
+        fp_y = float(fp_at_m.group(2))
+        fp_ang = float(fp_at_m.group(3)) if fp_at_m.group(3) else 0
+
+        ref_m = re.search(r'"Reference" "([^"]+)"', fp_block)
+        fp_ref = ref_m.group(1) if ref_m else "?"
+
+        for lm in re.finditer(r'\(fp_line\s+\(start ([\d.-]+) ([\d.-]+)\)\s+\(end ([\d.-]+) ([\d.-]+)\).*?\(layer "F\.SilkS"\)', fp_block, re.DOTALL):
+            lx1, ly1 = float(lm.group(1)), float(lm.group(2))
+            lx2, ly2 = float(lm.group(3)), float(lm.group(4))
+            rx1, ry1 = rotate_offset(lx1, ly1, fp_ang)
+            rx2, ry2 = rotate_offset(lx2, ly2, fp_ang)
+            ax1, ay1 = fp_x + rx1, fp_y + ry1
+            ax2, ay2 = fp_x + rx2, fp_y + ry2
+            line_bbox = (min(ax1, ax2) - 0.15, min(ay1, ay2) - 0.15,
+                         max(ax1, ax2) + 0.15, max(ay1, ay2) + 0.15)
+            other_outline_bboxes.append((line_bbox, fp_ref))
+
+    print(f"  Text-Hindernisse: {len(placed_bboxes)}, "
+          f"Pad (other): {len(other_pad_bboxes)}, "
+          f"Outline (other): {len(other_outline_bboxes)}")
 
     # Sort F.Fab refs by Y then X for consistent processing
     on_fab_sorted = sorted(on_fab, key=lambda f: (f["fp_y"], f["fp_x"]))
@@ -290,12 +373,30 @@ def main():
             # Calculate text bbox
             bbox = text_bbox(abs_x, abs_y, f["ref"], FONT_H, FONT_W, text_angle)
 
-            # Check collision with all existing placed bboxes
+            # Check collision with all existing placed text bboxes
             has_collision = False
             for existing_bbox in placed_bboxes:
                 if boxes_overlap(bbox, existing_bbox):
                     has_collision = True
                     break
+
+            # Also check against OTHER components' pads (not own)
+            if not has_collision:
+                for pad_bbox, pad_owner in other_pad_bboxes:
+                    if pad_owner == f["ref"]:
+                        continue  # Skip own pads
+                    if boxes_overlap(bbox, pad_bbox):
+                        has_collision = True
+                        break
+
+            # Also check against OTHER components' silkscreen outlines (not own)
+            if not has_collision:
+                for outline_bbox, outline_owner in other_outline_bboxes:
+                    if outline_owner == f["ref"]:
+                        continue  # Skip own outlines
+                    if boxes_overlap(bbox, outline_bbox):
+                        has_collision = True
+                        break
 
             if not has_collision:
                 best = (dx, dy, text_angle, bbox)
