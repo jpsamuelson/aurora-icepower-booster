@@ -292,4 +292,15 @@
 			(xyz -0 -0 -0)
 		)
 	)
+	(fp_rect
+		(start -9.4 -5.5)
+		(end 5.15 5.5)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "F.CrtYd")
+		(uuid "courtyard-crtyd-auto")
+	)
 )
