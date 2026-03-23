@@ -6,6 +6,8 @@ Dieses Board sitzt zwischen einem **Aurora FreeDSP DSP-Prozessor** und sechs **I
 
 > **Hinweis zur Vollständigkeit:** Alle Bauteilreferenzen, Netznamen und Pinzuordnungen in diesem Dokument wurden direkt aus der verifizierten KiCad-Netzliste extrahiert (177/177 Validierungen bestanden) und reichen aus, um den Schaltplan ohne die `.kicad_sch`-Datei vollständig nachzubauen.
 
+![Schaltplan](production/aurora-dsp-icepower-booster-schematic.png)
+
 ---
 
 ## Inhaltsverzeichnis
@@ -1024,6 +1026,8 @@ Dieses Design wurde mit zwei unabhängigen automatisierten Methoden validiert:
 | GND-Zonen | F.Cu (solid connect) + B.Cu (thermal relief) |
 | DRC | 0 Errors, 0 Unconnected, 198 Warnings (kosmetisch) |
 | Silkscreen | 199 Bauteil-Referenzen auf F.Silkscreen |
+
+![PCB Front](production/aurora-dsp-icepower-booster-pcb-front.png)
 
 **Netzklassen:**
 
