@@ -586,23 +586,23 @@
     "netclass_patterns": [
       {
         "netclass": "Power",
-        "pattern": "+12V"
+        "pattern": "/+12V"
       },
       {
         "netclass": "Power",
-        "pattern": "-12V"
+        "pattern": "/-12V"
       },
       {
         "netclass": "HV",
-        "pattern": "+24V_IN"
+        "pattern": "/+24V_IN"
       },
       {
         "netclass": "Audio_Power",
-        "pattern": "V+"
+        "pattern": "/V+"
       },
       {
         "netclass": "Audio_Power",
-        "pattern": "V-"
+        "pattern": "/V-"
       },
       {
         "netclass": "Power",
@@ -610,87 +610,87 @@
       },
       {
         "netclass": "Audio_Input",
-        "pattern": "CH*_HOT_IN"
+        "pattern": "/CH*_HOT_IN"
       },
       {
         "netclass": "Audio_Input",
-        "pattern": "CH*_HOT_RAW"
+        "pattern": "/CH*_HOT_RAW"
       },
       {
         "netclass": "Audio_Input",
-        "pattern": "CH*_COLD_IN"
+        "pattern": "/CH*_COLD_IN"
       },
       {
         "netclass": "Audio_Input",
-        "pattern": "CH*_COLD_RAW"
+        "pattern": "/CH*_COLD_RAW"
       },
       {
         "netclass": "Audio_Input",
-        "pattern": "CH*_EMI_HOT"
+        "pattern": "/CH*_EMI_HOT"
       },
       {
         "netclass": "Audio_Input",
-        "pattern": "CH*_EMI_COLD"
+        "pattern": "/CH*_EMI_COLD"
       },
       {
         "netclass": "Audio_Input",
-        "pattern": "CH*_RX_OUT"
+        "pattern": "/CH*_RX_OUT"
       },
       {
         "netclass": "Audio_Input",
-        "pattern": "CH*_INV_IN"
+        "pattern": "/CH*_INV_IN"
       },
       {
         "netclass": "Audio_Input",
-        "pattern": "CH*_SUMNODE"
+        "pattern": "/CH*_SUMNODE"
       },
       {
         "netclass": "Audio_Output",
-        "pattern": "CH*_GAIN_OUT"
+        "pattern": "/CH*_GAIN_OUT"
       },
       {
         "netclass": "Audio_Output",
-        "pattern": "CH*_OUT_HOT"
+        "pattern": "/CH*_OUT_HOT"
       },
       {
         "netclass": "Audio_Output",
-        "pattern": "CH*_OUT_COLD"
+        "pattern": "/CH*_OUT_COLD"
       },
       {
         "netclass": "Audio_Output",
-        "pattern": "CH*_OUT_DRIVE"
+        "pattern": "/CH*_OUT_DRIVE"
       },
       {
         "netclass": "Audio_Output",
-        "pattern": "CH*_BUF_DRIVE"
+        "pattern": "/CH*_BUF_DRIVE"
       },
       {
         "netclass": "Audio_Output",
-        "pattern": "CH*_OUT_PROT_HOT"
+        "pattern": "/CH*_OUT_PROT_HOT"
       },
       {
         "netclass": "Audio_Output",
-        "pattern": "CH*_OUT_PROT_COLD"
+        "pattern": "/CH*_OUT_PROT_COLD"
       },
       {
         "netclass": "Audio_Output",
-        "pattern": "CH*_GAIN_FB"
+        "pattern": "/CH*_GAIN_FB"
       },
       {
         "netclass": "Audio_Output",
-        "pattern": "CH*_SW_OUT_*"
+        "pattern": "/CH*_SW_OUT_*"
       },
       {
         "netclass": "Power",
-        "pattern": "+12V_RAW"
+        "pattern": "/+12V_RAW"
       },
       {
         "netclass": "Power",
-        "pattern": "-12V_RAW"
+        "pattern": "/-12V_RAW"
       },
       {
         "netclass": "HV",
-        "pattern": "+24V*"
+        "pattern": "/+24V*"
       }
     ],
     "nets": {
