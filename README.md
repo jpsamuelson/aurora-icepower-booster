@@ -18,6 +18,9 @@ Dieses Board sitzt zwischen einem **Aurora FreeDSP DSP-Prozessor** und sechs **I
 6. [Gain-Einstellung](#gain-einstellung)
 7. [Vollständige Bauteil-Referenz](#vollständige-bauteil-referenz)
 8. [Schematic nachbilden](#schematic-nachbilden)
+9. [Validierungsstatus](#validierungsstatus)
+10. [PCB-Layout](#pcb-layout)
+11. [Projektstruktur](#projektstruktur)
 
 ---
 
@@ -36,8 +39,8 @@ Dieses Board sitzt zwischen einem **Aurora FreeDSP DSP-Prozessor** und sechs **I
 | CMRR Eingang | ~62 dB (4× 10 kΩ 0,1 % Metallfilm) |
 | SNR-Ziel | > 100 dB |
 | THD+N-Ziel | < 0,01 % @ 1 kHz |
-| Schnittstelle Remote | 3,5 mm Klinke (Aurora FreeDSP Custom Out) |
-| Fertigung | JLCPCB, 2-Layer, FR-4, HASL, 200 × 200 mm |
+| Schnittstelle Remote | KH-PJ-320EA-5P-SMT 3,5 mm Klinke (Aurora FreeDSP Custom Out) |
+| Fertigung | JLCPCB, 2-Layer, FR-4, HASL, 145,6 × 200 mm |
 
 ---
 
@@ -429,7 +432,7 @@ Zusätzliche Bulk-Kondensatoren /V+ und /V− für Driver-ICs: C74/C75, C76/C77,
 
 ```mermaid
 flowchart TD
-    J2["J2: 3,5mm Klinke\nAurora FreeDSP Remote Out"]
+    J2["J2: KH-PJ-320EA-5P-SMT\n3,5mm Klinke — Remote IN"]
     D1["D1: SMBJ15CA\nBidirektionale TVS 15V\nESD-Schutz Remote"]
     R1["R1: 10 kΩ\nVorwiderstand"]
     C1["C1: 100 nF\nRC-Tiefpass\nEntstörung Remote-Signal"]
@@ -463,7 +466,8 @@ flowchart TD
 
 | Ref | Wert | Funktion | Netz |
 |-----|------|----------|------|
-| J2 | 3,5mm Klinke | Remote-Eingang | PinT=/REMOTE_IN, PinS=GND |
+| J2 | KH-PJ-320EA-5P-SMT | Remote-Eingang | PinT=/REMOTE_IN, PinS=GND |
+| J15 | KH-PJ-320EA-5P-SMT | Remote-Durchschleifung (OUT) | PinT=/REMOTE_IN, PinS=GND |
 | D1 | SMBJ15CA | ESD Remote 15V bidi | Pin1=/REMOTE_IN, Pin2=GND |
 | R1 | 10 kΩ | RC-Vorwiderstand | /REMOTE_IN → /REMOTE_FILT |
 | C1 | 100 nF C0G | RC-Tiefpass | /REMOTE_FILT → GND |
@@ -726,7 +730,8 @@ Zuordnung pro Kanal:
 | Ref | Wert | Typ | Funktion | Pins |
 |-----|------|-----|----------|------|
 | J1 | 24V DC | Barrel Jack | Versorgungseingang | Pin1=/+24V_IN, Pin2=GND |
-| J2 | REMOTE 3,5mm | Audiobuchse 3,5mm | Remote-Eingang (FreeDSP) | PinT=/REMOTE_IN, PinS=GND |
+| J2 | REMOTE 3,5mm IN | KH-PJ-320EA-5P-SMT | Remote-Eingang (FreeDSP) | PinT=/REMOTE_IN, PinS=GND |
+| J15 | REMOTE 3,5mm OUT | KH-PJ-320EA-5P-SMT | Remote-Durchschleifung | PinT=/REMOTE_IN, PinS=GND |
 | J3 | XLR_IN_1 | XLR-F 3pol | Eingang CH1 | Pin1=GND, Pin2=/CH1_HOT_RAW, Pin3=/CH1_COLD_RAW, PinG=GND |
 | J4 | XLR_IN_2 | XLR-F 3pol | Eingang CH2 | Pin1=GND, Pin2=/CH2_HOT_RAW, Pin3=/CH2_COLD_RAW, PinG=GND |
 | J5 | XLR_IN_3 | XLR-F 3pol | Eingang CH3 | Pin1=GND, Pin2=/CH3_HOT_RAW, Pin3=/CH3_COLD_RAW, PinG=GND |
@@ -1005,7 +1010,51 @@ Dieses Design wurde mit zwei unabhängigen automatisierten Methoden validiert:
 | **Methode 1** — OrcadPCB2-Netlist, komponentenzentriert | 85/85 | ✅ |
 | **Methode 2** — KiCad-native Netlist, netzzentriert (pintype/pinfunction) | 177/177 | ✅ |
 
-Validierungs-Skripte: [`scripts/validate_final.py`](scripts/validate_final.py) und [`scripts/validate_netcentric.py`](scripts/validate_netcentric.py)
+---
+
+## PCB-Layout
+
+| Parameter | Wert |
+|-----------|------|
+| Board-Größe | 145,6 × 200 mm |
+| Layer | 2 (F.Cu + B.Cu) |
+| Footprints | 269 |
+| Netze | 135 in 5 Netzklassen |
+| Routing | Freerouting v2.0.1 — 1543 Segments + 476 Vias |
+| GND-Zonen | F.Cu (solid connect) + B.Cu (thermal relief) |
+| DRC | 0 Errors, 0 Unconnected, 198 Warnings (kosmetisch) |
+| Silkscreen | 199 Bauteil-Referenzen auf F.Silkscreen |
+
+**Netzklassen:**
+
+| Klasse | Netze | Track-Breite | Clearance |
+|--------|-------|--------------|-----------|
+| Default | 62 | 0,25 mm | 0,2 mm |
+| Audio_Input | 30 | 0,3 mm | 0,25 mm |
+| Audio_Output | 36 | 0,5 mm | 0,2 mm |
+| Audio_Power | 0 | 0,8 mm | 0,2 mm |
+| Power | 7 | 0,5 mm | 0,2 mm |
+
+---
+
+## Projektstruktur
+
+Das Projekt ist **standalone** — alle Footprints und 3D-Modelle sind lokal im Repository enthalten.
+
+```
+├── aurora-dsp-icepower-booster.kicad_pro   # Projekt
+├── aurora-dsp-icepower-booster.kicad_sch   # Schaltplan
+├── aurora-dsp-icepower-booster.kicad_pcb   # PCB-Layout
+├── aurora-dsp-icepower-booster.kicad_sym   # Lokale Symbole
+├── aurora-dsp-icepower-booster.kicad_dru   # Custom Design Rules
+├── footprints.pretty/                      # 21 Footprints (lokal)
+│   └── 3dshapes/                           # 19 STEP 3D-Modelle
+├── production/
+│   ├── gerber/                             # Fertigungsdaten
+│   └── assembly/                           # BOM + Bestückungsdaten
+├── datasheets/                             # Datenblätter & Recherche
+└── scripts/                                # Build- & Validierungsskripte
+```
 
 ---
 
