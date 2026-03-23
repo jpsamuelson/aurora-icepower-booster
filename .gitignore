@@ -5,14 +5,18 @@ fp-info-cache
 *.bak_*
 *-erc.json
 *-drc.json
+*.net
 
 # KiCad backups
 *-backups/
 .bak_*/
 
-# Build artifacts / exports
+# Generated reports (re-run ERC/DRC to regenerate)
+*.rpt
 reports/
 logs/
+
+# Build artifacts
 exports/
 
 # OS
