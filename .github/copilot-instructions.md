@@ -109,8 +109,29 @@ In the audio signal path, choose resistor values as low as possible (1k–10 kΩ
 
 #### Voltage Regulators
 
-- **Low-noise LDO** for analog supply (< 10 µV RMS, e.g. TPS7A47, LT3045)
+- **Low-noise LDO** for analog supply (< 10 µV RMS, e.g. TPS7A47, LT3045, ADP7118)
 - **No switching regulators** directly for audio — if needed: switching regulator → LC filter → LDO
+- **LDO dropout voltage matters for PSRR**: datasheet PSRR specs are for optimal conditions (e.g. ADP7118: 68 dB@100kHz at 2V dropout). At 1V dropout, PSRR degrades to ~35–45 dB@300kHz. Always check PSRR at your actual operating point.
+- **Noise floor reference**: LM317/337 = 40–65 µV RMS; ADP7118 = 11 µV RMS; LT3045 = 0.8 µV RMS
+
+#### Power Supply Topology Selection
+
+| Criterion          | Linear (Trafo+LDO)                        | SMPS+LDO                                               |
+| ------------------ | ----------------------------------------- | ------------------------------------------------------ |
+| Switching noise    | None — zero HF EMI                        | Present — requires filtering + layout                  |
+| Conducted ripple   | 100 Hz, >100 dB PSRR rejection by op-amps | 100–500 kHz, only ~40 dB PSRR at switching freq        |
+| Radiated EMI       | None                                      | Main risk — bypasses all filters via magnetic coupling |
+| LDO noise floor    | Limited by LM317 (40–65 µV)               | ADP7118 (11 µV) or LT3045 (0.8 µV)                     |
+| Layout tolerance   | High — can place next to op-amps          | Low — ≥20 mm from audio inputs, orientation critical   |
+| Galvanic isolation | Requires 230V transformer                 | Isolated DC/DC provides this                           |
+| Size/weight        | Large (transformer + electrolytic caps)   | Compact (DIP-24 + SMD LDO)                             |
+| SMT assembly       | Difficult (large THT electrolytics)       | JLCPCB-compatible                                      |
+
+**Rule**: Neither topology is inherently superior for audio. SMPS+LDO can achieve lower noise floors but requires strict PCB layout discipline, especially on 2-layer boards. Linear supplies are more tolerant of layout errors.
+
+**For this project**: SMPS+LDO (TEL5-2422 → ferrite → ADP7118/ADP7182) — validated by professional audio industry (Benchmark AHB2, Grace Design, Hypex/Purifi all use SMPS successfully).
+
+> See [docs/research/psu-design-linear-vs-smps.md](../../docs/research/psu-design-linear-vs-smps.md) for full analysis.
 
 ---
 
@@ -185,6 +206,19 @@ Additional rules:
 - **No switching regulator traces under audio ICs**
 - **Clock sources far away** from audio inputs; series damping resistors (22–47 Ω) on clock lines
 - **EMI filter** (π-filter: C-L-C) between switching regulator and audio supply
+
+### DC/DC Converter Placement (critical for SMPS+LDO designs)
+
+The primary noise risk from DC/DC converters is **radiated EMI via magnetic coupling** from the internal switching transformer — this bypasses all conducted-noise filters (LDOs, ferrites, capacitors).
+
+- **DC/DC module ≥ 20 mm from nearest audio input trace** — magnetic coupling falls off as 1/r³ in near-field
+- **Orient DC/DC module with long axis parallel to board edge**, away from analog section — internal transformer field couples directionally
+- **GND via-stitching wall** between DC/DC and analog sections — at least one via every 3 mm to create a partial shielding wall
+- **No signal traces over or under DC/DC footprint** on either layer — direct inductive coupling path
+- **Input filter capacitors directly at DC/DC pins** (<3 mm) — minimizes "hot loop" area where fast-switching currents flow
+- **DC/DC power return currents must not flow through analog area** — route power GND returns on the DC/DC side of the board
+- **Bulk capacitors (≥100 µF) between DC/DC output and LDO input** — provides energy storage and additional conducted-noise filtering
+- **Consider copper keep-out zone** on F.Cu around DC/DC module (2–3 mm margin) to prevent incidental trace coupling
 
 ### Input and Output Protection
 
@@ -321,6 +355,9 @@ Additional rules:
 - [ ] Audio traces on top layer, no unnecessary vias
 - [ ] Guard traces around sensitive audio inputs
 - [ ] Switching regulators ≥ 20 mm from audio input stage
+- [ ] DC/DC converter oriented away from analog section
+- [ ] No signal traces over/under DC/DC footprint
+- [ ] GND via-stitching wall between DC/DC and analog sections
 - [ ] Star-point ground correctly implemented
 - [ ] Decoupling capacitors directly at IC pins (< 3 mm)
 - [ ] Thermal vias under thermal pads
