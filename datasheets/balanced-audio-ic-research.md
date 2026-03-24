@@ -139,6 +139,7 @@ Der THAT1246 wird bevorzugt, wenn der Receiver den -6 dB Pegelverlust der profes
 | **Status** | ❌ **Existiert nicht** (TI-Webseite gibt 404) |
 
 **Hinweis:** Die existierenden TI-Differential-Receiver für Audio sind:
+
 - **INA134** — Differential Line Receiver, G = 1, SOIC-8/DIP-8 (Companion zu DRV134)
 - **INA137** — Differential Line Receiver, G = 1/2, SOIC-8/DIP-8
 
@@ -357,12 +358,14 @@ Bauteile pro Kanal:
 ### 7.2 Einziger möglicher DRV135-Einsatz
 
 Falls die Balanced-Ausgangsstufe vereinfacht werden soll, wäre der **DRV135UA/2K5** eine Option:
+
 - 3.865 Stk bei LCSC vorhanden
 - SOIC-8, $2.78/Stk
 - Spart 3× Widerstände und Layout-Aufwand pro Kanal
 - Aber schlechtere THD als LM4562-Lösung
 
 **Möglicher Hybrid-Ansatz:**
+
 - **Receiver:** 3× LM4562 als Differenzverstärker (bessere Performance, verfügbar)
 - **Driver:** 3× DRV135 (weniger Bauteile, akzeptable Performance, verfügbar)
 - Kostenvorteil: Weniger Platzbedarf bei Treibern, volle Performance bei Empfängern
@@ -370,6 +373,7 @@ Falls die Balanced-Ausgangsstufe vereinfacht werden soll, wäre der **DRV135UA/2
 ### 7.3 Wann THAT-ICs sinnvoll wären
 
 THAT-Corporation-ICs wären nur dann sinnvoll, wenn:
+
 - Das Board **nicht bei JLCPCB bestückt** wird (Handbestückung/anderer Assembler)
 - Die Signalquelle **unbekannte/variable Quellenimpedanzen** hat (z.B. externes Mischpult über lange Kabel)
 - Die CMRR unter realen Bedingungen absolut kritisch ist

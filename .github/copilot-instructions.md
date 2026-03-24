@@ -1,88 +1,88 @@
 # KiCad PCB Design — Copilot Instructions
 
-## Projekt: Aurora DSP IcePower Booster
+## Project: Aurora DSP IcePower Booster
 
-- **Verstärker-Board** auf Basis von ICEpower-Modulen
-- **KiCad 9** Projekt (Schaltplan + PCB)
-- **Ziel-Fertigung**: JLCPCB (2-Layer Standard, HASL, FR-4)
-- **Sprache**: Deutsch bevorzugt für Kommentare und Erklärungen
+- **Amplifier board** based on ICEpower modules
+- **KiCad 9** project (schematic + PCB)
+- **Target manufacturing**: JLCPCB (2-layer standard, HASL, FR-4)
+- **Language**: English for all comments and explanations
 
 ---
 
-## 1. KiCAD MCP Server — Architektur & Tool-Zugang
+## 1. KiCad MCP Server — Architecture & Tool Access
 
-Der KiCAD MCP Server stellt **64 Tools** bereit, organisiert nach dem **Router Pattern**:
+The KiCad MCP Server provides **64 tools**, organized using the **Router Pattern**:
 
-- **~17 Direkte Tools** — immer sichtbar, für häufige Operationen
-- **~47 Geroutete Tools** — in 7 Kategorien, über Router abrufbar
-- **4 Router Tools** — zur Entdeckung und Ausführung
+- **~17 Direct Tools** — always visible, for frequent operations
+- **~47 Routed Tools** — in 7 categories, accessible via router
+- **4 Router Tools** — for discovery and execution
 
-### Router Pattern (Context-sparend, immer nutzen!)
+### Router Pattern (context-efficient, always use!)
 
 ```
-1. list_tool_categories    → Alle 7 Kategorien anzeigen
-2. get_category_tools      → Tools einer Kategorie auflisten
-3. search_tools            → Tools per Stichwort finden
-4. execute_tool            → Ein geroutetes Tool ausführen
+1. list_tool_categories    → Show all 7 categories
+2. get_category_tools      → List tools in a category
+3. search_tools            → Find tools by keyword
+4. execute_tool            → Execute a routed tool
 ```
 
-### Direkte Tools (ohne Router nutzbar)
+### Direct Tools (usable without router)
 
-| Tool                      | Funktion                                                   |
+| Tool                      | Function                                                   |
 | ------------------------- | ---------------------------------------------------------- |
-| `create_project`          | Neues KiCad-Projekt (.kicad_pro + .kicad_pcb + .kicad_sch) |
-| `open_project`            | Bestehendes Projekt laden                                  |
-| `save_project`            | Projekt speichern                                          |
-| `snapshot_project`        | Checkpoint mit PDF-Rendering                               |
-| `get_project_info`        | Projekt-Metadaten                                          |
-| `place_component`         | Footprint auf PCB platzieren                               |
-| `move_component`          | Bauteil repositionieren                                    |
-| `add_net`                 | Neues Netz erstellen                                       |
-| `route_trace`             | Leiterbahn routen (single layer)                           |
-| `set_board_size`          | PCB-Dimensionen konfigurieren                              |
-| `add_board_outline`       | Board-Umriss (Rechteck/Kreis/Polygon/abgerundet)           |
-| `get_board_info`          | Board-Eigenschaften abrufen                                |
-| `add_schematic_component` | Symbol platzieren (~10.000 KiCad-Symbole)                  |
-| `connect_passthrough`     | J1→J2 Durchverbindung (alle Pins)                          |
-| `connect_to_net`          | Pin an benanntes Netz anschließen                          |
-| `add_schematic_net_label` | Netzlabel im Schaltplan                                    |
-| `sync_schematic_to_board` | Schaltplan → PCB synchronisieren (F8)                      |
+| `create_project`          | Create new KiCad project (.kicad_pro + .kicad_pcb + .kicad_sch) |
+| `open_project`            | Load existing project                                      |
+| `save_project`            | Save project                                               |
+| `snapshot_project`        | Checkpoint with PDF rendering                              |
+| `get_project_info`        | Project metadata                                           |
+| `place_component`         | Place footprint on PCB                                     |
+| `move_component`          | Reposition component                                       |
+| `add_net`                 | Create new net                                             |
+| `route_trace`             | Route trace (single layer)                                 |
+| `set_board_size`          | Configure PCB dimensions                                   |
+| `add_board_outline`       | Board outline (rectangle/circle/polygon/rounded)           |
+| `get_board_info`          | Retrieve board properties                                  |
+| `add_schematic_component` | Place symbol (~10,000 KiCad symbols)                       |
+| `connect_passthrough`     | J1→J2 passthrough connection (all pins)                    |
+| `connect_to_net`          | Connect pin to named net                                   |
+| `add_schematic_net_label` | Net label in schematic                                     |
+| `sync_schematic_to_board` | Schematic → PCB sync (F8)                                  |
 
-### Geroutete Tool-Kategorien
+### Routed Tool Categories
 
-| Kategorie     | Tools | Inhalt                                                              |
-| ------------- | ----- | ------------------------------------------------------------------- |
-| **BOARD**     | 9     | Layer-Management, Montagelöcher, Zonen, Board-Text, 2D-Preview      |
-| **COMPONENT** | 8     | Rotieren, Löschen, Bearbeiten, Finden, Eigenschaften, Gruppieren    |
-| **EXPORT**    | 8     | Gerber, PDF, SVG, 3D (STEP/STL), BOM, Netlist, Bestückungsdaten     |
-| **DRC**       | 8     | Design Rules, DRC-Checks, Netzklassen, Constraints                  |
-| **SCHEMATIC** | 9     | Bauteile bearbeiten/löschen, Verbindungen, Netlist-Generierung      |
-| **LIBRARY**   | 11    | Footprint-/Symbol-Bibliotheken durchsuchen, erstellen, registrieren |
-| **ROUTING**   | 2+    | Vias, Kupferflächen, Pad-to-Pad-Routing                             |
+| Category      | Tools | Contents                                                           |
+| ------------- | ----- | ------------------------------------------------------------------ |
+| **BOARD**     | 9     | Layer management, mounting holes, zones, board text, 2D preview    |
+| **COMPONENT** | 8     | Rotate, delete, edit, find, properties, group                      |
+| **EXPORT**    | 8     | Gerber, PDF, SVG, 3D (STEP/STL), BOM, netlist, placement data     |
+| **DRC**       | 8     | Design rules, DRC checks, net classes, constraints                 |
+| **SCHEMATIC** | 9     | Edit/delete components, connections, netlist generation             |
+| **LIBRARY**   | 11    | Browse, create, register footprint/symbol libraries                |
+| **ROUTING**   | 2+    | Vias, copper pours, pad-to-pad routing                             |
 
 ---
 
 ## 2. Workflows
 
-### 2.1 Schaltplan-First (Empfohlen!)
+### 2.1 Schematic-First (Recommended!)
 
 ```
 create_project(path, name)
-  → add_schematic_component() × N       # Bauteile platzieren
-  → add_schematic_connection() × M      # Pins verbinden
-  → connect_to_net() × K                # Power-Netze (VCC, GND, +5V)
-  → add_schematic_net_label()            # Signal-Labels
+  → add_schematic_component() × N       # Place components
+  → add_schematic_connection() × M      # Connect pins
+  → connect_to_net() × K                # Power nets (VCC, GND, +5V)
+  → add_schematic_net_label()            # Signal labels
   → sync_schematic_to_board()            # Netlist → PCB (F8)
   → set_board_size() + add_board_outline()
-  → place_component() × N               # Footprints positionieren
-  → route_trace() × M                   # Leiterbahnen
-  → add_via()                            # Lagenwechsel
-  → add_copper_pour()                    # GND-Fläche
-  → run_drc()                            # Prüfung
-  → export_gerber()                      # Fertigung
+  → place_component() × N               # Position footprints
+  → route_trace() × M                   # Route traces
+  → add_via()                            # Layer change
+  → add_copper_pour()                    # GND plane
+  → run_drc()                            # Verification
+  → export_gerber()                      # Manufacturing
 ```
 
-### 2.2 Quick-PCB (Bottom-Up, für einfache Boards)
+### 2.2 Quick-PCB (Bottom-Up, for simple boards)
 
 ```
 create_project() → set_board_size() → add_board_outline()
@@ -90,257 +90,257 @@ create_project() → set_board_size() → add_board_outline()
   → add_copper_pour() → run_drc() → export_gerber()
 ```
 
-### 2.3 Passthrough-Workflow (Adapter-Boards, FFC/FPC)
+### 2.3 Passthrough Workflow (Adapter boards, FFC/FPC)
 
 ```
-connect_passthrough(J1→J2)           # Alle Pins 1:1 verbinden
-  → sync_schematic_to_board()        # Netze importieren
-  → route_pad_to_pad() × N           # Auto-Routing mit Vias
+connect_passthrough(J1→J2)           # Connect all pins 1:1
+  → sync_schematic_to_board()        # Import nets
+  → route_pad_to_pad() × N           # Auto-routing with vias
   → snapshot_project("v1", "ok")     # Checkpoint
 ```
 
-### 2.4 Kostenoptimierung (JLCPCB)
+### 2.4 Cost Optimization (JLCPCB)
 
 ```
 export_bom()
-  → download_jlcpcb_database()       # 2.5M+ Teile, lokal
-  → search_jlcpcb_parts() per Bauteil
-  → suggest_jlcpcb_alternatives()    # Günstigere Alternativen
-  → enrich_datasheets()              # Datenblätter verlinken
+  → download_jlcpcb_database()       # 2.5M+ parts, local
+  → search_jlcpcb_parts() per part
+  → suggest_jlcpcb_alternatives()    # Cheaper alternatives
+  → enrich_datasheets()              # Link datasheets
 ```
 
 ---
 
-## 3. Kritische Regeln für Tool-Nutzung
+## 3. Critical Rules for Tool Usage
 
-### Dateipfade
+### File Paths
 
-- **Immer absolute Pfade** verwenden (z.B. `/Users/roroor/Documents/...`)
-- Projekt muss **geladen** sein bevor Board/Schematic-Operationen möglich sind
+- **Always use absolute paths** (e.g. `/Users/roroor/Documents/...`)
+- Project must be **loaded** before board/schematic operations are possible
 
-### Symbol-Loading (Schaltplan)
+### Symbol Loading (Schematic)
 
-- Format: `"library": "Device", "type": "R"` oder `"library": "Amplifier_Operational", "type": "LM358"`
-- Dynamisches Loading: Zugriff auf **alle ~10.000 KiCad-Symbole** ohne Konfiguration
-- Fallback-Templates für: R, C, L, LED, D, Q_NPN, Q_PNP, U, J, SW, F, Crystal, Transformer
+- Format: `"library": "Device", "type": "R"` or `"library": "Amplifier_Operational", "type": "LM358"`
+- Dynamic loading: access to **all ~10,000 KiCad symbols** without configuration
+- Fallback templates for: R, C, L, LED, D, Q_NPN, Q_PNP, U, J, SW, F, Crystal, Transformer
 
-### Pin-Verbindungen (Schaltplan)
+### Pin Connections (Schematic)
 
-- Pin-Positionen werden **automatisch erkannt** (rotationsabhängig: 0°, 90°, 180°, 270°)
-- Routing-Optionen: `direct`, `orthogonal_h`, `orthogonal_v`
-- Power-Symbole: VCC, GND, +3V3, +5V werden als spezielle Symbole behandelt
+- Pin positions are **automatically detected** (rotation-dependent: 0°, 90°, 180°, 270°)
+- Routing options: `direct`, `orthogonal_h`, `orthogonal_v`
+- Power symbols: VCC, GND, +3V3, +5V are treated as special symbols
 
 ### Routing (PCB)
 
-- `route_trace()` ist **Single-Layer** — für Multi-Layer `route_pad_to_pad()` verwenden
-- Trace-Breiten und Via-Größen vorher über `set_design_rules()` konfigurieren
-- Nach dem Routing immer `run_drc()` ausführen
+- `route_trace()` is **single-layer** — for multi-layer use `route_pad_to_pad()`
+- Configure trace widths and via sizes beforehand via `set_design_rules()`
+- Always run `run_drc()` after routing
 
 ### Checkpoints
 
-- `snapshot_project()` regelmäßig nutzen — speichert Zustand + generiert PDF
-- Vor größeren Änderungen immer Snapshot erstellen
+- Use `snapshot_project()` regularly — saves state + generates PDF
+- Always create a snapshot before major changes
 
 ---
 
-## 4. Schaltplan-Design
+## 4. Schematic Design
 
-### Allgemeine Regeln
+### General Rules
 
-- **Signalfluss links → rechts**: Eingänge links, Ausgänge rechts
-- **Power-Symbole**: VCC/+V oben, GND unten — immer konsistent
-- **Ein Symbol pro Funktion**: Keine verschachtelten Funktionen in einem Symbol
-- **Hierarchische Blätter** für modulare Designs (z.B. ein Blatt pro Verstärkerkanal)
+- **Signal flow left → right**: inputs on the left, outputs on the right
+- **Power symbols**: VCC/+V at top, GND at bottom — always consistent
+- **One symbol per function**: no nested functions in a single symbol
+- **Hierarchical sheets** for modular designs (e.g. one sheet per amplifier channel)
 
-### Netz-Benennung
+### Net Naming
 
-- **Power-Netze**: `VCC`, `GND`, `+5V`, `+3V3`, `+12V`, `V_BAT`
-- **Audio-Signale**: `AUDIO_IN_L`, `AUDIO_IN_R`, `AUDIO_OUT_L`, `AUDIO_OUT_R`, `AUDIO_GND`
-- **Differentielle Paare**: Suffix `_P`/`_N` oder `+`/`-`
+- **Power nets**: `VCC`, `GND`, `+5V`, `+3V3`, `+12V`, `V_BAT`
+- **Audio signals**: `AUDIO_IN_L`, `AUDIO_IN_R`, `AUDIO_OUT_L`, `AUDIO_OUT_R`, `AUDIO_GND`
+- **Differential pairs**: suffix `_P`/`_N` or `+`/`-`
 
-### Entkopplung (3 Stufen)
+### Decoupling (3 stages)
 
-1. **HF-Entkopplung** (100nF C0G): Direkt am IC-Pin, kürzeste Verbindung zu VCC und GND (<3mm)
-2. **Lokale Entkopplung** (1–10µF Keramik X5R/X7R): Pro Versorgungsinsel, <20mm vom IC
-3. **Bulk-Kapazität** (10–100µF Elektrolyt): Am Versorgungseingang des Boards
+1. **HF decoupling** (100nF C0G): directly at IC pin, shortest path to VCC and GND (<3mm)
+2. **Local decoupling** (1–10µF ceramic X5R/X7R): per supply island, <20mm from IC
+3. **Bulk capacitance** (10–100µF electrolytic): at board supply input
 
-Platzierung vom IC aus: 100nF direkt am Pin → 1µF dahinter → 10µF am Versorgungsstrang. Via direkt am GND-Pad des Kondensators zur Massefläche. Bei Audio-ICs: Entkopplungskondensatoren auf B.Cu direkt unter dem IC platzieren.
+Placement from IC outward: 100nF directly at pin → 1µF behind it → 10µF at supply rail. Via directly from capacitor GND pad to ground plane. For audio ICs: place decoupling capacitors on B.Cu directly beneath the IC.
 
-### Audio-spezifische Schaltplan-Regeln
+### Audio-Specific Schematic Rules
 
-- **Kein X7R/X5R im Audio-Signalpfad** — Mikrofonie-Effekt! Nur C0G oder Film verwenden
-- **Koppelkondensatoren**: Film oder C0G, $f_{-3dB} = \frac{1}{2\pi R C}$ — für 20 Hz bei 10 kΩ Last ≥ 0.8 µF
-- **Feedback-Netzwerke**: Metallfilm-Widerstände (±1%, ≤50 ppm/°C) für Gain-Setting
-- **Zobel-Netzwerk**: 10 Ω + 100 nF in Serie am Verstärkerausgang (Lastimpedanz-Stabilisierung)
-- **Muting-Schaltung**: Einschalt-/Ausschalt-Muting gegen Pop-/Klick-Geräusche
-- **EMV-Filter**: Ferrite Beads zwischen Digital- und Analog-Versorgung
+- **No X7R/X5R in the audio signal path** — microphonic effect! Use only C0G or film
+- **Coupling capacitors**: film or C0G, $f_{-3dB} = \frac{1}{2\pi R C}$ — for 20 Hz at 10 kΩ load ≥ 0.8 µF
+- **Feedback networks**: metal film resistors (±1%, ≤50 ppm/°C) for gain setting
+- **Zobel network**: 10 Ω + 100 nF in series at amplifier output (load impedance stabilization)
+- **Muting circuit**: power-on/power-off muting to prevent pop/click noise
+- **EMI filter**: ferrite beads between digital and analog supply
 
-### Bauteilauswahl für Audio-Qualität
+### Component Selection for Audio Quality
 
-#### Widerstände
+#### Resistors
 
-| Typ                          | Einsatz                | Eigenschaften                               |
-| ---------------------------- | ---------------------- | ------------------------------------------- |
-| **Metallfilm (Dünnfilm)**    | Gain-Setting, Feedback | Niedrigstes Rauschen, ±1%, ≤50 ppm/°C       |
-| **Metallschicht (Dickfilm)** | Allgemein              | Standard, akzeptabel                        |
-| **Kohleschicht**             | ❌ Vermeiden           | Spannungsabhängig → nichtlineare Verzerrung |
+| Type                       | Application            | Characteristics                             |
+| -------------------------- | ---------------------- | ------------------------------------------- |
+| **Metal film (thin film)** | Gain setting, feedback | Lowest noise, ±1%, ≤50 ppm/°C              |
+| **Metal glaze (thick film)** | General purpose      | Standard, acceptable                        |
+| **Carbon film**            | ❌ Avoid               | Voltage-dependent → nonlinear distortion    |
 
-Im Audio-Signalpfad Widerstände so niedrig wie möglich wählen (1k–10 kΩ).
+In the audio signal path, choose resistor values as low as possible (1k–10 kΩ).
 
-#### Kondensatoren
+#### Capacitors
 
-| Typ                   | Einsatz                 | Hinweis                                  |
+| Type                  | Application             | Notes                                    |
 | --------------------- | ----------------------- | ---------------------------------------- |
-| **C0G/NP0 MLCC**      | Entkopplung, Filter     | Ideal für Audio — kein Mikrofonie-Effekt |
-| **Polypropylen Film** | Signal-Kopplung, Filter | Niedrigster Verlustfaktor, exzellent     |
-| **X7R/X5R MLCC**      | ⚠️ Nur Entkopplung      | Mikrofonie + DC-Bias-Derating bis -80%   |
-| **Elektrolyt**        | Bulk-Entkopplung        | Nur Versorgung, nicht im Signalpfad      |
+| **C0G/NP0 MLCC**     | Decoupling, filter      | Ideal for audio — no microphonic effect  |
+| **Polypropylene film** | Signal coupling, filter | Lowest dissipation factor, excellent     |
+| **X7R/X5R MLCC**     | ⚠️ Decoupling only      | Microphonics + DC bias derating up to -80% |
+| **Electrolytic**      | Bulk decoupling         | Supply only, not in signal path          |
 
 #### Op-Amps
 
-- **Low-Noise**: $e_n$ < 5 nV/√Hz (z.B. OPA1612, NE5532, LME49710)
-- **Slew Rate**: ≥ 10 V/µs; **PSRR**: ≥ 80 dB bei 1 kHz
+- **Low-noise**: $e_n$ < 5 nV/√Hz (e.g. OPA1612, NE5532, LME49710)
+- **Slew rate**: ≥ 10 V/µs; **PSRR**: ≥ 80 dB at 1 kHz
 
-#### Spannungsregler
+#### Voltage Regulators
 
-- **Low-Noise LDO** für Analog-Versorgung (< 10 µV RMS, z.B. TPS7A47, LT3045)
-- **Keine Schaltregler** direkt für Audio — wenn nötig: Schaltregler → LC-Filter → LDO
+- **Low-noise LDO** for analog supply (< 10 µV RMS, e.g. TPS7A47, LT3045)
+- **No switching regulators** directly for audio — if needed: switching regulator → LC filter → LDO
 
 ---
 
-## 5. PCB-Layout & Routing
+## 5. PCB Layout & Routing
 
-### Massekonzept (wichtigste Regel!)
+### Ground Concept (most important rule!)
 
-- **Ungeteilte GND-Fläche auf B.Cu** — KEIN physischer Split
-- Analoge, digitale und Power-Rückströme durch **Bauteil-Platzierung räumlich trennen**, nicht durch Schlitze
-- Splits erzwingen Umwege für Rückstrom → größere Schleifenflächen → mehr Störeinkopplung
-- **Sternpunkt**: Alle Masserückführungen treffen sich an einem Punkt (idealerweise am Versorgungseingang)
-- **Rückstrompfade bewusst führen**: Bei NF fließt Rückstrom auf dem Weg des geringsten Widerstands, bei HF direkt unter der Signaltrace
-- **Keine Leiterbahnen die die Massefläche unter ICs zerschneiden**
-- Power-GND-Rückströme dürfen **nicht durch den Analog-Bereich** fließen
+- **Unbroken GND plane on B.Cu** — NO physical split
+- Separate analog, digital, and power return currents through **component placement**, not through slots
+- Splits force return current detours → larger loop areas → more noise coupling
+- **Star point**: all ground returns meet at one point (ideally at the supply input)
+- **Route return current paths deliberately**: at low frequencies, return current flows on the path of least resistance; at HF, directly beneath the signal trace
+- **No traces cutting through the ground plane under ICs**
+- Power GND return currents must **not flow through the analog area**
 
-### Bauteil-Platzierung
+### Component Placement
 
-1. **Steckverbinder** zuerst — definieren die Board-Geometrie
-2. **ICEpower-Modul / Leistungsbauteile** — thermisch korrekt, eigener Bereich
-3. **Audio-ICs** in eigenem Analog-Bereich, kurze Verbindungen
-4. **Entkopplungskondensatoren** direkt am zugehörigen IC
-5. **Digitale Bauteile** räumlich getrennt vom Analog-Bereich
-6. **Passive, Testpunkte** in verbleibende Flächen
+1. **Connectors** first — they define the board geometry
+2. **ICEpower module / power components** — thermally correct, dedicated area
+3. **Audio ICs** in a dedicated analog area, short connections
+4. **Decoupling capacitors** directly at the associated IC
+5. **Digital components** spatially separated from the analog area
+6. **Passives, test points** in remaining areas
 
-Weitere Regeln:
+Additional rules:
 
-- **Bauteile an 0.5mm / 1.27mm Raster** ausrichten
-- **Gleiche Orientierung** bei R/C (erleichtert Bestückung)
-- **Wärmequellen** von temperatursensitiven Bauteilen fernhalten
+- **Align components to 0.5mm / 1.27mm grid**
+- **Same orientation** for R/C (facilitates assembly)
+- **Keep heat sources** away from temperature-sensitive components
 
-### Routing-Richtlinien
+### Routing Guidelines
 
-#### Trace-Breiten
+#### Trace Widths
 
-| Anwendung         | Empfohlen  | Strom (1oz Cu, 10°C ΔT) |
-| ----------------- | ---------- | ----------------------- |
-| Signal (Standard) | 0.2–0.25mm | ~0.3A                   |
-| Audio-Signal      | 0.3mm      | —                       |
-| Power (1A)        | 0.5mm      | ~1A                     |
-| Power (3A+)       | 1.5mm+     | ~3A+                    |
-| Speaker           | 1.5mm      | hoher Strom             |
+| Application       | Recommended | Current (1oz Cu, 10°C ΔT) |
+| ----------------- | ----------- | ------------------------- |
+| Signal (standard) | 0.2–0.25mm  | ~0.3A                     |
+| Audio signal      | 0.3mm       | —                         |
+| Power (1A)        | 0.5mm       | ~1A                       |
+| Power (3A+)       | 1.5mm+      | ~3A+                      |
+| Speaker           | 1.5mm       | high current              |
 
-#### Via-Design
+#### Via Design
 
 | Parameter    | JLCPCB Min | Standard |
 | ------------ | ---------- | -------- |
-| Via-Pad      | 0.45mm     | 0.6mm    |
-| Via-Bohrung  | 0.2mm      | 0.3mm    |
-| Annular Ring | 0.125mm    | 0.15mm   |
+| Via pad      | 0.45mm     | 0.6mm    |
+| Via drill    | 0.2mm      | 0.3mm    |
+| Annular ring | 0.125mm    | 0.15mm   |
 
-#### Audio-Signalführung
+#### Audio Signal Routing
 
-- **Audio-Traces auf Top-Layer** (B.Cu für ununterbrochene Massefläche freihalten)
-- **Keine Vias im Audio-Signalpfad** — jeder Via ist ein Impedanzsprung
-- **Guard-Traces**: GND-Leiterbahnen beidseitig um empfindliche Audio-Eingangssignale, mit Vias zur Massefläche alle 5 mm
-- **Via-Stitching**: GND-Vias beidseitig entlang Audio-Traces (alle 5–10 mm)
-- **Keine Kreuzungen** — wenn unvermeidlich, rechtwinklig (90°) kreuzen
-- **Audio-Traces niemals parallel zu digitalen Signalen** (Mindestabstand ≥ 3 mm, zu Power ≥ 5 mm)
-- **Differentielle Paare**: Gleiche Länge, gleicher Abstand, als Paar routen
+- **Audio traces on top layer** (keep B.Cu free for unbroken ground plane)
+- **No vias in the audio signal path** — every via is an impedance discontinuity
+- **Guard traces**: GND traces on both sides of sensitive audio input signals, with vias to ground plane every 5 mm
+- **Via stitching**: GND vias on both sides along audio traces (every 5–10 mm)
+- **No crossings** — if unavoidable, cross at right angles (90°)
+- **Audio traces never parallel to digital signals** (minimum spacing ≥ 3 mm, to power ≥ 5 mm)
+- **Differential pairs**: equal length, equal spacing, route as a pair
 
-#### Allgemeine Routing-Regeln
+#### General Routing Rules
 
-- **45°-Winkel** statt 90° Ecken
-- **Keine Stubs** (offene Leiterbahn-Enden)
-- **Massefläche**: GND-Pour auf B.Cu, möglichst wenige Unterbrechungen
-- **Via-Stitching**: GND-Vias regelmäßig verteilen
-- **Teardrops** an Pad-/Via-Übergängen aktivieren
+- **45° angles** instead of 90° corners
+- **No stubs** (open trace ends)
+- **Ground plane**: GND pour on B.Cu, minimize interruptions
+- **Via stitching**: distribute GND vias regularly
+- **Teardrops** at pad/via transitions enabled
 
-### Störquellen-Management
+### Noise Source Management
 
-- **Schaltregler ≥ 20 mm** von Audio-Eingangsstufe; geschirmte Induktivitäten bevorzugen
-- **Keine Schaltregler-Traces unter Audio-ICs**
-- **Taktquellen weit weg** von Audio-Eingängen; Seriendämpfungswiderstände (22–47 Ω) in Clock-Leitungen
-- **EMI-Filter** (π-Filter: C-L-C) zwischen Schaltregler und Audio-Versorgung
+- **Switching regulators ≥ 20 mm** from audio input stage; prefer shielded inductors
+- **No switching regulator traces under audio ICs**
+- **Clock sources far away** from audio inputs; series damping resistors (22–47 Ω) on clock lines
+- **EMI filter** (π-filter: C-L-C) between switching regulator and audio supply
 
-### Eingangs- und Ausgangsschutz
+### Input and Output Protection
 
-- **ESD**: TVS-Dioden (bidirektional) an allen externen Audio-Steckverbindern
-- **DC-Blocking**: Koppelkondensator (Film/C0G, ≥ 1 µF) am Eingang
-- **EMI-Tiefpass**: Serienwiderstand (47–100 Ω) + Keramik-C (100 pF–1 nF) gegen GND am Eingang
-- **Ausgang**: Zobel-Netzwerk; bei Class-D: LC-Ausgangsfilter lt. Datenblatt
+- **ESD**: TVS diodes (bidirectional) on all external audio connectors
+- **DC blocking**: coupling capacitor (film/C0G, ≥ 1 µF) at input
+- **EMI low-pass**: series resistor (47–100 Ω) + ceramic cap (100 pF–1 nF) to GND at input
+- **Output**: Zobel network; for Class-D: LC output filter per datasheet
 
 ### Silkscreen
 
-- Mindestens **0.8 mm Texthöhe**, 0.15 mm Strichstärke
-- **Pin-1- und Polaritätsmarkierung** bei ICs, Elkos, Dioden
-- **Kein Silkscreen auf Pads**
-- Board-Info: Projektname, Version, Datum
+- Minimum **0.8 mm text height**, 0.15 mm stroke width
+- **Pin 1 and polarity markings** on ICs, electrolytics, diodes
+- **No silkscreen on pads**
+- Board info: project name, version, date
 
 ---
 
 ## 6. ICEpower Module Integration
 
-- **Datenblatt-Pins genau beachten**: Pin-Belegung variiert je nach Modul
-- **Steckverbinder-Footprints**: Exakt nach Modul-Datenblatt wählen
-- **Masse-Anbindung**: Niederohmig, breite Kupferflächen
-- **Versorgungseingänge**: Ausreichend dimensionierte Leiterbahnen (Strom beachten!)
-- **Signalpfade kurz halten**: Audio-Eingänge nah am Modul
-- **Abblock-Kondensatoren**: Direkt am Modulanschluss
-- **ENABLE/MUTE-Pins**: Beschaltung lt. Datenblatt (Pullup/Pulldown + RC-Verzögerung)
-- **Sense-Leitungen**: Kelvin-Verbindung direkt am Lautsprecheranschluss (falls gefordert)
+- **Follow datasheet pins exactly**: pinout varies between modules
+- **Connector footprints**: choose exactly per module datasheet
+- **Ground connection**: low-impedance, wide copper areas
+- **Supply inputs**: adequately sized traces (consider current!)
+- **Keep signal paths short**: audio inputs close to the module
+- **Bypass capacitors**: directly at the module connector
+- **ENABLE/MUTE pins**: circuit per datasheet (pull-up/pull-down + RC delay)
+- **Sense lines**: Kelvin connection directly at speaker terminal (if required)
 
-### Thermisches Design
+### Thermal Design
 
-- **Thermal Pads**: Via-Array (mind. 5×5, Bohrung 0.3 mm, Raster 1.0–1.2 mm)
-- **Kupferflächen**: Top + Bottom für Wärmeableitung nutzen
-- **Keine Bauteile über Hot-Spots**
-- **Kühlkörper**: M3-Schraubbefestigung mit Wärmeleitpad vorsehen
+- **Thermal pads**: via array (minimum 5×5, drill 0.3 mm, pitch 1.0–1.2 mm)
+- **Copper areas**: use top + bottom for heat dissipation
+- **No components over hot spots**
+- **Heatsink**: M3 screw mounting with thermal pad provision
 
 ---
 
-## 7. JLCPCB Design Rules & Fertigung
+## 7. JLCPCB Design Rules & Manufacturing
 
-### Minimale Design-Regeln
+### Minimum Design Rules
 
-| Regel                | Minimum | Empfehlung |
-| -------------------- | ------- | ---------- |
-| Leiterbahnbreite     | 0.1mm   | ≥ 0.15mm   |
-| Leiterbahnabstand    | 0.1mm   | ≥ 0.15mm   |
-| Annular Ring         | 0.125mm | ≥ 0.15mm   |
-| Bohrung (PTH)        | 0.2mm   | ≥ 0.3mm    |
-| Pad-Größe (min)      | 0.45mm  | ≥ 0.6mm    |
-| Board-Edge zu Kupfer | 0.2mm   | ≥ 0.3mm    |
-| Silkscreen-Höhe      | 0.8mm   | ≥ 1.0mm    |
+| Rule               | Minimum | Recommended |
+| ------------------ | ------- | ----------- |
+| Trace width        | 0.1mm   | ≥ 0.15mm    |
+| Trace clearance    | 0.1mm   | ≥ 0.15mm    |
+| Annular ring       | 0.125mm | ≥ 0.15mm    |
+| Drill (PTH)        | 0.2mm   | ≥ 0.3mm     |
+| Pad size (min)     | 0.45mm  | ≥ 0.6mm     |
+| Board edge to copper | 0.2mm | ≥ 0.3mm     |
+| Silkscreen height  | 0.8mm   | ≥ 1.0mm     |
 
-### Netzklassen
+### Net Classes
 
-| Netzklasse   | Clearance | Track Width | Via Size | Via Drill | Beschreibung                |
+| Net Class    | Clearance | Track Width | Via Size | Via Drill | Description                 |
 | ------------ | --------- | ----------- | -------- | --------- | --------------------------- |
-| Default      | 0.2mm     | 0.25mm      | 0.6mm    | 0.3mm     | Standard-Signale            |
-| Power        | 0.2mm     | 0.5mm       | 0.8mm    | 0.4mm     | Versorgung, hohe Ströme     |
-| Audio_Input  | 0.25mm    | 0.3mm       | 0.6mm    | 0.3mm     | Empfindliche Audio-Eingänge |
-| Audio_Output | 0.2mm     | 0.5mm       | 0.6mm    | 0.3mm     | Audio-Ausgänge              |
-| Audio_Power  | 0.2mm     | 0.8mm       | 0.8mm    | 0.4mm     | Analoge Versorgung          |
-| Speaker      | 0.3mm     | 1.5mm       | 0.8mm    | 0.4mm     | Lautsprecherausgänge        |
-| HV           | 0.5mm     | 0.3mm       | 0.8mm    | 0.4mm     | > 50V Signale               |
+| Default      | 0.2mm     | 0.25mm      | 0.6mm    | 0.3mm     | Standard signals            |
+| Power        | 0.2mm     | 0.5mm       | 0.8mm    | 0.4mm     | Supply, high current        |
+| Audio_Input  | 0.25mm    | 0.3mm       | 0.6mm    | 0.3mm     | Sensitive audio inputs      |
+| Audio_Output | 0.2mm     | 0.5mm       | 0.6mm    | 0.3mm     | Audio outputs               |
+| Audio_Power  | 0.2mm     | 0.8mm       | 0.8mm    | 0.4mm     | Analog supply               |
+| Speaker      | 0.3mm     | 1.5mm       | 0.8mm    | 0.4mm     | Speaker outputs             |
+| HV           | 0.5mm     | 0.3mm       | 0.8mm    | 0.4mm     | > 50V signals               |
 
 ### Custom Design Rules (kicad_dru)
 
@@ -379,67 +379,67 @@ Weitere Regeln:
     (constraint edge_clearance (min 0.3mm)))
 ```
 
-### Gerber-Export
+### Gerber Export
 
-**Layer (2-Layer):** F.Cu, B.Cu, F.Paste, B.Paste, F.Silkscreen, B.Silkscreen, F.Mask, B.Mask, Edge.Cuts
+**Layers (2-layer):** F.Cu, B.Cu, F.Paste, B.Paste, F.Silkscreen, B.Silkscreen, F.Mask, B.Mask, Edge.Cuts
 
-**Optionen:** Protel-Extensions ✅ | Tent Vias ✅ | Subtract Soldermask from Silkscreen ✅ | Check Zone Fills ✅
+**Options:** Protel Extensions ✅ | Tent Vias ✅ | Subtract Soldermask from Silkscreen ✅ | Check Zone Fills ✅
 
 **Drill:** Millimeters, Decimal, Absolute Origin
 
 ### SMT Assembly (JLCPCB)
 
-- **Basic Parts bevorzugen** ($0 Setup) — Extended Parts kosten $3/unique part
-- **Fiducials**: Mindestens 3 Stück (1 mm Pad, 2 mm Öffnung) bei SMT-Bestückung
+- **Prefer Basic Parts** ($0 setup) — Extended Parts cost $3/unique part
+- **Fiducials**: minimum 3 (1 mm pad, 2 mm opening) for SMT assembly
 - Export: `export_bom` + `export_position_file`
 
 ---
 
-## 8. Checkliste vor Fertigung
+## 8. Pre-Manufacturing Checklist
 
-### Schaltplan
+### Schematic
 
-- [ ] ERC fehlerfrei (`run_erc`)
-- [ ] Keine losen/unverbundenen Bauteile — alle Pins angeschlossen oder `no_connect`
-- [ ] Low-Noise Op-Amps ausgewählt
-- [ ] Entkopplung: 100 nF C0G + 10 µF an jedem IC-Versorgungspin
-- [ ] Feedback-Widerstände: Metallfilm, ±1%
-- [ ] Kein X7R/X5R im Audio-Signalpfad
-- [ ] Zobel-Netzwerk am Verstärkerausgang
-- [ ] ESD-Schutz an allen externen Steckverbindern
-- [ ] Muting-Schaltung vorhanden
-- [ ] Analoge und digitale Versorgung getrennt geregelt
+- [ ] ERC error-free (`run_erc`)
+- [ ] No loose/unconnected components — all pins connected or `no_connect`
+- [ ] Low-noise op-amps selected
+- [ ] Decoupling: 100 nF C0G + 10 µF at every IC supply pin
+- [ ] Feedback resistors: metal film, ±1%
+- [ ] No X7R/X5R in the audio signal path
+- [ ] Zobel network at amplifier output
+- [ ] ESD protection on all external connectors
+- [ ] Muting circuit present
+- [ ] Analog and digital supply separately regulated
 
-### PCB-Layout
+### PCB Layout
 
-- [ ] DRC fehlerfrei (`run_drc`)
-- [ ] Keine losen/unverbundenen Footprints — 0 Unconnected Items
-- [ ] Alle Netze verbunden (keine Ratsnest-Linien)
-- [ ] Massefläche unter Audio-Signalpfaden ununterbrochen
-- [ ] Audio-Traces auf Top-Layer, keine unnötigen Vias
-- [ ] Guard-Traces um empfindliche Audio-Eingänge
-- [ ] Schaltregler ≥ 20 mm von Audio-Eingangsstufe
-- [ ] Sternpunkt-Masse korrekt implementiert
-- [ ] Entkopplungskondensatoren direkt an IC-Pins (< 3 mm)
-- [ ] Thermal Vias unter Thermal Pads
-- [ ] Via-Stitching entlang Audio-Traces
+- [ ] DRC error-free (`run_drc`)
+- [ ] No loose/unconnected footprints — 0 Unconnected Items
+- [ ] All nets connected (no ratsnest lines)
+- [ ] Ground plane unbroken under audio signal paths
+- [ ] Audio traces on top layer, no unnecessary vias
+- [ ] Guard traces around sensitive audio inputs
+- [ ] Switching regulators ≥ 20 mm from audio input stage
+- [ ] Star-point ground correctly implemented
+- [ ] Decoupling capacitors directly at IC pins (< 3 mm)
+- [ ] Thermal vias under thermal pads
+- [ ] Via stitching along audio traces
 
-### Fertigung
+### Manufacturing
 
-- [ ] Board-Outline geschlossen (Edge.Cuts)
-- [ ] Vias getented
-- [ ] Silkscreen nicht auf Pads
-- [ ] Fiducials vorhanden (wenn SMT Assembly)
-- [ ] Gerber + Drill exportiert und im Viewer verifiziert
-- [ ] BOM + Centroid exportiert
-- [ ] JLCPCB Basic Parts bevorzugt
+- [ ] Board outline closed (Edge.Cuts)
+- [ ] Vias tented
+- [ ] Silkscreen not on pads
+- [ ] Fiducials present (if SMT assembly)
+- [ ] Gerber + drill exported and verified in viewer
+- [ ] BOM + centroid exported
+- [ ] JLCPCB Basic Parts preferred
 
-### Klangqualität
+### Audio Quality
 
-- [ ] SNR-Ziel definiert (> 100 dB)
-- [ ] THD+N Budget (< 0.01% bei 1 kHz)
-- [ ] Crosstalk zwischen Kanälen minimiert (> 70 dB)
-- [ ] Keine Mikrofonie-empfindlichen Bauteile im Signalpfad
+- [ ] SNR target defined (> 100 dB)
+- [ ] THD+N budget (< 0.01% at 1 kHz)
+- [ ] Crosstalk between channels minimized (> 70 dB)
+- [ ] No microphonic-sensitive components in signal path
 
 ---
 

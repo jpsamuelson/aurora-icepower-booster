@@ -43,6 +43,7 @@
 
 Die CMF55-Bestellnummer kodiert alle Parameter:
 `CMF55` `10K000` `B` `E` `EB`
+
 - **B** = ±0.1% Toleranz (C=0.25%, D=0.5%, F=1%)
 - **E** = ±25 ppm/°C TK (H=±50ppm, K=±100ppm)
 - **EB** = Verpackungs-/Spec-Code
@@ -122,6 +123,7 @@ Die CMF55-Bestellnummer kodiert alle Parameter:
 #### ❌ EXISTIERT PRAKTISCH NICHT IN THT
 
 **Warum?**
+
 - C0G/NP0 hat eine sehr niedrige Dielektrizitätskonstante (~30 vs. ~3000 bei X7R)
 - 100nF in C0G erfordert daher **große physische Abmessungen**
 - Als SMD erst ab **1206** verfügbar (3.2×1.6 mm) — schon das ist groß für SMD
@@ -129,6 +131,7 @@ Die CMF55-Bestellnummer kodiert alle Parameter:
 - Darüber hinaus werden THT-Keramiken typisch als X7R oder Y5V angeboten
 
 **Verfügbarkeit 100nF C0G auf LCSC/DigiKey:**
+
 - Alle gefundenen 100nF C0G sind **SMD** (1206, 1210, 1812, 2220)
 - TDK CGA-Serie: 100nF C0G 50V ab 1206, Preis $0.18–$0.49 (SMD)
 - Kein einziger THT-C0G-Kondensator mit 100nF gefunden
@@ -144,6 +147,7 @@ Die CMF55-Bestellnummer kodiert alle Parameter:
 | MKS2G031001K00JSSD | 100nF | ±5% | 400V | 5 mm | 0 (bestellbar) | $0.57 |
 
 **Eigenschaften:**
+
 - Metallisierter Polyester (PET) — **kein Mikrofonie-Effekt** (im Gegensatz zu X7R-Keramik)
 - Baugröße ca. 7.2×2.5×6.5 mm bei 5mm Pitch — kompakt genug für PCB
 - Verlustfaktor (tan δ) ca. 0.008–0.01 @ 1 kHz
@@ -167,6 +171,7 @@ Die CMF55-Bestellnummer kodiert alle Parameter:
 #### Option D: SMD C0G auf THT-Adapter
 
 Wenn C0G zwingend erforderlich:
+
 - SMD-C0G 100nF in 1206 auf Adapter-Platine (1206-zu-THT)
 - Oder: 100nF C0G 1206 direkt auf Unterseite der Hauptplatine löten (Dead-Bug-Stil)
 - Pragmatisch, aber nicht elegant
@@ -192,6 +197,7 @@ Wenn C0G zwingend erforderlich:
 | 1000µF 50V | Nichicon/Panasonic | $0.30–$1.00 | ✅ Massenware | Nezteil-Bulk |
 
 **Empfehlung für Audio:**
+
 - **Nichicon KA** (MUSE Standard) oder **Panasonic FC** für lokale Entkopplung
 - Für den Signalpfad (Kopplung): lieber **Filmkondensatoren** verwenden
 - Elektrolytkondensatoren sind **keine Engpassteile** — massenhaft verfügbar und günstig
@@ -270,22 +276,27 @@ Mehrkosten: ~$3–$5 für deutlich bessere Temperaturdrift.
 ## 6. Fazit
 
 ### ✅ Widerstände: Kein Problem
+
 - 0.1% THT Axialwiderstände sind **gut verfügbar und bezahlbar** ($0.60–$0.80/Stk.)
 - YAGEO MFP-25 ist die pragmatische Empfehlung (Preis/Verfügbarkeit)
 - TE YR Neohm ist die Premium-Wahl (bester Tempco)
 - Vishay CMF55 ist der Audiophile-Klassiker, aber bei LCSC schwer beschaffbar
 
 ### ⚠️ 100nF C0G in THT: Nicht machbar
+
 - C0G-Keramik in THT existiert nur bis ~10nF
 - **Film (WIMA MKS2) ist der korrekte Ersatz** und klanglich sogar bevorzugt
 - Für Entkopplung ist der Verlustfaktor-Unterschied zu C0G irrelevant
 
 ### ✅ Elektrolytkondensatoren: Kein Engpass
+
 - Massenware, trivial beschaffbar
 
 ### ✅ 47Ω Ausgangswiderstände: Trivial
+
 - Standard 1% Metal Film, $0.10/Stk., überall verfügbar
 
-### Bezugsquellen-Empfehlung für THT-DIY:
+### Bezugsquellen-Empfehlung für THT-DIY
+
 1. **DigiKey/Mouser** für Präzisionswiderstände und WIMA-Kondensatoren
 2. **LCSC/JLCPCB** nur für Standardteile (Elkos, 1%-Widerstände) — THT-Precision-Auswahl ist dort stark limitiert
